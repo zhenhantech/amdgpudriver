@@ -1065,6 +1065,17 @@ static int kfd_ioctl_alloc_memory_of_gpu(struct file *filep,
 	if (args->size == 0)
 		return -EINVAL;
 
+	/* Debug log: Track 2MB memory allocations */
+	if (args->size == (2 * 1024 * 1024)) {
+		pr_info("KFD [ALLOC_REQ]: PID=%d TGID=%d Comm='%s' Size=0x%llx VA=0x%llx Flags=0x%x GPU=%u\n",
+			current->pid, current->tgid, current->comm,
+			args->size, args->va_addr, flags, args->gpu_id);
+		if (p->lead_thread) {
+			pr_info("KFD [ALLOC_REQ]: Lead_thread PID=%d Comm='%s'\n",
+				p->lead_thread->pid, p->lead_thread->comm);
+		}
+	}
+
 #if IS_ENABLED(CONFIG_HSA_AMD_SVM)
 	/* Flush pending deferred work to avoid racing with deferred actions
 	 * from previous memory map changes (e.g. munmap).
@@ -1217,6 +1228,13 @@ static int kfd_ioctl_alloc_memory_of_gpu(struct file *filep,
 	if (flags & KFD_IOC_ALLOC_MEM_FLAGS_MMIO_REMAP)
 		args->mmap_offset = KFD_MMAP_TYPE_MMIO
 					| KFD_MMAP_GPU_ID(args->gpu_id);
+
+	/* Debug log: Track successful 2MB memory allocations */
+	if (args->size == (2 * 1024 * 1024)) {
+		pr_info("KFD [ALLOC_OK]: PID=%d TGID=%d Comm='%s' Size=0x%llx VA=0x%llx Handle=0x%llx Offset=0x%llx Flags=0x%x\n",
+			current->pid, current->tgid, current->comm,
+			args->size, args->va_addr, args->handle, args->mmap_offset, flags);
+	}
 
 	return 0;
 

@@ -523,6 +523,7 @@ void AqlQueue::AllocRegisteredRingBuffer(uint32_t queue_size_pkts) {
   // Allocate storage for the ring buffer.
   ring_buf_alloc_bytes_ = queue_size_pkts * sizeof(core::AqlPacket);
   assert(IsMultipleOf(ring_buf_alloc_bytes_, 4096) && "Ring buffer sizes must be 4KiB aligned.");
+  //NOTE：Ring buffer必须4 KB对齐
 
   if (IsDeviceMemRingBuf()) {
     if (!agent_->LargeBarEnabled()) {

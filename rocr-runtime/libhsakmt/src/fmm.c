@@ -1177,8 +1177,20 @@ static vm_object_t *fmm_allocate_memory_object(uint32_t gpu_id, void *mem,
 	do {
 		args.size = size;
 
+		/* Debug log: Track 2MB memory allocations */
+		if (args.size == (2 * 1024 * 1024)) {
+			pr_info("[libhsakmt] ALLOC_REQ: PID=%d Size=0x%lx VA=0x%lx GPU=%u Flags=0x%x\n",
+				getpid(), args.size, args.va_addr, args.gpu_id, args.flags);
+		}
+
 		if (hsakmt_ioctl(hsakmt_kfd_fd, AMDKFD_IOC_ALLOC_MEMORY_OF_GPU, &args))
 			goto err_hsakmt_ioctl_failed;
+
+		/* Debug log: Track successful 2MB allocations */
+		if (args.size == (2 * 1024 * 1024)) {
+			pr_info("[libhsakmt] ALLOC_OK: PID=%d Size=0x%lx VA=0x%lx Handle=0x%llx Offset=0x%llx\n",
+				getpid(), args.size, args.va_addr - args.size, args.handle, args.mmap_offset);
+		}
 
 		/* Allocate object */
 		if (!vm_obj) {
