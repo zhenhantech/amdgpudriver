@@ -1,0 +1,6 @@
+[submodule "ROCm_keyDriver/rocm-examples"]
+	path = ROCm_keyDriver/rocm-examples
+	url = https://github.com/ROCm/rocm-examples.git
+[submodule "ROCm_keyDriver/HIPIFY"]
+	path = ROCm_keyDriver/HIPIFY
+	url = https://github.com/ROCm/HIPIFY.git
