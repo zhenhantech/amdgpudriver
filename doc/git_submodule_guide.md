@@ -38,25 +38,31 @@ git submodule add <repository-url> [path]
 
 ### 示例
 
-#### 1. 添加 ROCm Examples
+#### 1. 添加 ROCm Systems 超级仓库（推荐）
 ```bash
 cd /path/to/your/project
+git submodule add https://github.com/ROCm/rocm-systems.git ROCm_keyDriver/rocm-systems
+```
+
+> **注意**：[rocm-systems](https://github.com/ROCm/rocm-systems) 是 ROCm 的超级仓库，整合了多个 ROCm 系统项目（包括 HIP、CLR、ROCr Runtime、rocProfiler 等）。推荐使用这个仓库来追踪 ROCm 生态系统。
+
+#### 2. 添加 ROCm Examples（单独仓库）
+```bash
 git submodule add https://github.com/ROCm/rocm-examples.git ROCm_keyDriver/rocm-examples
 ```
 
-#### 2. 添加 ROCm 主仓库
+#### 3. 添加 HIPIFY 工具
 ```bash
-git submodule add https://github.com/ROCm/ROCm.git ROCm
+git submodule add https://github.com/ROCm/HIPIFY.git ROCm_keyDriver/HIPIFY
 ```
 
-#### 3. 添加 HIP 仓库
+#### 4. 添加其他 ROCm 组件
 ```bash
-git submodule add https://github.com/ROCm/HIP.git HIP
-```
-
-#### 4. 添加 rocBLAS 库
-```bash
+# rocBLAS 库
 git submodule add https://github.com/ROCm/rocBLAS.git Libraries/rocBLAS
+
+# HIP 单独仓库（已包含在 rocm-systems 中）
+git submodule add https://github.com/ROCm/HIP.git HIP
 ```
 
 ### 添加后的操作
@@ -74,8 +80,8 @@ git push
 
 **示例：**
 ```bash
-git add .gitmodules ROCm_keyDriver/rocm-examples
-git commit -m "Add rocm-examples submodule"
+git add .gitmodules ROCm_keyDriver/rocm-systems
+git commit -m "Add rocm-systems submodule"
 git push
 ```
 
@@ -119,7 +125,7 @@ git submodule status
 
 输出示例：
 ```
- 718ea72a7fc3766a3a27095da2350e918df39d36 ROCm_keyDriver/rocm-examples (rocm-7.1.1-64-g718ea72a)
+ 9f014db6a42d9e893127ea57ad9cc27e9c7445b5 ROCm_keyDriver/rocm-systems (hip-version_7.3.53390-2596-g9f014db6a4)
 ```
 
 ### 更新到 Submodule 的最新提交
@@ -127,15 +133,15 @@ git submodule status
 #### 更新单个 Submodule
 ```bash
 # 方法1：进入 submodule 目录手动更新
-cd ROCm_keyDriver/rocm-examples
+cd ROCm_keyDriver/rocm-systems
 git fetch
-git checkout main
-git pull origin main
+git checkout develop  # rocm-systems 的主分支是 develop
+git pull origin develop
 cd ../..
 
 # 在父仓库中提交这个更新
-git add ROCm_keyDriver/rocm-examples
-git commit -m "Update rocm-examples to latest"
+git add ROCm_keyDriver/rocm-systems
+git commit -m "Update rocm-systems to latest"
 ```
 
 #### 更新所有 Submodule 到远程最新版本
@@ -153,12 +159,12 @@ git commit -m "Update all submodules to latest"
 
 #### 更新到特定提交或标签
 ```bash
-cd ROCm_keyDriver/rocm-examples
+cd ROCm_keyDriver/rocm-systems
 git checkout <commit-hash-or-tag>
 cd ../..
 
-git add ROCm_keyDriver/rocm-examples
-git commit -m "Update rocm-examples to version X.Y.Z"
+git add ROCm_keyDriver/rocm-systems
+git commit -m "Update rocm-systems to version X.Y.Z"
 ```
 
 ### 同步主仓库中的 Submodule 更新
@@ -188,9 +194,9 @@ cat .gitmodules
 
 输出示例：
 ```
-[submodule "ROCm_keyDriver/rocm-examples"]
-    path = ROCm_keyDriver/rocm-examples
-    url = https://github.com/ROCm/rocm-examples.git
+[submodule "ROCm_keyDriver/rocm-systems"]
+    path = ROCm_keyDriver/rocm-systems
+    url = https://github.com/ROCm/rocm-systems.git
 ```
 
 ### 查看 Submodule 详细信息
@@ -224,12 +230,12 @@ rm -rf .git/modules/<submodule-path>
 git commit -m "Remove <submodule-name> submodule"
 ```
 
-### 示例：删除 rocm-examples
+### 示例：删除 rocm-systems
 ```bash
-git submodule deinit -f ROCm_keyDriver/rocm-examples
-git rm -f ROCm_keyDriver/rocm-examples
-rm -rf .git/modules/ROCm_keyDriver/rocm-examples
-git commit -m "Remove rocm-examples submodule"
+git submodule deinit -f ROCm_keyDriver/rocm-systems
+git rm -f ROCm_keyDriver/rocm-systems
+rm -rf .git/modules/ROCm_keyDriver/rocm-systems
+git commit -m "Remove rocm-systems submodule"
 git push
 ```
 
@@ -304,12 +310,12 @@ git config -f .gitmodules submodule.<submodule-path>.branch <branch-name>
 git submodule update --remote
 ```
 
-**示例：让 rocm-examples 追踪 amd-staging 分支**
+**示例：让 rocm-systems 追踪 develop 分支**
 ```bash
-git config -f .gitmodules submodule.ROCm_keyDriver/rocm-examples.branch amd-staging
-git submodule update --remote ROCm_keyDriver/rocm-examples
-git add .gitmodules ROCm_keyDriver/rocm-examples
-git commit -m "Configure rocm-examples to track amd-staging branch"
+git config -f .gitmodules submodule.ROCm_keyDriver/rocm-systems.branch develop
+git submodule update --remote ROCm_keyDriver/rocm-systems
+git add .gitmodules ROCm_keyDriver/rocm-systems
+git commit -m "Configure rocm-systems to track develop branch"
 ```
 
 ### 6. 批量操作所有 Submodule
@@ -415,9 +421,33 @@ git submodule update --init --recursive
 
 本项目 (`amdgpudriver`) 当前包含以下 submodule：
 
-| Submodule | 路径 | 仓库 URL |
-|-----------|------|----------|
-| rocm-examples | ROCm_keyDriver/rocm-examples | https://github.com/ROCm/rocm-examples.git |
+| Submodule | 路径 | 仓库 URL | 说明 |
+|-----------|------|----------|------|
+| rocm-systems | ROCm_keyDriver/rocm-systems | https://github.com/ROCm/rocm-systems.git | ROCm 超级仓库，包含所有核心组件 |
+
+#### ROCm Systems 包含的项目
+
+`rocm-systems` 是一个超级仓库，整合了以下 ROCm 核心项目：
+
+- **amdsmi**: AMD 系统管理接口
+- **aqlprofile**: AQL 性能分析工具
+- **clr**: 通用语言运行时（包含 HIP 和 OpenCL）
+- **hip**: HIP 编程接口
+- **hip-tests**: HIP 测试套件
+- **rccl**: ROCm 通信库
+- **rdc**: ROCm 数据中心工具
+- **rocm-core**: ROCm 核心组件
+- **rocminfo**: 系统信息工具
+- **rocm-smi-lib**: 系统管理接口库
+- **rocprofiler**: 性能分析器
+- **rocprofiler-compute**: 计算性能分析
+- **rocprofiler-register**: 寄存器分析
+- **rocprofiler-sdk**: 性能分析 SDK
+- **rocprofiler-systems**: 系统级性能分析
+- **rocr-runtime**: ROCm 运行时
+- **roctracer**: ROCm 追踪工具
+
+通过这一个 submodule，即可访问整个 ROCm 生态系统的源代码。
 
 ---
 
@@ -432,6 +462,7 @@ git submodule update --init --recursive
 
 ## 更新记录
 
+- 2026-01-16: 切换到 rocm-systems 超级仓库，简化 submodule 管理
 - 2026-01-16: 重建后更新，添加故障恢复章节
 - 2026-01-15: 初始版本创建
 
