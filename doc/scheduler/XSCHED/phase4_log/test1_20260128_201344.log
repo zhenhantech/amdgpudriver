@@ -1,0 +1,17 @@
+================================================
+Phase 4 Test 1: Verify Existing XSched
+================================================
+
+Background:
+  Phase 1-2: PyTorch + XSched integration ✅
+  Phase 3:   Real models testing         ✅
+  Phase 4:   XSched paper tests          ← Current
+
+Container: zhenflashinfer_v1
+
+[1/2] Copying test script to container...
+  ✅ Script copied
+
+[2/2] Executing test in container...
+
+the input device is not a TTY

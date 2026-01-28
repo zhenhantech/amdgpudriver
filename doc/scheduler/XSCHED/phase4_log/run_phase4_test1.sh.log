@@ -1,0 +1,97 @@
+================================================
+Phase 4 Test 1: Verify Existing XSched
+================================================
+
+Background:
+  Phase 1-2: PyTorch + XSched integration ✅
+  Phase 3:   Real models testing         ✅
+  Phase 4:   XSched paper tests          ← Current
+
+Container: zhenflashinfer_v1
+
+[1/2] Copying test script to container...
+  ✅ Script copied
+
+[2/2] Executing test in container...
+
+================================================
+Phase 4 Test 1: Verify Existing XSched
+================================================
+
+Running inside Docker container: hjbog-srdc-26.amd.com
+
+[Step 1/5] Checking XSched source...
+  ✅ Source exists: /data/dockercode/xsched-official
+     Git commit: ff5298c
+
+[Step 2/5] Checking build directory...
+  ✅ Build directory exists: /data/dockercode/xsched-build
+
+[Step 3/5] Checking installed libraries...
+  ✅ /data/dockercode/xsched-build/output/lib/libhalhip.so
+     Size: 252K
+     Modified: 2026-01-28 07:26:07
+  ✅ /data/dockercode/xsched-build/output/lib/libshimhip.so
+     Size: 412K
+     Modified: 2026-01-28 07:25:48
+
+[Step 4/5] Verifying Symbol Versioning fix...
+  ✅ Symbol versioning correctly applied
+     (This was the critical Phase 2 fix)
+
+[Step 5/5] Testing basic functionality...
+  Testing PyTorch with XSched...
+[INFO @ T58880 @ 09:05:23.278123] using app-managed scheduler
+[TRACE_MALLOC] size=2097152 ptr=0x7fb378a00000 ret=0 (SUCCESS)
+[TRACE_KERNEL] func=0x7fb50403e330 stream=(nil)
+[TRACE_KERNEL] func=0x7fb50403e330 stream=(nil)
+[TRACE_MALLOC] size=26214400 ptr=0x7f9366400000 ret=0 (SUCCESS)
+[TRACE_MALLOC] size=79691776 ptr=0x7f9361600000 ret=0 (SUCCESS)
+    ✅ PyTorch + XSched works!
+    PyTorch version: 2.7.1+rocm6.4.1.git2a215e4a
+    CUDA available: True
+  ✅ Basic functionality verified
+
+Generating verification report...
+[INFO @ T58947 @ 09:05:37.462710] using app-managed scheduler
+[INFO @ T58949 @ 09:05:37.475832] using app-managed scheduler
+[INFO @ T58950 @ 09:05:37.488435] using app-managed scheduler
+[INFO @ T58952 @ 09:05:37.501096] using app-managed scheduler
+[INFO @ T58953 @ 09:05:37.501182] using app-managed scheduler
+[INFO @ T58955 @ 09:05:37.514098] using app-managed scheduler
+[INFO @ T58956 @ 09:05:37.514141] using app-managed scheduler
+[INFO @ T58958 @ 09:05:37.527135] using app-managed scheduler
+[INFO @ T58959 @ 09:05:37.527157] using app-managed scheduler
+[INFO @ T58948 @ 09:05:37.540061] using app-managed scheduler
+  ✅ Report saved to /data/dockercode/test_results_phase4/phase4_test1_report.json
+
+================================================
+✅ Phase 4 Test 1 PASSED
+================================================
+
+Verified XSched Installation:
+  Source:  /data/dockercode/xsched-official
+  Build:   /data/dockercode/xsched-build
+  Install: /data/dockercode/xsched-build/output
+
+Key Features Verified:
+  ✅ Libraries compiled and installed
+  ✅ Symbol versioning (Phase 2 fix)
+  ✅ PyTorch integration working
+
+Environment Setup:
+  export LD_LIBRARY_PATH=/data/dockercode/xsched-build/output/lib:$LD_LIBRARY_PATH
+  export LD_PRELOAD=/data/dockercode/xsched-build/output/lib/libshimhip.so
+
+Next: Phase 4 Test 2 - Runtime Overhead Measurement
+      (Based on Paper Section 7.4.1)
+
+================================================
+✅ Test completed successfully
+
+View results:
+  docker exec zhenflashinfer_v1 cat /data/dockercode/test_results_phase4/phase4_test1_report.json
+
+Next step:
+  ./run_phase4_test2.sh  # Runtime overhead measurement
+================================================

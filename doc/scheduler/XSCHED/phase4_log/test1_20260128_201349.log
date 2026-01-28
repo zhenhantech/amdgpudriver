@@ -1,0 +1,55 @@
+================================================
+Phase 4 Test 1: Verify Existing XSched
+================================================
+
+Running inside Docker container: hjbog-srdc-26.amd.com
+
+[Step 1/5] Checking XSched source...
+  ✅ Source exists: /data/dockercode/xsched-official
+     Git commit: ff5298c
+
+[Step 2/5] Checking build directory...
+  ✅ Build directory exists: /data/dockercode/xsched-build
+
+[Step 3/5] Checking installed libraries...
+  ✅ /data/dockercode/xsched-build/output/lib/libhalhip.so
+     Size: 252K
+     Modified: 2026-01-28 11:22:43
+  ✅ /data/dockercode/xsched-build/output/lib/libshimhip.so
+     Size: 420K
+     Modified: 2026-01-28 11:23:08
+
+[Step 4/5] Verifying Symbol Versioning fix...
+  ✅ Symbol versioning correctly applied
+     (This was the critical Phase 2 fix)
+
+[Step 5/5] Testing basic functionality...
+  Testing PyTorch with XSched...
+[INFO @ T65263 @ 12:13:49.552303] using app-managed scheduler
+    ❌ PyTorch test failed: HIP error: invalid device function
+HIP kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing AMD_SERIALIZE_KERNEL=3
+Compile with `TORCH_USE_HIP_DSA` to enable device-side assertions.
+
+/data/dockercode/test_phase4_1_verify_existing.sh: line 117: 65263 Segmentation fault      (core dumped) python3 <<'EOF'
+import torch
+import sys
+
+try:
+    # 创建 tensor
+    A = torch.randn(128, 128, device='cuda')
+    B = torch.randn(128, 128, device='cuda')
+    
+    # 矩阵乘法
+    C = A @ B
+    torch.cuda.synchronize()
+    
+    print("    ✅ PyTorch + XSched works!")
+    print(f"    PyTorch version: {torch.__version__}")
+    print(f"    CUDA available: {torch.cuda.is_available()}")
+    sys.exit(0)
+except Exception as e:
+    print(f"    ❌ PyTorch test failed: {e}")
+    sys.exit(1)
+EOF
+

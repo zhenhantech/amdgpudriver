@@ -1,0 +1,186 @@
+========================================================================
+Phase 4: Dual Model Priority Scheduling Test
+========================================================================
+
+Test Configuration:
+  Duration: 60s
+  High Priority: ResNet-18 (10 reqs/sec)
+  Low Priority:  ResNet-50 (continuous)
+
+[1/5] Copying test script to container...
+  ✅ Script copied
+
+========================================================================
+[2/5] Running BASELINE test (Native scheduler, no XSched)
+========================================================================
+
+======================================================================
+Phase 4: Dual Model Priority Scheduling Test
+======================================================================
+
+Test configuration:
+  Duration: 60s
+  High priority: ResNet-18, 10 reqs/sec
+  Low priority:  ResNet-50, continuous
+
+ℹ️  Running with Native scheduler (no XSched)
+
+Starting workers...
+----------------------------------------------------------------------
+[HIGH] Starting high priority task (ResNet-18)
+[HIGH] Target: 10 reqs/sec, Duration: 60s
+[HIGH] Warmup completed, starting test...
+
+[HIGH] Results:
+  Requests: 600
+  Throughput: 9.99 req/s
+  Latency Avg: 2.32 ms
+  Latency P50: 2.25 ms
+  Latency P95: 2.60 ms
+  Latency P99: 3.47 ms
+  Latency Max: 11.43 ms
+[LOW] Starting low priority task (ResNet-50)
+[LOW] Mode: Continuous inference, Duration: 60s
+[LOW] Warmup completed, starting test...
+
+[LOW] Results:
+  Iterations: 9924
+  Throughput: 165.40 iter/s
+  Images/sec: 1323.2
+
+======================================================================
+FINAL RESULTS
+======================================================================
+
+High Priority (ResNet-18):
+  P99 Latency: 3.47 ms
+  Throughput:  9.99 req/s
+
+Low Priority (ResNet-50):
+  Throughput:  165.40 iter/s
+  Images/sec:  1323.2
+
+✅ Results saved to /data/dockercode/test_results_phase4/baseline_result.json
+======================================================================
+
+✅ High priority P99 (3.47ms) looks reasonable
+
+========================================================================
+[3/5] Running XSCHED test (With priority scheduling)
+========================================================================
+
+ERROR: ld.so: object '/data/dockercode/xsched-build/output/lib/libshimhip.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+======================================================================
+Phase 4: Dual Model Priority Scheduling Test
+======================================================================
+
+Test configuration:
+  Duration: 60s
+  High priority: ResNet-18, 10 reqs/sec
+  Low priority:  ResNet-50, continuous
+
+✅ Running with XSched
+   LD_PRELOAD: /data/dockercode/xsched-build/output/lib/libshimhip.so
+
+Starting workers...
+----------------------------------------------------------------------
+[HIGH] Starting high priority task (ResNet-18)
+[HIGH] Target: 10 reqs/sec, Duration: 60s
+[HIGH] Warmup completed, starting test...
+
+[HIGH] Results:
+  Requests: 600
+  Throughput: 9.99 req/s
+  Latency Avg: 2.30 ms
+  Latency P50: 2.30 ms
+  Latency P95: 2.62 ms
+  Latency P99: 2.75 ms
+  Latency Max: 3.28 ms
+[LOW] Starting low priority task (ResNet-50)
+[LOW] Mode: Continuous inference, Duration: 60s
+[LOW] Warmup completed, starting test...
+
+[LOW] Results:
+  Iterations: 9813
+  Throughput: 163.54 iter/s
+  Images/sec: 1308.4
+
+======================================================================
+FINAL RESULTS
+======================================================================
+
+High Priority (ResNet-18):
+  P99 Latency: 2.75 ms
+  Throughput:  9.99 req/s
+
+Low Priority (ResNet-50):
+  Throughput:  163.54 iter/s
+  Images/sec:  1308.4
+
+✅ Results saved to /data/dockercode/test_results_phase4/xsched_result.json
+======================================================================
+
+✅ High priority P99 (2.75ms) looks reasonable
+
+========================================================================
+[4/5] Comparing results...
+========================================================================
+
+======================================================================
+COMPARISON: XSched vs Baseline
+======================================================================
+
+High Priority Task (ResNet-18):
+----------------------------------------------------------------------
+  Metric             Baseline      XSched        Change
+  ------------------------------------------------------------
+  P99 Latency (ms)       3.47          2.75       -20.9% ✅
+  Avg Latency (ms)       2.32          2.30        -1.0%
+  Throughput (rps)       9.99          9.99        -0.0%
+
+
+Low Priority Task (ResNet-50):
+----------------------------------------------------------------------
+  Metric             Baseline      XSched        Change
+  ------------------------------------------------------------
+  Throughput (ips)     165.40        163.54        -1.1% ✅
+  Images/sec           1323.2        1308.4        -1.1%
+
+======================================================================
+SUMMARY
+======================================================================
+✅ High priority latency: GOOD (XSched P99 < 110% baseline)
+✅ Low priority throughput: GOOD (XSched = 98.9% of baseline, > 30%)
+
+🎉 Overall: PASS
+
+Key findings:
+  - High priority task maintains good latency
+  - Low priority task is not starved
+  - XSched priority scheduling is working
+======================================================================
+
+========================================================================
+[5/5] Generating final report...
+========================================================================
+
+cat: /data/dockercode/test_results_phase4/baseline_result.json: No such file or directory
+Expecting value: line 1 column 1 (char 0)
+cat: /data/dockercode/test_results_phase4/xsched_result.json: No such file or directory
+Expecting value: line 1 column 1 (char 0)
+✅ Report generated: /data/dockercode/test_results_phase4/phase4_dual_model_report.md
+
+========================================================================
+✅ Phase 4 Dual Model Test: PASSED
+========================================================================
+
+Results saved in:
+  - Baseline:  zhenflashinfer_v1:/data/dockercode/test_results_phase4/baseline_result.json
+  - XSched:    zhenflashinfer_v1:/data/dockercode/test_results_phase4/xsched_result.json
+  - Report:    zhenflashinfer_v1:/data/dockercode/test_results_phase4/phase4_dual_model_report.md
+
+View results:
+  docker exec zhenflashinfer_v1 cat /data/dockercode/test_results_phase4/baseline_result.json
+  docker exec zhenflashinfer_v1 cat /data/dockercode/test_results_phase4/xsched_result.json
+
+Next step: Analyze results and proceed to Test 4.2 (Multi-tenant)

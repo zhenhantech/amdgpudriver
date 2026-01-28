@@ -1,0 +1,25 @@
+================================================
+Phase 4 Test 1: Verify XSched Environment
+================================================
+
+[1/3] Checking XSched libraries...
+  ✅ libshimhip.so exists
+-rwxr-xr-x 1 root root 251K Jan 28 11:22 /data/dockercode/xsched-build/output/lib/libhalhip.so
+-rw-r--r-- 1 root root 619K Jan 28 11:21 /data/dockercode/xsched-build/output/lib/libpreempt.so
+-rwxr-xr-x 1 root root 420K Jan 28 11:23 /data/dockercode/xsched-build/output/lib/libshimhip.so
+
+[2/3] Checking symbol exports...
+  ✅ HipCommand symbols exported
+
+[3/3] Testing XSched loading...
+[INFO @ T65345 @ 12:14:12.572777] using app-managed scheduler
+  ✅ PyTorch: 2.7.1+rocm6.4.1.git2a215e4a
+  ✅ CUDA available: True
+  ✅ Device count: 8
+/data/dockercode/test_phase4_1_verify_simple.sh: line 30: 65345 Segmentation fault      (core dumped) python3 <<'EOF'
+import torch
+print('  ✅ PyTorch:', torch.__version__)
+print('  ✅ CUDA available:', torch.cuda.is_available())
+print('  ✅ Device count:', torch.cuda.device_count())
+EOF
+

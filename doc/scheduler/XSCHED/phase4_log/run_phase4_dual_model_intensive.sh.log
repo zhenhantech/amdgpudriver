@@ -1,0 +1,122 @@
+========================================================================
+Phase 4: Dual Model Priority Scheduling Test (Intensive)
+========================================================================
+
+Test Configuration:
+  Duration: 180s (3 minutes)
+  High Priority: ResNet-18 (20 reqs/sec, 50ms interval)
+  Low Priority:  ResNet-50 (batch=1024, continuous)
+
+[1/5] Copying test script to container...
+  ✅ Script copied
+
+========================================================================
+[2/5] Running BASELINE test (Native scheduler, no XSched)
+========================================================================
+
+======================================================================
+Phase 4: Dual Model Priority Scheduling Test (Intensive)
+======================================================================
+
+Test configuration:
+  Duration: 180s (3 minutes)
+  High priority: ResNet-18, 20 reqs/sec (50ms interval)
+  Low priority:  ResNet-50, batch=1024, continuous
+
+ℹ️  Running with Native scheduler (no XSched)
+
+⚠️  WARNING: This is an intensive test!
+   - High request rate (20 req/s)
+   - Large batch size (1024)
+   - Long duration (3 minutes)
+   - May require significant GPU memory
+
+Starting workers...
+----------------------------------------------------------------------
+[HIGH] Starting high priority task (ResNet-18)
+[HIGH] Target: 20 reqs/sec (50ms interval), Duration: 180s
+[HIGH] Warming up...
+[HIGH] Warmup completed, starting test...
+
+[HIGH] Results:
+  Requests: 3596
+  Throughput: 19.98 req/s
+  Latency Avg: 8.17 ms
+  Latency P50: 7.59 ms
+  Latency P95: 15.39 ms
+  Latency P99: 19.79 ms
+  Latency Max: 24.35 ms
+[LOW] Starting low priority task (ResNet-50)
+[LOW] Mode: Continuous inference, Batch=1024, Duration: 180s
+[LOW] Allocating batch size 1024...
+[LOW] Batch allocated successfully
+[LOW] Warming up...
+[LOW] Warmup completed, starting test...
+[LOW] Progress: 10 iterations, 1.97 iter/s
+[LOW] Progress: 20 iterations, 1.97 iter/s
+[LOW] Progress: 30 iterations, 1.96 iter/s
+[LOW] Progress: 40 iterations, 1.96 iter/s
+[LOW] Progress: 50 iterations, 1.96 iter/s
+[LOW] Progress: 60 iterations, 1.96 iter/s
+[LOW] Progress: 70 iterations, 1.97 iter/s
+[LOW] Progress: 80 iterations, 1.97 iter/s
+[LOW] Progress: 90 iterations, 1.97 iter/s
+[LOW] Progress: 100 iterations, 1.97 iter/s
+[LOW] Progress: 110 iterations, 1.97 iter/s
+[LOW] Progress: 120 iterations, 1.97 iter/s
+[LOW] Progress: 130 iterations, 1.97 iter/s
+[LOW] Progress: 140 iterations, 1.97 iter/s
+[LOW] Progress: 150 iterations, 1.97 iter/s
+[LOW] Progress: 160 iterations, 1.97 iter/s
+[LOW] Progress: 170 iterations, 1.97 iter/s
+[LOW] Progress: 180 iterations, 1.97 iter/s
+[LOW] Progress: 190 iterations, 1.97 iter/s
+[LOW] Progress: 200 iterations, 1.97 iter/s
+[LOW] Progress: 210 iterations, 1.97 iter/s
+[LOW] Progress: 220 iterations, 1.97 iter/s
+[LOW] Progress: 230 iterations, 1.97 iter/s
+[LOW] Progress: 240 iterations, 1.97 iter/s
+[LOW] Progress: 250 iterations, 1.97 iter/s
+[LOW] Progress: 260 iterations, 1.97 iter/s
+[LOW] Progress: 270 iterations, 1.97 iter/s
+[LOW] Progress: 280 iterations, 1.97 iter/s
+[LOW] Progress: 290 iterations, 1.97 iter/s
+[LOW] Progress: 300 iterations, 1.97 iter/s
+[LOW] Progress: 310 iterations, 1.97 iter/s
+[LOW] Progress: 320 iterations, 1.97 iter/s
+[LOW] Progress: 330 iterations, 1.97 iter/s
+[LOW] Progress: 340 iterations, 1.97 iter/s
+[LOW] Progress: 350 iterations, 1.97 iter/s
+
+[LOW] Results:
+  Iterations: 355
+  Batch size: 1024
+  Throughput: 1.97 iter/s
+  Images/sec: 2015.1
+
+======================================================================
+FINAL RESULTS
+======================================================================
+
+High Priority (ResNet-18, 20 req/s):
+  Total Requests: 3596
+  P99 Latency: 19.79 ms
+  Throughput:  19.98 req/s
+
+Low Priority (ResNet-50, batch=1024):
+  Total Iterations: 355
+  Throughput:  1.97 iter/s
+  Images/sec:  2015.1
+
+✅ Results saved to /data/dockercode/test_results_phase4/baseline_intensive_result.json
+======================================================================
+
+✅ High priority P99 (19.79ms) looks reasonable
+
+✅ Baseline test completed
+
+========================================================================
+[3/5] Running XSCHED test (With priority scheduling)
+========================================================================
+
+python3: symbol lookup error: /data/dockercode/xsched-build/output/lib/libshimhip.so: undefined symbol: _ZTIN6xsched3hip10HipCommandE
