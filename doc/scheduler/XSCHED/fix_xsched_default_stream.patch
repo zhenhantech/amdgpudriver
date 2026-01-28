@@ -1,0 +1,46 @@
+--- a/platforms/hip/shim/src/shim.cpp
++++ b/platforms/hip/shim/src/shim.cpp
+@@ -34,14 +34,23 @@ hipError_t XLaunchKernel(const void *f, dim3 numBlocks, dim3 dimBlocks, void **
+                          size_t sharedMemBytes, hipStream_t stream)
+ {
+     XDEBG("XLaunchKernel: func=%p stream=%p\\n", f, stream);
+-    if (stream == nullptr) {
+-        HipSyncBlockingXQueues();
+-        return Driver::LaunchKernel(f, numBlocks, dimBlocks, args, sharedMemBytes, stream);
+-    }
+     
++    // PATCH: 为默认流创建/获取 XQueue，而不是绕过
++    // 原因：PyTorch 的很多操作使用默认流，直接绕过会导致 Driver::LaunchKernel 失败
++    if (stream == nullptr) {
++        // 尝试获取默认流的 XQueue
++        stream = (hipStream_t)1;  // 使用非零值作为默认流的句柄
++        // 注意：这需要在初始化时预先创建句柄为 1 的 XQueue
++    }
++    
+     auto xqueue = HwQueueManager::GetXQueue(GetHwQueueHandle(stream));
+     if (xqueue == nullptr) {
++        // 如果 XQueue 不存在，调用原始 HIP API
++        // 注意：这里应该调用真正的 hipLaunchKernel，而不是 Driver::LaunchKernel
++        // Driver::LaunchKernel 可能有问题
++        HipSyncBlockingXQueues();
++        
++        // FIXME: 需要直接调用 libamdhip64.so 中的 hipLaunchKernel
+         return Driver::LaunchKernel(f, numBlocks, dimBlocks, args, sharedMemBytes, stream);
+     }
+     
+@@ -56,10 +65,14 @@ hipError_t XModuleLaunchKernel(hipFunction_t function,
+                               void **params, void **extra)
+ {
+     if (stream == nullptr) {
+-        HipSyncBlockingXQueues();
+-        return Driver::ModuleLaunchKernel(function, gdx, gdy, gdz, bdx, bdy, bdz, shm,
+-                                          stream, params, extra);
++        // PATCH: 同样为默认流创建 XQueue
++        stream = (hipStream_t)1;
+     }
++    
++    // 后续逻辑相同...
++    // (省略，因为和 XLaunchKernel 类似)
++}
++
++// 类似地修改其他 Launch* 函数...

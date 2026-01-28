@@ -1,0 +1,83 @@
+========================================================================
+XSched 修复：支持默认流
+========================================================================
+
+[1/5] 备份原始文件...
+  ✅ 备份完成
+
+[2/5] 应用修复补丁...
+  ✅ XLaunchKernel 已修改
+
+[3/5] 清理旧构建...
+  ✅ 清理完成
+
+[4/5] 重新编译 XSched HIP 平台...
+[ 98%] Built target xserver
+[ 99%] Linking CXX executable x11_monitor
+gmake[4]: Leaving directory '/data/dockercode/xsched-official/build'
+[ 99%] Built target x11_monitor
+[100%] Linking CXX executable xcli
+gmake[4]: Leaving directory '/data/dockercode/xsched-official/build'
+[100%] Built target xcli
+gmake[3]: Leaving directory '/data/dockercode/xsched-official/build'
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /data/dockercode/xsched-official/output/lib/libpreempt.so
+-- Installing: /data/dockercode/xsched-official/output/include
+-- Installing: /data/dockercode/xsched-official/output/include/xsched
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/sched
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/sched/executor.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/sched/agent.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/hal
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/hal/hw_queue.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/hal/hw_command.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue/command_buffer.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue/xcommand.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue/launch_worker.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue/async_xqueue.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/preempt/xqueue/xqueue.h
+-- Installing: /data/dockercode/xsched-official/output/bin/xcli
+-- Installing: /data/dockercode/xsched-official/output/bin/xserver
+-- Installing: /data/dockercode/xsched-official/output/bin/x11_monitor
+-- Installing: /data/dockercode/xsched-official/output/bin/x11_launcher
+-- Installing: /data/dockercode/xsched-official/output/lib/libhalhip.so
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/hip/hal.h
+-- Installing: shim softlink created: libamdhip64.so.1
+-- Installing: shim softlink created: libamdhip64.so
+-- Installing: /data/dockercode/xsched-official/output/lib/libshimhip.so
+-- Installing: /data/dockercode/xsched-official/output/include/xsched_hip.py
+-- Installing: /data/dockercode/xsched-official/output/lib/cmake/XSched/XSchedConfig.cmake
+-- Installing: /data/dockercode/xsched-official/output/lib/cmake/XSched/XSchedConfigVersion.cmake
+-- Installing: /data/dockercode/xsched-official/output/lib/cmake/XSched/XSchedTargets.cmake
+-- Installing: /data/dockercode/xsched-official/output/lib/cmake/XSched/XSchedTargets-release.cmake
+-- Up-to-date: /data/dockercode/xsched-official/output/include
+-- Up-to-date: /data/dockercode/xsched-official/output/include/xsched
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/types.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/hint.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/xsched.h
+-- Installing: /data/dockercode/xsched-official/output/include/xsched/xqueue.h
+-- Installing: /data/dockercode/xsched-official/output/include/README.md
+-- Installing: /data/dockercode/xsched-official/output/include/xsched.py
+gmake[2]: Leaving directory '/data/dockercode/xsched-official/build'
+make[1]: Leaving directory '/data/dockercode/xsched-official'
+
+[5/5] 重新链接并复制库文件...
+  ✅ 库文件已复制
+-rwxr-xr-x 1 root root 251K Jan 28 15:42 /data/dockercode/xsched-build/output/lib/libhalhip.so
+-rw-r--r-- 1 root root 619K Jan 28 15:42 /data/dockercode/xsched-build/output/lib/libpreempt.so
+-rwxr-xr-x 1 root root 420K Jan 28 15:42 /data/dockercode/xsched-build/output/lib/libshimhip.so
+
+========================================================================
+✅ 修复完成！
+========================================================================
+
+修改内容:
+  - 注释掉了 XLaunchKernel 中默认流的特殊处理
+  - 让所有流都走 XQueue 路径
+  - 如果 XQueue 不存在，才调用 Driver::LaunchKernel
+
+下一步: 运行测试
+  cd /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/scheduler/XSCHED
+  ./debug_xsched.sh
