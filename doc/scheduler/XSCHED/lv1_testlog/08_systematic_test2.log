@@ -1,0 +1,38 @@
+[INFO @ T8135 @ 07:52:39.004936] using app-managed scheduler
+
+================================================================================
+=== Test 2: 16 Threads Concurrent (No XSched) ===
+Threads: 16
+XSched: Disabled
+Workload: 2048x2048 matrix, 30 kernels/task, 10 tasks/thread
+================================================================================
+
+[XSCHED-REGULAR-1] XLaunchKernel stream=0x7fadf4001410
+[XSCHED-REGULAR-2] XLaunchKernel stream=0x7fadf4001410
+[XSCHED-REGULAR-3] XLaunchKernel stream=0x7fadf4001410
+[XSCHED-REGULAR-4] XLaunchKernel stream=0x7fadf4001410
+[XSCHED-REGULAR-5] XLaunchKernel stream=0x7fadf4001410
+
+=== Results ===
+Total time: 84.46 seconds
+
+[T0 P1]: Avg=8205.72 ms, P50=8167.09 ms, P99=8635.69 ms, samples=10
+[T1 P1]: Avg=7729.33 ms, P50=8095.48 ms, P99=8792.99 ms, samples=10
+[T2 P1]: Avg=7730.22 ms, P50=8097.47 ms, P99=8793.60 ms, samples=10
+[T3 P1]: Avg=8409.81 ms, P50=8148.59 ms, P99=8960.10 ms, samples=10
+[T4 P1]: Avg=8409.43 ms, P50=8140.55 ms, P99=8955.63 ms, samples=10
+[T5 P1]: Avg=7972.10 ms, P50=8180.22 ms, P99=8517.26 ms, samples=10
+[T6 P1]: Avg=8209.21 ms, P50=8174.00 ms, P99=8639.14 ms, samples=10
+[T7 P1]: Avg=8210.60 ms, P50=8174.12 ms, P99=8643.03 ms, samples=10
+[T8 P1]: Avg=8209.73 ms, P50=8173.68 ms, P99=8640.48 ms, samples=10
+[T9 P1]: Avg=7729.57 ms, P50=8095.83 ms, P99=8793.11 ms, samples=10
+[T10 P1]: Avg=7972.86 ms, P50=8183.19 ms, P99=8516.11 ms, samples=10
+[T11 P1]: Avg=7724.31 ms, P50=8092.81 ms, P99=8792.17 ms, samples=10
+[T12 P1]: Avg=7974.00 ms, P50=8181.30 ms, P99=8515.39 ms, samples=10
+[T13 P1]: Avg=8409.67 ms, P50=8142.85 ms, P99=8957.43 ms, samples=10
+[T14 P1]: Avg=8406.86 ms, P50=8141.53 ms, P99=8949.94 ms, samples=10
+[T15 P1]: Avg=7968.53 ms, P50=8159.80 ms, P99=8517.27 ms, samples=10
+
+=== Overall Statistics ===
+All Threads: Avg=8079.50 ms, P50=8154.27 ms, P99=9774.96 ms, samples=160
+

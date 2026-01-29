@@ -1,0 +1,297 @@
+=== XSched 8-Thread Latency Test ===
+Config: 1 High + 7 Low Priority
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=0 >= max=-255 -> RESUME
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=-255 -> RESUME
+[Thread 0 P10] Starting 50 tasks
+[XSCHED-REGULAR-1] XLaunchKernel stream=0x7fddbc46ad40
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=1
+[XSCHED-REGULAR-2] XLaunchKernel stream=0x7fddbc46ad40
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=2
+[HPF-SCHED] === Scheduling cycle ===
+[XSCHED-REGULAR-3] XLaunchKernel stream=0x7fddbc46ad40
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=3
+[XSCHED-REGULAR-4] XLaunchKernel stream=0x7fddbc46ad40
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=4
+[XSCHED-REGULAR-5] XLaunchKernel stream=0x7fddbc46ad40
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=5
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=6
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=7
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=8
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=9
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=10
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=11
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=12
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=13
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=14
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=15
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=16
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=17
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=18
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=19
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=20
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=21
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=22
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=23
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=24
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=25
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=26
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=27
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=28
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=29
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=30
+[XQUEUE-LAUNCH] Launching kernel idx=1 to GPU
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-PAUSE] Worker paused (pause_count=1)
+[XQUEUE-LAUNCH] Launching kernel idx=2 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=3 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=4 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=5 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=6 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=7 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=8 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=9 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=10 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=11 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=12 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=13 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=14 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=15 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=16 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=17 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=18 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=19 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=20 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=21 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=22 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=23 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=24 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=25 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=26 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=27 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=28 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=29 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=30 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=31
+[HPF-SCHED] === Scheduling cycle ===
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=32
+[XQUEUE-LAUNCH] Launching kernel idx=31 to GPU
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 >= max=-255 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=33
+[XQUEUE-LAUNCH] Launching kernel idx=32 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=34
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=-255 -> RESUME
+[XQUEUE-LAUNCH] Launching kernel idx=33 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=35
+[XQUEUE-RESUME] Worker resumed
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-LAUNCH] Launching kernel idx=34 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=36
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=37
+[XQUEUE-PAUSE] Worker paused (pause_count=2)
+[XQUEUE-LAUNCH] Launching kernel idx=35 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=38
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=39
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=40
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=41
+[XQUEUE-LAUNCH] Launching kernel idx=36 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=42
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=43
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=44
+[XQUEUE-LAUNCH] Launching kernel idx=37 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=45
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=46
+[XQUEUE-LAUNCH] Launching kernel idx=38 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=47
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=48
+[XQUEUE-LAUNCH] Launching kernel idx=39 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=49
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=50
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=51
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=52
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=53
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=54
+[XQUEUE-LAUNCH] Launching kernel idx=40 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=55
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=56
+[XQUEUE-LAUNCH] Launching kernel idx=41 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=57
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=58
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=59
+[XQUEUE-LAUNCH] Launching kernel idx=42 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=60
+[XQUEUE-LAUNCH] Launching kernel idx=43 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=44 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=45 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=46 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=47 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=48 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=49 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=50 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=51 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=52 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=53 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=54 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=55 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=56 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=57 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=58 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=59 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=60 to GPU
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 >= max=-255 -> RESUME
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=-255 -> RESUME
+[XQUEUE-RESUME] Worker resumed
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=61
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=62
+[HPF-SCHED] === Scheduling cycle ===
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=63
+[XQUEUE-LAUNCH] Launching kernel idx=61 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=64
+[XQUEUE-LAUNCH] Launching kernel idx=62 to GPU
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=65
+[XQUEUE-LAUNCH] Launching kernel idx=63 to GPU
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-LAUNCH] Launching kernel idx=64 to GPU
+[XQUEUE-PAUSE] Worker paused (pause_count=3)
+[XQUEUE-LAUNCH] Launching kernel idx=65 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=66
+[XQUEUE-LAUNCH] Launching kernel idx=66 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=67
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=68
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=69
+[XQUEUE-LAUNCH] Launching kernel idx=67 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=70
+[XQUEUE-LAUNCH] Launching kernel idx=68 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=71
+[XQUEUE-LAUNCH] Launching kernel idx=69 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=72
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=73
+[XQUEUE-LAUNCH] Launching kernel idx=70 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=74
+[XQUEUE-LAUNCH] Launching kernel idx=71 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=75
+[XQUEUE-LAUNCH] Launching kernel idx=72 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=76
+[XQUEUE-LAUNCH] Launching kernel idx=73 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=77
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=78
+[XQUEUE-LAUNCH] Launching kernel idx=74 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=79
+[XQUEUE-LAUNCH] Launching kernel idx=75 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=80
+[XQUEUE-LAUNCH] Launching kernel idx=76 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=81
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=82
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=83
+[XQUEUE-LAUNCH] Launching kernel idx=77 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=84
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=85
+[XQUEUE-LAUNCH] Launching kernel idx=78 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=86
+[XQUEUE-LAUNCH] Launching kernel idx=79 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=87
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=88
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=89
+[XQUEUE-LAUNCH] Launching kernel idx=80 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=90
+[XQUEUE-LAUNCH] Launching kernel idx=81 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=82 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=83 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=84 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=85 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=86 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=87 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=88 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=89 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=90 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=91
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 >= max=-255 -> RESUME
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=-255 -> RESUME
+[XQUEUE-RESUME] Worker resumed
+[XQUEUE-LAUNCH] Launching kernel idx=91 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=92
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-PAUSE] Worker paused (pause_count=4)
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 >= max=-255 -> RESUME
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=-255 -> RESUME
+[XQUEUE-LAUNCH] Launching kernel idx=92 to GPU
+[XQUEUE-RESUME] Worker resumed
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=93
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=94
+[XQUEUE-LAUNCH] Launching kernel idx=93 to GPU
+[XQUEUE-PAUSE] Worker paused (pause_count=5)
+[XQUEUE-LAUNCH] Launching kernel idx=94 to GPU
+[HPF-SCHED] === Scheduling cycle ===
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=95
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=96
+[HPF-SCHED] === Scheduling cycle ===
+[XQUEUE-LAUNCH] Launching kernel idx=95 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=97
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=98
+[HPF-SCHED] XQ=0x18857fddb0007880 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18857fddbc75a6d0 prio=10 >= max=10 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=99
+[XQUEUE-LAUNCH] Launching kernel idx=96 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=100
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=101
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=102
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=103
+[XQUEUE-LAUNCH] Launching kernel idx=97 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=104
+[XQUEUE-LAUNCH] Launching kernel idx=98 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=105
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=106
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=107
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=108
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=109
+[XQUEUE-LAUNCH] Launching kernel idx=99 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=110
+[XQUEUE-LAUNCH] Launching kernel idx=100 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=111
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=112
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=113
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=114
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=115
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=116
+[XQUEUE-LAUNCH] Launching kernel idx=101 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=117
+[XQUEUE-LAUNCH] Launching kernel idx=102 to GPU
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=118
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=119
+[XQUEUE-SUBMIT] XQ=0x18857fddbc75a6d0 enqueued kernel idx=120
+[XQUEUE-LAUNCH] Launching kernel idx=103 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=104 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=105 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=106 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=107 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=108 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=109 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=110 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=111 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=112 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=113 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=114 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=115 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=116 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=117 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=118 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=119 to GPU
+[XQUEUE-LAUNCH] Launching kernel idx=120 to GPU

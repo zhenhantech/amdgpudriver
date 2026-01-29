@@ -1,0 +1,18 @@
+[INFO @ T6614 @ 06:22:58.484646] using app-managed scheduler
+
+================================================================================
+=== Test 1: Single Thread Baseline ===
+Threads: 1
+XSched: Disabled
+Workload: 2048x2048 matrix, 30 kernels/task, 10 tasks/thread
+================================================================================
+
+
+=== Results ===
+Total time: 5.10 seconds
+
+[T0 P1]: Avg=476.50 ms, P50=475.34 ms, P99=478.75 ms, samples=10
+
+=== Overall Statistics ===
+All Threads: Avg=476.50 ms, P50=475.34 ms, P99=478.75 ms, samples=10
+

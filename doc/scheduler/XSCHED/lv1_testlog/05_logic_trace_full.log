@@ -1,0 +1,1673 @@
+[INFO @ T6364 @ 06:03:45.107630] using app-managed scheduler
+[INFO @ T6364 @ 06:03:45.107741] using local scheduler with policy HPF
+
+================================================================================
+=== XSched Logic Trace Test ===
+Config: 1 High-Priority + 1 Low-Priority threads
+Workload: 1024x1024 matrix, 5 kernels/task, 3 tasks/thread
+Purpose: Trace complete scheduling logic flow
+================================================================================
+
+[APP] Setting up XSched scheduler...
+[APP] XHintSetScheduler(Local, HPF) done
+
+[APP] Creating threads...
+[APP] Starting High Priority thread 0
+[HPF-SCHED] === Scheduling cycle ===
+:3:rocdevice.cpp            :465 : 6132702787 us:  Initializing HSA stack.
+:3:rocdevice.cpp            :551 : 6132795853 us:  Enumerated GPU agents = 1
+:3:rocdevice.cpp            :230 : 6132795888 us:  Numa selects cpu agent[0]=0x7f60300bbb40(fine=0x7f60300bbdb0,coarse=0x7f6030008a20) for gpu agent=0x7f6030016900 CPU<->GPU XGMI=0
+:3:rocsettings.cpp          :282 : 6132795892 us:  Using dev kernel arg wa = 2
+:3:comgrctx.cpp             :33  : 6132795896 us:  Loading COMGR library.
+:3:comgrctx.cpp             :128 : 6132800861 us:  Loaded COMGR library version 3.0.
+:3:rocdevice.cpp            :1785: 6132801266 us:  Gfx Major/Minor/Stepping: 9/4/2
+:3:rocdevice.cpp            :1787: 6132801270 us:  HMM support: 1, XNACK: 0, Direct host access: 0
+:3:rocdevice.cpp            :1789: 6132801272 us:  Max SDMA Read Mask: 0xff, Max SDMA Write Mask: 0xff
+:3:hip_context.cpp          :54  : 6132802522 us:  Direct Dispatch: 1
+:3:hip_stream.cpp           :279 : 6132802652 us:  [32m hipStreamCreate ( 0x7f603eddc4d8 ) [0m
+:3:rocdevice.cpp            :3036: 6132802661 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 0, maximum per priority is: 8
+:3:hip_stream.cpp           :279 : 6132802673 us:  [32m hipStreamCreate ( 0x7f603c9f74d8 ) [0m
+:3:rocdevice.cpp            :3114: 6132811922 us:  Created SWq=0x7f603e5d0000 to map on HWq=0x7f4025000000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3207: 6132811939 us:  acquireQueue refCount: 0x7f4025000000 (1)
+:3:devprogram.cpp           :2658: 6133034778 us:  Using Code Object V5.
+:3:hip_stream.cpp           :285 : 6133036482 us:  hipStreamCreate: Returned hipSuccess : stream:0x7f603045cef0
+:3:rocdevice.cpp            :3036: 6133036488 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 1, with high priority: 0, maximum per priority is: 8
+:3:hip_context.cpp          :209 : 6133036586 us:  [32m hipCtxGetCurrent ( 0x7f603eddbca0 ) [0m
+:3:hip_context.cpp          :213 : 6133036590 us:  hipCtxGetCurrent: Returned hipSuccess : 
+:3:hip_context.cpp          :306 : 6133036634 us:  [32m hipCtxGetDevice ( 0x7f603eddbc9c ) [0m
+:3:hip_context.cpp          :310 : 6133036636 us:  hipCtxGetDevice: Returned hipSuccess : 
+:3:hip_context.cpp          :225 : 6133036639 us:  [32m hipRuntimeGetVersion ( 0x7f603eddbcb0 ) [0m
+:3:hip_context.cpp          :234 : 6133036641 us:  hipRuntimeGetVersion: Returned hipSuccess : 
+:3:hip_device.cpp           :653 : 6133036645 us:  [32m hipGetDevicePropertiesR0600 ( 0x7f603eddbcf0, 0 ) [0m
+:3:hip_device.cpp           :655 : 6133036649 us:  hipGetDevicePropertiesR0600: Returned hipSuccess : 
+:3:hip_stream.cpp           :337 : 6133036655 us:  [32m hipStreamGetFlags ( stream:0x7f603045cef0, 0x7f6030b1b8b0 ) [0m
+:3:hip_stream.cpp           :338 : 6133036659 us:  hipStreamGetFlags: Returned hipSuccess : 
+:3:hip_stream.cpp           :381 : 6133036662 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133036670 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_context.cpp          :191 : 6133037027 us:  [32m hipCtxSetCurrent ( context:0x7f6030462d50 ) [0m
+:3:hip_context.cpp          :205 : 6133037034 us:  hipCtxSetCurrent: Returned hipSuccess : 
+[INFO @ T6366 @ 06:03:45.442432] XQueue (0x18dc7f60309ab7b0) from process 6364 created
+:3:hip_context.cpp          :356 : 6133037065 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133037067 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+
+[APP] === Thread 0 Priority 10 START ===
+[APP] Starting Low Priority thread 1
+[APP] All threads started, waiting for completion...
+
+
+[APP] === Thread 1 Priority 1 START ===
+[APP-T0-P10] hipStreamCreate done, stream=0x7f603045cef0
+[APP-T0-P10] HipQueueCreate done, hwq=0x7f603045cef0
+[APP-T0-P10] XQueueCreate done, xq=0x18dc7f60309ab7b0
+[APP-T0-P10] XQueueSetLaunchConfig(1,1) done
+[APP-T0-P10] XHintPriority(10) done
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=0 >= max=-255 -> RESUME
+[INFO @ T6366 @ 06:03:45.442455] set priority 10 for XQueue 0x18dc7f60309ab7b0
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+:3:hip_memory.cpp           :756 : 6133037203 us:  [32m hipMalloc ( 0x7f603eddc538, 4194304 ) [0m
+:3:rocdevice.cpp            :2410: 6133041130 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffec00000
+:3:rocdevice.cpp            :3114: 6133041188 us:  Created SWq=0x7f603e5ac000 to map on HWq=0x7f4024400000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3207: 6133041195 us:  acquireQueue refCount: 0x7f4024400000 (1)
+:3:hip_memory.cpp           :758 : 6133041237 us:  hipMalloc: Returned hipSuccess : 0x7f401c200000: duration: 4034 us
+:3:hip_context.cpp          :356 : 6133041241 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133041242 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :756 : 6133041244 us:  [32m hipMalloc ( 0x7f603eddc530, 4194304 ) [0m
+:3:hip_stream.cpp           :285 : 6133042121 us:  hipStreamCreate: Returned hipSuccess : stream:0x7f4020001380
+:3:rocdevice.cpp            :2410: 6133042122 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe800000
+:3:hip_memory.cpp           :758 : 6133042131 us:  hipMalloc: Returned hipSuccess : 0x7f4014400000: duration: 887 us
+:3:hip_context.cpp          :356 : 6133042134 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133042136 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_context.cpp          :209 : 6133042131 us:  [32m hipCtxGetCurrent ( 0x7f603c9f6ca0 ) [0m
+:3:hip_context.cpp          :213 : 6133042140 us:  hipCtxGetCurrent: Returned hipSuccess : 
+:3:hip_context.cpp          :306 : 6133042143 us:  [32m hipCtxGetDevice ( 0x7f603c9f6c9c ) [0m
+:3:hip_context.cpp          :310 : 6133042145 us:  hipCtxGetDevice: Returned hipSuccess : 
+:3:hip_memory.cpp           :756 : 6133042138 us:  [32m hipMalloc ( 0x7f603eddc528, 4194304 ) [0m
+:3:hip_device.cpp           :653 : 6133042149 us:  [32m hipGetDevicePropertiesR0600 ( 0x7f603c9f6cf0, 0 ) [0m
+:3:hip_device.cpp           :655 : 6133042152 us:  hipGetDevicePropertiesR0600: Returned hipSuccess : 
+:3:hip_stream.cpp           :337 : 6133042156 us:  [32m hipStreamGetFlags ( stream:0x7f4020001380, 0x7f4020007820 ) [0m
+:3:hip_stream.cpp           :338 : 6133042158 us:  hipStreamGetFlags: Returned hipSuccess : 
+:3:hip_stream.cpp           :381 : 6133042160 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:rocdevice.cpp            :2410: 6133042162 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe400000
+:3:hip_stream.cpp           :382 : 6133042164 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_memory.cpp           :758 : 6133042165 us:  hipMalloc: Returned hipSuccess : 0x7f400ca00000: duration: 27 us
+:3:hip_platform.cpp         :233 : 6133042174 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133042178 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133042215 us:  [32m __hipPopCallConfiguration ( {0,0,0}, {0,0,0}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133042218 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T1-P1] hipStreamCreate done, stream=0x7f4020001380
+[APP-T1-P1] HipQueueCreate done, hwq=0x7f4020001380
+[APP-T0-P10] hipMalloc done
+
+[APP-T0-P10] ========== Task 1/3 START ==========
+[APP-T0-P10-Task1] Launching kernel 1/5...
+[XSCHED-REGULAR-1] XLaunchKernel stream=0x7f603045cef0
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=1
+:3:hip_platform.cpp         :233 : 6133042237 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133042239 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task1] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_platform.cpp         :242 : 6133042242 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133042244 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XSCHED-REGULAR-2] XLaunchKernel stream=0x7f603045cef0
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=2
+:3:hip_platform.cpp         :233 : 6133042249 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133042251 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133042253 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133042255 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task1] Launching kernel 3/5...
+[XSCHED-REGULAR-3] XLaunchKernel stream=0x7f603045cef0
+:3:hip_event.cpp            :327 : 6133042256 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=3
+:3:hip_platform.cpp         :233 : 6133042260 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_event.cpp            :333 : 6133042261 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100025a0
+:3:hip_event.cpp            :327 : 6133042264 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_platform.cpp         :237 : 6133042266 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133042269 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133042273 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task1] Launching kernel 4/5...
+[XSCHED-REGULAR-4] XLaunchKernel stream=0x7f603045cef0
+:3:hip_event.cpp            :333 : 6133042266 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100026d0
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=4
+:3:hip_context.cpp          :191 : 6133042276 us:  [32m hipCtxSetCurrent ( context:0x7f6030462d50 ) [0m
+:3:hip_event.cpp            :327 : 6133042277 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042287 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002790
+:3:hip_event.cpp            :327 : 6133042290 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_context.cpp          :205 : 6133042284 us:  hipCtxSetCurrent: Returned hipSuccess : 
+:3:hip_platform.cpp         :233 : 6133042278 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133042299 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :333 : 6133042292 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002850
+:3:hip_platform.cpp         :242 : 6133042301 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133042304 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task1] Launching kernel 5/5...
+[APP-T1-P1] XQueueCreate done, xq=0x18dc7f40200078b0
+[APP-T1-P1] XQueueSetLaunchConfig(1,1) done
+[XSCHED-REGULAR-5] XLaunchKernel stream=0x7f603045cef0
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=5
+[INFO @ T6366 @ 06:03:45.447683] XQueue (0x18dc7f40200078b0) from process 6364 created
+[APP-T0-P10-Task1] All 5 kernels launched, calling hipStreamSynchronize...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_event.cpp            :327 : 6133042308 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=0 < max=10 -> SUSPEND
+[APP-T1-P1] XHintPriority(1) done
+:3:hip_event.cpp            :333 : 6133042314 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002910
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_event.cpp            :327 : 6133042316 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042318 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100029d0
+[XQUEUE-PAUSE] Worker paused (pause_count=1)
+:3:hip_event.cpp            :327 : 6133042320 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+[INFO @ T6366 @ 06:03:45.447697] set priority 1 for XQueue 0x18dc7f40200078b0
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_event.cpp            :333 : 6133042322 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002a90
+:3:hip_event.cpp            :327 : 6133042328 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042329 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002b50
+:3:hip_event.cpp            :327 : 6133042331 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042332 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002c10
+:3:hip_event.cpp            :327 : 6133042334 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042335 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002cd0
+:3:hip_event.cpp            :327 : 6133042336 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042338 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002d90
+:3:hip_event.cpp            :327 : 6133042339 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042340 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002e50
+:3:hip_event.cpp            :327 : 6133042342 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042343 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002f10
+:3:hip_event.cpp            :327 : 6133042344 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042348 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010002fd0
+:3:hip_event.cpp            :327 : 6133042350 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042351 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003180
+:3:hip_event.cpp            :327 : 6133042353 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042354 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003240
+:3:hip_event.cpp            :327 : 6133042355 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042357 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003300
+:3:hip_event.cpp            :327 : 6133042358 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042360 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100033c0
+:3:hip_event.cpp            :327 : 6133042361 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042362 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003480
+:3:hip_event.cpp            :327 : 6133042364 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042366 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003540
+:3:hip_event.cpp            :327 : 6133042367 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042368 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003600
+:3:hip_event.cpp            :327 : 6133042369 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042371 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100036c0
+:3:hip_event.cpp            :327 : 6133042372 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042373 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003780
+:3:hip_event.cpp            :327 : 6133042374 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042376 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003840
+:3:hip_event.cpp            :327 : 6133042378 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042379 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003900
+:3:hip_event.cpp            :327 : 6133042381 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042382 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100039c0
+:3:hip_event.cpp            :327 : 6133042383 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042385 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003a80
+:3:hip_event.cpp            :327 : 6133042386 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042387 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003b40
+:3:hip_event.cpp            :327 : 6133042389 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042391 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003c00
+:3:hip_event.cpp            :327 : 6133042392 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042393 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003cc0
+:3:hip_event.cpp            :327 : 6133042395 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042397 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010003f60
+:3:hip_event.cpp            :327 : 6133042399 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042401 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004020
+:3:hip_event.cpp            :327 : 6133042402 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042403 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100040e0
+:3:hip_event.cpp            :327 : 6133042404 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042406 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100041a0
+:3:hip_event.cpp            :327 : 6133042407 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042409 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004260
+:3:hip_event.cpp            :327 : 6133042410 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042411 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004320
+:3:hip_event.cpp            :327 : 6133042413 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042414 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100043e0
+:3:hip_event.cpp            :327 : 6133042416 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042418 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100044a0
+:3:hip_event.cpp            :327 : 6133042419 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042420 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004560
+:3:hip_event.cpp            :327 : 6133042421 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042422 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004620
+:3:hip_event.cpp            :327 : 6133042424 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042425 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100046e0
+:3:hip_event.cpp            :327 : 6133042426 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042428 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100047a0
+:3:hip_event.cpp            :327 : 6133042429 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042430 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004860
+:3:hip_event.cpp            :327 : 6133042432 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042433 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004920
+:3:hip_event.cpp            :327 : 6133042434 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042436 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100049e0
+:3:hip_event.cpp            :327 : 6133042437 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042439 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004aa0
+:3:hip_event.cpp            :327 : 6133042440 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042442 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004b60
+:3:hip_event.cpp            :327 : 6133042443 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042445 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004c20
+:3:hip_event.cpp            :327 : 6133042446 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042448 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004ce0
+:3:hip_event.cpp            :327 : 6133042449 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042450 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004da0
+:3:hip_event.cpp            :327 : 6133042452 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042453 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004e60
+:3:hip_event.cpp            :327 : 6133042454 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042456 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004f20
+:3:hip_event.cpp            :327 : 6133042457 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042459 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010004fe0
+:3:hip_event.cpp            :327 : 6133042461 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042463 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100050a0
+:3:hip_event.cpp            :327 : 6133042464 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042465 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005160
+:3:hip_event.cpp            :327 : 6133042466 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042468 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005220
+:3:hip_event.cpp            :327 : 6133042469 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042470 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100052e0
+:3:hip_event.cpp            :327 : 6133042472 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042473 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100053a0
+:3:hip_event.cpp            :327 : 6133042475 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042476 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005460
+:3:hip_event.cpp            :327 : 6133042478 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042480 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005520
+:3:hip_event.cpp            :327 : 6133042481 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042483 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100059e0
+:3:hip_event.cpp            :327 : 6133042484 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042485 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005aa0
+:3:hip_event.cpp            :327 : 6133042486 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042488 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005b60
+:3:hip_event.cpp            :327 : 6133042489 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042491 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005c20
+:3:hip_event.cpp            :327 : 6133042492 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042493 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005ce0
+:3:hip_event.cpp            :327 : 6133042494 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042496 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005da0
+:3:hip_event.cpp            :327 : 6133042497 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042498 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005e60
+:3:hip_event.cpp            :327 : 6133042499 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042501 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005f20
+:3:hip_event.cpp            :327 : 6133042502 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042504 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010005fe0
+:3:hip_event.cpp            :327 : 6133042506 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042508 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100060a0
+:3:hip_event.cpp            :327 : 6133042509 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042510 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006160
+:3:hip_event.cpp            :327 : 6133042511 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042513 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006220
+:3:hip_event.cpp            :327 : 6133042514 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042515 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100062e0
+:3:hip_event.cpp            :327 : 6133042517 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042518 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100063a0
+:3:hip_event.cpp            :327 : 6133042519 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042520 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006460
+:3:hip_event.cpp            :327 : 6133042522 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042523 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006520
+:3:hip_event.cpp            :327 : 6133042524 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042526 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100065e0
+:3:hip_event.cpp            :327 : 6133042527 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042529 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100066a0
+:3:hip_event.cpp            :327 : 6133042531 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042532 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006760
+:3:hip_event.cpp            :327 : 6133042534 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042535 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006820
+:3:hip_event.cpp            :327 : 6133042536 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042538 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100068e0
+:3:hip_event.cpp            :327 : 6133042539 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042541 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100069a0
+:3:hip_event.cpp            :327 : 6133042542 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042544 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006a60
+:3:hip_event.cpp            :327 : 6133042545 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042546 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006b20
+:3:hip_event.cpp            :327 : 6133042548 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042549 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006be0
+:3:hip_event.cpp            :327 : 6133042550 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042552 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006ca0
+:3:hip_event.cpp            :327 : 6133042553 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042554 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006d60
+:3:hip_event.cpp            :327 : 6133042556 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042557 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006e20
+:3:hip_event.cpp            :327 : 6133042558 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042560 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006ee0
+:3:hip_event.cpp            :327 : 6133042562 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042564 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010006fa0
+:3:hip_event.cpp            :327 : 6133042566 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042567 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007060
+:3:hip_event.cpp            :327 : 6133042568 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042570 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007120
+:3:hip_event.cpp            :327 : 6133042571 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042572 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100071e0
+:3:hip_event.cpp            :327 : 6133042574 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042576 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100072a0
+:3:hip_event.cpp            :327 : 6133042577 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042579 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007360
+:3:hip_event.cpp            :327 : 6133042581 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042582 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007420
+:3:hip_event.cpp            :327 : 6133042584 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042585 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100074e0
+:3:hip_event.cpp            :327 : 6133042586 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042587 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100075a0
+:3:hip_event.cpp            :327 : 6133042589 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042590 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007660
+:3:hip_event.cpp            :327 : 6133042591 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042593 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007720
+:3:hip_event.cpp            :327 : 6133042594 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042596 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100077e0
+:3:hip_event.cpp            :327 : 6133042597 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042599 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100078a0
+:3:hip_event.cpp            :327 : 6133042600 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042601 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007960
+:3:hip_event.cpp            :327 : 6133042603 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042605 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007a20
+:3:hip_event.cpp            :327 : 6133042607 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042609 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007ae0
+:3:hip_event.cpp            :327 : 6133042610 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042612 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007ba0
+:3:hip_event.cpp            :327 : 6133042613 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042615 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007c60
+:3:hip_event.cpp            :327 : 6133042616 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042617 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007d20
+:3:hip_event.cpp            :327 : 6133042618 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042620 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007de0
+:3:hip_event.cpp            :327 : 6133042621 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042622 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007ea0
+:3:hip_event.cpp            :327 : 6133042624 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042626 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010007f60
+:3:hip_event.cpp            :327 : 6133042628 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042629 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008020
+:3:hip_event.cpp            :327 : 6133042630 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042632 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100080e0
+:3:hip_event.cpp            :327 : 6133042633 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042634 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100081a0
+:3:hip_event.cpp            :327 : 6133042636 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042637 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008260
+:3:hip_event.cpp            :327 : 6133042639 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042640 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008320
+:3:hip_event.cpp            :327 : 6133042642 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042643 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100083e0
+:3:hip_event.cpp            :327 : 6133042644 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042645 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100084a0
+:3:hip_event.cpp            :327 : 6133042647 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042648 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008560
+:3:hip_event.cpp            :327 : 6133042649 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042650 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008620
+:3:hip_event.cpp            :327 : 6133042652 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042653 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100086e0
+:3:hip_event.cpp            :327 : 6133042655 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042656 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100087a0
+:3:hip_event.cpp            :327 : 6133042658 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042659 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008860
+:3:hip_event.cpp            :327 : 6133042660 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042662 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008920
+:3:hip_event.cpp            :327 : 6133042663 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042664 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100089e0
+:3:hip_event.cpp            :327 : 6133042666 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042667 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008aa0
+:3:hip_event.cpp            :327 : 6133042668 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042670 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008b60
+:3:hip_event.cpp            :327 : 6133042671 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042675 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008c20
+:3:hip_event.cpp            :327 : 6133042677 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042678 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100094f0
+:3:hip_event.cpp            :327 : 6133042680 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042681 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100095b0
+:3:hip_event.cpp            :327 : 6133042682 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042683 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009670
+:3:hip_event.cpp            :327 : 6133042685 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042686 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009730
+:3:hip_event.cpp            :327 : 6133042687 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042689 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100097f0
+:3:hip_event.cpp            :327 : 6133042690 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042691 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100098b0
+:3:hip_event.cpp            :327 : 6133042692 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042694 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009970
+:3:hip_event.cpp            :327 : 6133042695 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042696 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009a30
+:3:hip_event.cpp            :327 : 6133042698 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042699 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009af0
+:3:hip_event.cpp            :327 : 6133042700 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042702 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009bb0
+:3:hip_event.cpp            :327 : 6133042703 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042705 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009c70
+:3:hip_event.cpp            :327 : 6133042706 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042708 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009d30
+:3:hip_event.cpp            :327 : 6133042710 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042712 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009df0
+:3:hip_event.cpp            :327 : 6133042713 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042715 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009eb0
+:3:hip_event.cpp            :327 : 6133042716 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042718 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009f70
+:3:hip_event.cpp            :327 : 6133042720 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042722 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a030
+:3:hip_event.cpp            :327 : 6133042723 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042724 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a0f0
+:3:hip_event.cpp            :327 : 6133042725 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042727 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a1b0
+:3:hip_event.cpp            :327 : 6133042728 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042729 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a270
+:3:hip_event.cpp            :327 : 6133042731 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042732 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a330
+:3:hip_event.cpp            :327 : 6133042733 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042735 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a3f0
+:3:hip_event.cpp            :327 : 6133042736 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042737 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a4b0
+:3:hip_event.cpp            :327 : 6133042739 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042740 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a570
+:3:hip_event.cpp            :327 : 6133042742 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042744 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a630
+:3:hip_event.cpp            :327 : 6133042745 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042747 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a6f0
+:3:hip_event.cpp            :327 : 6133042748 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042750 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a7b0
+:3:hip_event.cpp            :327 : 6133042751 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042752 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a870
+:3:hip_event.cpp            :327 : 6133042753 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042755 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a930
+:3:hip_event.cpp            :327 : 6133042756 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042757 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000a9f0
+:3:hip_event.cpp            :327 : 6133042759 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042760 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000aab0
+:3:hip_event.cpp            :327 : 6133042761 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042763 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ab70
+:3:hip_event.cpp            :327 : 6133042764 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042766 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ac30
+:3:hip_event.cpp            :327 : 6133042768 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042769 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000acf0
+:3:hip_event.cpp            :327 : 6133042771 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042773 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000adb0
+:3:hip_event.cpp            :327 : 6133042774 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042775 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ae70
+:3:hip_event.cpp            :327 : 6133042776 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042778 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000af30
+:3:hip_event.cpp            :327 : 6133042779 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042781 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000aff0
+:3:hip_event.cpp            :327 : 6133042783 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042784 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b0b0
+:3:hip_event.cpp            :327 : 6133042786 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042787 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b170
+:3:hip_event.cpp            :327 : 6133042789 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042791 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b230
+:3:hip_event.cpp            :327 : 6133042792 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042794 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b2f0
+:3:hip_event.cpp            :327 : 6133042795 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042797 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b3b0
+:3:hip_event.cpp            :327 : 6133042798 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042800 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b470
+:3:hip_event.cpp            :327 : 6133042801 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042802 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b530
+:3:hip_event.cpp            :327 : 6133042804 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042805 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b5f0
+:3:hip_event.cpp            :327 : 6133042806 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042807 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b6b0
+:3:hip_event.cpp            :327 : 6133042809 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042811 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b770
+:3:hip_event.cpp            :327 : 6133042812 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042813 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b830
+:3:hip_event.cpp            :327 : 6133042815 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042816 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b8f0
+:3:hip_event.cpp            :327 : 6133042818 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042819 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000b9b0
+:3:hip_event.cpp            :327 : 6133042820 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042821 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ba70
+:3:hip_event.cpp            :327 : 6133042823 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042824 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bb30
+:3:hip_event.cpp            :327 : 6133042825 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042827 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bbf0
+:3:hip_event.cpp            :327 : 6133042829 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042831 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bcb0
+:3:hip_event.cpp            :327 : 6133042832 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042833 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bd70
+:3:hip_event.cpp            :327 : 6133042834 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042836 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000be30
+:3:hip_event.cpp            :327 : 6133042838 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042839 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bef0
+:3:hip_event.cpp            :327 : 6133042841 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042843 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000bfb0
+:3:hip_event.cpp            :327 : 6133042846 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042847 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c070
+:3:hip_event.cpp            :327 : 6133042849 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042850 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c130
+:3:hip_event.cpp            :327 : 6133042851 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042852 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c1f0
+:3:hip_event.cpp            :327 : 6133042854 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042855 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c2b0
+:3:hip_event.cpp            :327 : 6133042856 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042857 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c370
+:3:hip_event.cpp            :327 : 6133042859 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042860 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c430
+:3:hip_event.cpp            :327 : 6133042861 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042863 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c4f0
+:3:hip_event.cpp            :327 : 6133042864 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042865 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c5b0
+:3:hip_event.cpp            :327 : 6133042866 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042868 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c670
+:3:hip_event.cpp            :327 : 6133042869 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042870 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c730
+:3:hip_event.cpp            :327 : 6133042872 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042873 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c7f0
+:3:hip_event.cpp            :327 : 6133042874 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042875 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c8b0
+:3:hip_event.cpp            :327 : 6133042877 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042878 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000c970
+:3:hip_event.cpp            :327 : 6133042879 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042881 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ca30
+:3:hip_event.cpp            :327 : 6133042882 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042883 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000caf0
+:3:hip_event.cpp            :327 : 6133042884 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042886 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000cbb0
+:3:hip_event.cpp            :327 : 6133042887 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042888 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000cc70
+:3:hip_event.cpp            :327 : 6133042889 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042890 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000cd30
+:3:hip_event.cpp            :327 : 6133042892 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042893 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000cdf0
+:3:hip_event.cpp            :327 : 6133042895 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042896 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ceb0
+:3:hip_event.cpp            :327 : 6133042897 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042901 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000cf70
+:3:hip_event.cpp            :327 : 6133042903 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042904 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d030
+:3:hip_event.cpp            :327 : 6133042905 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042906 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d0f0
+:3:hip_event.cpp            :327 : 6133042908 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042909 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d1b0
+:3:hip_event.cpp            :327 : 6133042910 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042912 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d270
+:3:hip_event.cpp            :327 : 6133042913 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042914 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d330
+:3:hip_event.cpp            :327 : 6133042915 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042917 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d3f0
+:3:hip_event.cpp            :327 : 6133042918 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042919 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d4b0
+:3:hip_event.cpp            :327 : 6133042921 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042922 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d570
+:3:hip_event.cpp            :327 : 6133042924 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042926 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d630
+:3:hip_event.cpp            :327 : 6133042927 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042929 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d6f0
+:3:hip_event.cpp            :327 : 6133042930 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042932 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d7b0
+:3:hip_event.cpp            :327 : 6133042933 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042934 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d870
+:3:hip_event.cpp            :327 : 6133042935 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042937 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d930
+:3:hip_event.cpp            :327 : 6133042938 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042939 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000d9f0
+:3:hip_event.cpp            :327 : 6133042941 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042942 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000dab0
+:3:hip_event.cpp            :327 : 6133042943 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042945 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000db70
+:3:hip_event.cpp            :327 : 6133042946 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042948 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000dc30
+:3:hip_event.cpp            :327 : 6133042950 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042951 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000dcf0
+:3:hip_event.cpp            :327 : 6133042952 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042954 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ddb0
+:3:hip_event.cpp            :327 : 6133042955 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042956 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000de70
+:3:hip_event.cpp            :327 : 6133042958 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042960 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000df30
+:3:hip_event.cpp            :327 : 6133042962 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042964 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000dff0
+:3:hip_event.cpp            :327 : 6133042966 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042967 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e0b0
+:3:hip_event.cpp            :327 : 6133042969 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042971 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e170
+:3:hip_event.cpp            :327 : 6133042972 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042973 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e230
+:3:hip_event.cpp            :327 : 6133042975 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042976 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e2f0
+:3:hip_event.cpp            :327 : 6133042977 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042979 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e3b0
+:3:hip_event.cpp            :327 : 6133042980 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042981 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e470
+:3:hip_event.cpp            :327 : 6133042983 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042984 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e530
+:3:hip_event.cpp            :327 : 6133042985 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042986 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e5f0
+:3:hip_event.cpp            :327 : 6133042988 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042989 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e6b0
+:3:hip_event.cpp            :327 : 6133042990 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042991 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e770
+:3:hip_event.cpp            :327 : 6133042993 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042994 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e830
+:3:hip_event.cpp            :327 : 6133042995 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133042997 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e8f0
+:3:hip_event.cpp            :327 : 6133042998 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043005 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000e9b0
+:3:hip_event.cpp            :327 : 6133043007 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043009 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ea70
+:3:hip_event.cpp            :327 : 6133043010 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043011 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000eb30
+:3:hip_event.cpp            :327 : 6133043013 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043014 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ebf0
+:3:hip_event.cpp            :327 : 6133043015 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043017 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ecb0
+:3:hip_event.cpp            :327 : 6133043018 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043019 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ed70
+:3:hip_event.cpp            :327 : 6133043021 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043022 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000ee30
+:3:hip_event.cpp            :327 : 6133043024 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043025 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000eef0
+:3:hip_event.cpp            :327 : 6133043026 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043029 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000efb0
+:3:hip_event.cpp            :327 : 6133043031 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043032 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f070
+:3:hip_event.cpp            :327 : 6133043033 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043035 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f130
+:3:hip_event.cpp            :327 : 6133043036 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043037 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f1f0
+:3:hip_event.cpp            :327 : 6133043039 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043040 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f2b0
+:3:hip_event.cpp            :327 : 6133043041 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043042 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f370
+:3:hip_event.cpp            :327 : 6133043044 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043046 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f430
+:3:hip_event.cpp            :327 : 6133043048 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043049 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f4f0
+:3:hip_event.cpp            :327 : 6133043051 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043055 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401000f5b0
+:3:hip_event.cpp            :327 : 6133043057 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043059 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008ce0
+:3:hip_event.cpp            :327 : 6133043060 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043061 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008da0
+:3:hip_event.cpp            :327 : 6133043063 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043065 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008e60
+:3:hip_event.cpp            :327 : 6133043066 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043068 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008f20
+:3:hip_event.cpp            :327 : 6133043069 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043070 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010008fe0
+:3:hip_event.cpp            :327 : 6133043072 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043073 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100090a0
+:3:hip_event.cpp            :327 : 6133043074 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043076 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009160
+:3:hip_event.cpp            :327 : 6133043077 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043079 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009220
+:3:hip_event.cpp            :327 : 6133043080 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043081 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100092e0
+:3:hip_event.cpp            :327 : 6133043082 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043084 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100093a0
+:3:hip_event.cpp            :327 : 6133043085 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043087 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010009460
+:3:hip_event.cpp            :327 : 6133043088 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043090 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100107a0
+:3:hip_event.cpp            :327 : 6133043092 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043093 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010860
+:3:hip_event.cpp            :327 : 6133043095 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043096 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010920
+:3:hip_event.cpp            :327 : 6133043098 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043099 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100109e0
+:3:hip_event.cpp            :327 : 6133043100 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043102 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010aa0
+:3:hip_event.cpp            :327 : 6133043103 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043104 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010b60
+:3:hip_event.cpp            :327 : 6133043105 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043107 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010c20
+:3:hip_event.cpp            :327 : 6133043108 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043109 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010ce0
+:3:hip_event.cpp            :327 : 6133043110 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043112 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010da0
+:3:hip_event.cpp            :327 : 6133043114 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043115 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010e60
+:3:hip_event.cpp            :327 : 6133043116 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043118 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010f20
+:3:hip_event.cpp            :327 : 6133043119 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043122 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010010fe0
+:3:hip_event.cpp            :327 : 6133043123 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043125 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100110a0
+:3:hip_event.cpp            :327 : 6133043126 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043128 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011160
+:3:hip_event.cpp            :327 : 6133043129 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043131 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011220
+:3:hip_event.cpp            :327 : 6133043133 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043134 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100112e0
+:3:hip_event.cpp            :327 : 6133043135 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043136 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100113a0
+:3:hip_event.cpp            :327 : 6133043138 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043139 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011460
+:3:hip_event.cpp            :327 : 6133043141 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043143 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011520
+:3:hip_event.cpp            :327 : 6133043144 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043145 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100115e0
+:3:hip_event.cpp            :327 : 6133043146 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043148 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100116a0
+:3:hip_event.cpp            :327 : 6133043149 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043150 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011760
+:3:hip_event.cpp            :327 : 6133043151 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043153 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011820
+:3:hip_event.cpp            :327 : 6133043154 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043155 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100118e0
+:3:hip_event.cpp            :327 : 6133043156 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043158 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100119a0
+:3:hip_event.cpp            :327 : 6133043159 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043161 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011a60
+:3:hip_event.cpp            :327 : 6133043162 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043164 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011b20
+:3:hip_event.cpp            :327 : 6133043166 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043168 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011be0
+:3:hip_event.cpp            :327 : 6133043169 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043171 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011ca0
+:3:hip_event.cpp            :327 : 6133043173 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043174 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011d60
+:3:hip_event.cpp            :327 : 6133043176 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043178 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011e20
+:3:hip_event.cpp            :327 : 6133043179 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043180 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011ee0
+:3:hip_event.cpp            :327 : 6133043182 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043184 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010011fa0
+:3:hip_event.cpp            :327 : 6133043186 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043187 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012060
+:3:hip_event.cpp            :327 : 6133043188 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043190 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012120
+:3:hip_event.cpp            :327 : 6133043191 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043192 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100121e0
+:3:hip_event.cpp            :327 : 6133043194 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043195 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100122a0
+:3:hip_event.cpp            :327 : 6133043197 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043198 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012360
+:3:hip_event.cpp            :327 : 6133043199 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043200 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012420
+:3:hip_event.cpp            :327 : 6133043202 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043203 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100124e0
+:3:hip_event.cpp            :327 : 6133043204 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043206 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100125a0
+:3:hip_event.cpp            :327 : 6133043207 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043208 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012660
+:3:hip_event.cpp            :327 : 6133043210 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043212 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012720
+:3:hip_event.cpp            :327 : 6133043213 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043215 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100127e0
+:3:hip_event.cpp            :327 : 6133043216 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043218 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100128a0
+:3:hip_event.cpp            :327 : 6133043219 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043221 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012960
+:3:hip_event.cpp            :327 : 6133043222 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043224 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012a20
+:3:hip_event.cpp            :327 : 6133043226 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043227 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012ae0
+:3:hip_event.cpp            :327 : 6133043228 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043230 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012ba0
+:3:hip_event.cpp            :327 : 6133043231 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043233 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012c60
+:3:hip_event.cpp            :327 : 6133043235 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043236 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012d20
+:3:hip_event.cpp            :327 : 6133043238 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043239 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012de0
+:3:hip_event.cpp            :327 : 6133043241 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043243 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012ea0
+:3:hip_event.cpp            :327 : 6133043244 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043246 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010012f60
+:3:hip_event.cpp            :327 : 6133043248 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043249 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013020
+:3:hip_event.cpp            :327 : 6133043251 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043252 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100130e0
+:3:hip_event.cpp            :327 : 6133043254 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043255 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100131a0
+:3:hip_event.cpp            :327 : 6133043257 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043258 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013260
+:3:hip_event.cpp            :327 : 6133043259 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043260 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013320
+:3:hip_event.cpp            :327 : 6133043261 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043263 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100133e0
+:3:hip_event.cpp            :327 : 6133043264 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043265 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100134a0
+:3:hip_event.cpp            :327 : 6133043266 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043268 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013560
+:3:hip_event.cpp            :327 : 6133043269 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043270 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013620
+:3:hip_event.cpp            :327 : 6133043272 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043273 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100136e0
+:3:hip_event.cpp            :327 : 6133043274 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043276 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100137a0
+:3:hip_event.cpp            :327 : 6133043277 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043278 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013860
+:3:hip_event.cpp            :327 : 6133043279 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043281 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013920
+:3:hip_event.cpp            :327 : 6133043282 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043284 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100139e0
+:3:hip_event.cpp            :327 : 6133043285 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043286 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013aa0
+:3:hip_event.cpp            :327 : 6133043288 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043290 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013b60
+:3:hip_event.cpp            :327 : 6133043291 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043293 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013c20
+:3:hip_event.cpp            :327 : 6133043294 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043296 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013ce0
+:3:hip_event.cpp            :327 : 6133043297 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043299 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013da0
+:3:hip_event.cpp            :327 : 6133043301 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043302 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013e60
+:3:hip_event.cpp            :327 : 6133043304 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043306 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013f20
+:3:hip_event.cpp            :327 : 6133043307 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043310 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010013fe0
+:3:hip_event.cpp            :327 : 6133043312 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043313 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100140a0
+:3:hip_event.cpp            :327 : 6133043315 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043316 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014160
+:3:hip_event.cpp            :327 : 6133043318 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043319 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014220
+:3:hip_event.cpp            :327 : 6133043321 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043323 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100142e0
+:3:hip_event.cpp            :327 : 6133043324 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043325 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100143a0
+:3:hip_event.cpp            :327 : 6133043326 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043328 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014460
+:3:hip_event.cpp            :327 : 6133043329 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043331 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014520
+:3:hip_event.cpp            :327 : 6133043332 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043333 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100145e0
+:3:hip_event.cpp            :327 : 6133043334 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043336 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100146a0
+:3:hip_event.cpp            :327 : 6133043337 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043339 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014760
+:3:hip_event.cpp            :327 : 6133043340 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043341 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014820
+:3:hip_event.cpp            :327 : 6133043342 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043344 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100148e0
+:3:hip_event.cpp            :327 : 6133043345 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043346 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100149a0
+:3:hip_event.cpp            :327 : 6133043348 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043349 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014a60
+:3:hip_event.cpp            :327 : 6133043350 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043352 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014b20
+:3:hip_event.cpp            :327 : 6133043353 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043354 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014be0
+:3:hip_event.cpp            :327 : 6133043355 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043357 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014ca0
+:3:hip_event.cpp            :327 : 6133043358 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043359 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014d60
+:3:hip_event.cpp            :327 : 6133043360 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043361 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014e20
+:3:hip_event.cpp            :327 : 6133043363 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043364 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014ee0
+:3:hip_event.cpp            :327 : 6133043365 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043368 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010014fa0
+:3:hip_event.cpp            :327 : 6133043370 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043371 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015060
+:3:hip_event.cpp            :327 : 6133043373 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043374 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015120
+:3:hip_event.cpp            :327 : 6133043376 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043377 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100151e0
+:3:hip_event.cpp            :327 : 6133043379 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043380 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100152a0
+:3:hip_event.cpp            :327 : 6133043382 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043383 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015360
+:3:hip_event.cpp            :327 : 6133043384 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043385 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015420
+:3:hip_event.cpp            :327 : 6133043387 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043388 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100154e0
+:3:hip_event.cpp            :327 : 6133043389 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043391 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100155a0
+:3:hip_event.cpp            :327 : 6133043392 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043394 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015660
+:3:hip_event.cpp            :327 : 6133043395 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043396 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015720
+:3:hip_event.cpp            :327 : 6133043397 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043399 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100157e0
+:3:hip_event.cpp            :327 : 6133043400 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043402 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100158a0
+:3:hip_event.cpp            :327 : 6133043403 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043404 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015960
+:3:hip_event.cpp            :327 : 6133043405 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043407 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015a20
+:3:hip_event.cpp            :327 : 6133043408 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043410 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015ae0
+:3:hip_event.cpp            :327 : 6133043411 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043413 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015ba0
+:3:hip_event.cpp            :327 : 6133043414 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043416 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015c60
+:3:hip_event.cpp            :327 : 6133043417 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043419 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015d20
+:3:hip_event.cpp            :327 : 6133043420 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043422 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015de0
+:3:hip_event.cpp            :327 : 6133043423 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043424 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015ea0
+:3:hip_event.cpp            :327 : 6133043426 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043429 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010015f60
+:3:hip_event.cpp            :327 : 6133043431 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043432 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016020
+:3:hip_event.cpp            :327 : 6133043433 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043434 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100160e0
+:3:hip_event.cpp            :327 : 6133043436 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043437 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100161a0
+:3:hip_event.cpp            :327 : 6133043438 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043440 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016260
+:3:hip_event.cpp            :327 : 6133043442 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043443 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016320
+:3:hip_event.cpp            :327 : 6133043445 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043447 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100163e0
+:3:hip_event.cpp            :327 : 6133043448 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043449 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100164a0
+:3:hip_event.cpp            :327 : 6133043450 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043452 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016560
+:3:hip_event.cpp            :327 : 6133043453 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043455 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016620
+:3:hip_event.cpp            :327 : 6133043456 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043457 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100166e0
+:3:hip_event.cpp            :327 : 6133043459 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043460 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100167a0
+:3:hip_event.cpp            :327 : 6133043461 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043462 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016860
+:3:hip_event.cpp            :327 : 6133043464 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043465 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016920
+:3:hip_event.cpp            :327 : 6133043466 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043467 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100169e0
+:3:hip_event.cpp            :327 : 6133043469 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043470 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016aa0
+:3:hip_event.cpp            :327 : 6133043471 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043472 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016b60
+:3:hip_event.cpp            :327 : 6133043474 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043476 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016c20
+:3:hip_event.cpp            :327 : 6133043477 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043478 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016ce0
+:3:hip_event.cpp            :327 : 6133043479 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043481 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016da0
+:3:hip_event.cpp            :327 : 6133043482 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043483 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016e60
+:3:hip_event.cpp            :327 : 6133043485 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043486 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016f20
+:3:hip_event.cpp            :327 : 6133043487 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043490 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010016fe0
+:3:hip_event.cpp            :327 : 6133043491 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043493 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100170a0
+:3:hip_event.cpp            :327 : 6133043494 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043495 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017160
+:3:hip_event.cpp            :327 : 6133043497 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043498 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017220
+:3:hip_event.cpp            :327 : 6133043499 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043501 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100172e0
+:3:hip_event.cpp            :327 : 6133043503 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043504 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100173a0
+:3:hip_event.cpp            :327 : 6133043506 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043507 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017460
+:3:hip_event.cpp            :327 : 6133043508 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043510 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017520
+:3:hip_event.cpp            :327 : 6133043511 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043513 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100175e0
+:3:hip_event.cpp            :327 : 6133043514 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043516 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100176a0
+:3:hip_event.cpp            :327 : 6133043517 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043519 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017760
+:3:hip_event.cpp            :327 : 6133043520 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043522 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017820
+:3:hip_event.cpp            :327 : 6133043524 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043526 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100178e0
+:3:hip_event.cpp            :327 : 6133043527 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043528 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100179a0
+:3:hip_event.cpp            :327 : 6133043530 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043531 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017a60
+:3:hip_event.cpp            :327 : 6133043532 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043533 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017b20
+:3:hip_event.cpp            :327 : 6133043535 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043536 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017be0
+:3:hip_event.cpp            :327 : 6133043537 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043539 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017ca0
+:3:hip_event.cpp            :327 : 6133043541 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043543 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017d60
+:3:hip_event.cpp            :327 : 6133043544 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043546 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017e20
+:3:hip_event.cpp            :327 : 6133043548 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043549 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017ee0
+:3:hip_event.cpp            :327 : 6133043550 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043554 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010017fa0
+:3:hip_event.cpp            :327 : 6133043556 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043557 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018060
+:3:hip_event.cpp            :327 : 6133043558 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043560 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018120
+:3:hip_event.cpp            :327 : 6133043562 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043563 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100181e0
+:3:hip_event.cpp            :327 : 6133043565 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043566 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100182a0
+:3:hip_event.cpp            :327 : 6133043568 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043570 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018360
+:3:hip_event.cpp            :327 : 6133043571 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043572 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018420
+:3:hip_event.cpp            :327 : 6133043574 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043575 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100184e0
+:3:hip_event.cpp            :327 : 6133043576 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043578 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100185a0
+:3:hip_event.cpp            :327 : 6133043579 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043580 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018660
+:3:hip_event.cpp            :327 : 6133043581 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043583 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018720
+:3:hip_event.cpp            :327 : 6133043584 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043585 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100187e0
+:3:hip_event.cpp            :327 : 6133043587 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043588 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100188a0
+:3:hip_event.cpp            :327 : 6133043589 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043591 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018960
+:3:hip_event.cpp            :327 : 6133043592 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043594 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018a20
+:3:hip_event.cpp            :327 : 6133043595 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043597 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018ae0
+:3:hip_event.cpp            :327 : 6133043598 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043599 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018ba0
+:3:hip_event.cpp            :327 : 6133043601 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043602 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018c60
+:3:hip_event.cpp            :327 : 6133043603 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043605 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018d20
+:3:hip_event.cpp            :327 : 6133043606 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043608 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018de0
+:3:hip_event.cpp            :327 : 6133043609 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043611 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018ea0
+:3:hip_event.cpp            :327 : 6133043612 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043615 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010018f60
+:3:hip_event.cpp            :327 : 6133043617 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043618 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019020
+:3:hip_event.cpp            :327 : 6133043619 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043621 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100190e0
+:3:hip_event.cpp            :327 : 6133043622 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043623 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100191a0
+:3:hip_event.cpp            :327 : 6133043625 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043626 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019260
+:3:hip_event.cpp            :327 : 6133043627 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043629 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019320
+:3:hip_event.cpp            :327 : 6133043630 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043632 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100193e0
+:3:hip_event.cpp            :327 : 6133043633 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043635 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100194a0
+:3:hip_event.cpp            :327 : 6133043636 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043638 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019560
+:3:hip_event.cpp            :327 : 6133043639 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043640 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019620
+:3:hip_event.cpp            :327 : 6133043642 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043643 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100196e0
+:3:hip_event.cpp            :327 : 6133043645 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043646 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100197a0
+:3:hip_event.cpp            :327 : 6133043648 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043649 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019860
+:3:hip_event.cpp            :327 : 6133043650 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043652 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019920
+:3:hip_event.cpp            :327 : 6133043653 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043655 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f40100199e0
+:3:hip_event.cpp            :327 : 6133043656 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043657 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019aa0
+:3:hip_event.cpp            :327 : 6133043659 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043660 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019b60
+:3:hip_event.cpp            :327 : 6133043661 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043662 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019c20
+:3:hip_event.cpp            :327 : 6133043664 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043665 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019ce0
+:3:hip_event.cpp            :327 : 6133043666 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043668 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019da0
+:3:hip_event.cpp            :327 : 6133043669 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043670 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019e60
+:3:hip_event.cpp            :327 : 6133043671 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043673 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019f20
+:3:hip_event.cpp            :327 : 6133043674 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043677 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f4010019fe0
+:3:hip_event.cpp            :327 : 6133043679 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043681 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a0a0
+:3:hip_event.cpp            :327 : 6133043682 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043683 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a160
+:3:hip_event.cpp            :327 : 6133043684 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043686 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a220
+:3:hip_event.cpp            :327 : 6133043687 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043688 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a2e0
+:3:hip_event.cpp            :327 : 6133043690 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043691 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a3a0
+:3:hip_event.cpp            :327 : 6133043693 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043695 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a460
+:3:hip_event.cpp            :327 : 6133043696 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043698 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a520
+:3:hip_event.cpp            :327 : 6133043699 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043700 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a5e0
+:3:hip_event.cpp            :327 : 6133043702 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043704 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a6a0
+:3:hip_event.cpp            :327 : 6133043705 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043707 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a760
+:3:hip_event.cpp            :327 : 6133043709 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043710 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a820
+:3:hip_event.cpp            :327 : 6133043712 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043714 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a8e0
+:3:hip_event.cpp            :327 : 6133043715 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043716 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001a9a0
+:3:hip_event.cpp            :327 : 6133043717 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043719 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001aa60
+:3:hip_event.cpp            :327 : 6133043720 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043722 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001ab20
+:3:hip_event.cpp            :327 : 6133043723 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043724 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001abe0
+:3:hip_event.cpp            :327 : 6133043725 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043726 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001aca0
+:3:hip_event.cpp            :327 : 6133043728 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043729 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001ad60
+:3:hip_event.cpp            :327 : 6133043730 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043731 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001ae20
+:3:hip_event.cpp            :327 : 6133043733 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043734 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001aee0
+:3:hip_event.cpp            :327 : 6133043735 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043738 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001afa0
+:3:hip_event.cpp            :327 : 6133043740 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043741 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b060
+:3:hip_event.cpp            :327 : 6133043743 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043744 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b120
+:3:hip_event.cpp            :327 : 6133043746 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043747 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b1e0
+:3:hip_event.cpp            :327 : 6133043748 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043750 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b2a0
+:3:hip_event.cpp            :327 : 6133043752 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043753 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b360
+:3:hip_event.cpp            :327 : 6133043755 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043756 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b420
+:3:hip_event.cpp            :327 : 6133043758 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043760 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b4e0
+:3:hip_event.cpp            :327 : 6133043761 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043763 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b5a0
+:3:hip_event.cpp            :327 : 6133043765 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043766 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b660
+:3:hip_event.cpp            :327 : 6133043767 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043769 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b720
+:3:hip_event.cpp            :327 : 6133043770 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043771 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b7e0
+:3:hip_event.cpp            :327 : 6133043773 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043774 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b8a0
+:3:hip_event.cpp            :327 : 6133043776 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043778 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001b960
+:3:hip_event.cpp            :327 : 6133043779 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043780 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001ba20
+:3:hip_event.cpp            :327 : 6133043782 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043783 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001bae0
+:3:hip_event.cpp            :327 : 6133043784 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043785 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001bba0
+:3:hip_event.cpp            :327 : 6133043787 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043788 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001bc60
+:3:hip_event.cpp            :327 : 6133043790 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7320, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043791 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001bd20
+:3:hip_event.cpp            :327 : 6133043792 us:  [32m hipEventCreateWithFlags ( 0x7f401cff7328, 3 ) [0m
+:3:hip_event.cpp            :333 : 6133043793 us:  hipEventCreateWithFlags: Returned hipSuccess : event:0x7f401001bde0
+[XQUEUE-LAUNCH] Launching kernel idx=1 to GPU
+:3:hip_module.cpp           :744 : 6133043816 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:3:devprogram.cpp           :2658: 6133043918 us:  Using Code Object V5.
+:1:hip_module.cpp           :294 : 6133044230 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044234 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 418 us
+[WARN @ T6372 @ 06:03:45.449612] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044250 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044254 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=2 to GPU
+:3:hip_module.cpp           :744 : 6133044270 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044273 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044274 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449651] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044278 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044280 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=3 to GPU
+:3:hip_module.cpp           :744 : 6133044283 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044285 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044286 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6372 @ 06:03:45.449663] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044290 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044291 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=4 to GPU
+:3:hip_module.cpp           :744 : 6133044295 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044297 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044299 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449675] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044301 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044303 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=5 to GPU
+:3:hip_module.cpp           :744 : 6133044306 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044308 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044309 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6372 @ 06:03:45.449685] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044315 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133044318 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_context.cpp          :356 : 6133044326 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133044329 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+[APP-T0-P10-Task1] ========== Task DONE, latency=2.16 ms ==========
+
+
+[APP-T0-P10] ========== Task 2/3 START ==========
+[APP-T0-P10-Task2] Launching kernel 1/5...
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+:3:hip_platform.cpp         :233 : 6133044331 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+[XQUEUE-RESUME] Worker resumed
+:3:hip_platform.cpp         :237 : 6133044335 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_memory.cpp           :756 : 6133044332 us:  [32m hipMalloc ( 0x7f603c9f7538, 4194304 ) [0m
+:3:hip_platform.cpp         :242 : 6133044337 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044340 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=6
+[APP-T0-P10-Task2] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_platform.cpp         :233 : 6133044348 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 < max=10 -> SUSPEND
+:3:hip_platform.cpp         :237 : 6133044350 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=6 to GPU
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_platform.cpp         :242 : 6133044353 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044354 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=7
+:3:hip_module.cpp           :744 : 6133044356 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+[APP-T0-P10-Task2] Launching kernel 3/5...
+:3:hip_platform.cpp         :233 : 6133044358 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045[XQUEUE-PAUSE] Worker paused (pause_count=2)
+cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044362 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044359 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_platform.cpp         :242 : 6133044364 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044367 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=8
+:3:hip_module.cpp           :745 : 6133044369 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 13 us
+:3:hip_platform.cpp         :233 : 6133044370 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044373 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:rocdevice.cpp            :2410: 6133044375 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe000000
+[WARN @ T6372 @ 06:03:45.449751] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :242 : 6133044376 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044388 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task2] Launching kernel 4/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=9
+:3:hip_memory.cpp           :758 : 6133044381 us:  hipMalloc: Returned hipSuccess : 0x7f400bc00000: duration: 49 us
+:3:hip_platform.cpp         :233 : 6133044391 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044395 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :434 : 6133044385 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044399 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T0-P10-Task2] Launching kernel 5/5...
+[XQUEUE-LAUNCH] Launching kernel idx=7 to GPU
+:3:hip_platform.cpp         :242 : 6133044396 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_module.cpp           :744 : 6133044405 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044408 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044409 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449786] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :251 : 6133044414 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=10
+:3:hip_event.cpp            :434 : 6133044414 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044420 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T0-P10-Task2] All 5 kernels launched, calling hipStreamSynchronize...
+[XQUEUE-LAUNCH] Launching kernel idx=8 to GPU
+:3:hip_module.cpp           :744 : 6133044423 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044426 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044427 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449803] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044430 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044431 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=9 to GPU
+:3:hip_module.cpp           :744 : 6133044434 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044436 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044438 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449814] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044442 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133044444 us:  hipStreamSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=10 to GPU
+:3:hip_module.cpp           :744 : 6133044449 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044453 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044454 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 5 us
+:3:hip_context.cpp          :356 : 6133044450 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133044457 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+[WARN @ T6372 @ 06:03:45.449835] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_memory.cpp           :756 : 6133044461 us:  [32m hipMalloc ( 0x7f603c9f7530, 4194304 ) [0m
+:3:hip_stream.cpp           :381 : 6133044464 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133044469 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:rocdevice.cpp            :2410: 6133044480 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffdc00000
+[APP-T0-P10-Task2] ========== Task DONE, latency=0.15 ms ==========
+
+[HPF-SCHED] === Scheduling cycle ===
+
+[APP-T0-P10] ========== Task 3/3 START ==========
+[APP-T0-P10-Task3] Launching kernel 1/5...
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+:3:hip_platform.cpp         :233 : 6133044481 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+[XQUEUE-RESUME] Worker resumed
+:3:hip_platform.cpp         :237 : 6133044486 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133044490 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044493 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_memory.cpp           :758 : 6133044490 us:  hipMalloc: Returned hipSuccess : 0x7f400b600000: duration: 29 us
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=11
+[APP-T0-P10-Task3] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_platform.cpp         :233 : 6133044501 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044503 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 < max=10 -> SUSPEND
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_platform.cpp         :242 : 6133044505 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044507 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-PAUSE] Worker paused (pause_count=3)
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=12
+[APP-T0-P10-Task3] Launching kernel 3/5...
+[XQUEUE-LAUNCH] Launching kernel idx=11 to GPU
+:3:hip_platform.cpp         :233 : 6133044512 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044514 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :744 : 6133044515 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044518 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044519 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+[WARN @ T6372 @ 06:03:45.449896] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :242 : 6133044515 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_stream.cpp           :381 : 6133044525 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133044528 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_platform.cpp         :251 : 6133044530 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=12 to GPU
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=13
+:3:hip_module.cpp           :744 : 6133044533 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :233 : 6133044535 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_context.cpp          :356 : 6133044533 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133044540 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :756 : 6133044543 us:  [32m hipMalloc ( 0x7f603c9f7528, 4194304 ) [0m
+:3:hip_platform.cpp         :237 : 6133044546 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044541 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044550 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 17 us
+:3:hip_platform.cpp         :242 : 6133044548 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044555 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T0-P10-Task3] Launching kernel 4/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=14
+[WARN @ T6372 @ 06:03:45.449927] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :233 : 6133044559 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :237 : 6133044563 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:rocdevice.cpp            :2410: 6133044560 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffd800000
+:3:hip_memory.cpp           :758 : 6133044568 us:  hipMalloc: Returned hipSuccess : 0x7f400b000000: duration: 25 us
+:3:hip_platform.cpp         :242 : 6133044565 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603eddc4e8, 0x7f603eddc4e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044574 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :434 : 6133044560 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_platform.cpp         :233 : 6133044575 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044582 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :454 : 6133044579 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T0-P10-Task3] Launching kernel 5/5...
+[APP-T1-P1] hipMalloc done
+
+[APP-T1-P1] ========== Task 1/3 START ==========
+[APP-T1-P1-Task1] Launching kernel 1/5...
+[XQUEUE-LAUNCH] Launching kernel idx=13 to GPU
+:3:hip_platform.cpp         :242 : 6133044591 us:  [32m __hipPopCallConfiguration ( {0,0,0}, {0,0,0}, 0x7f603c9f74e8, 0x7f603c9[XQUEUE-SUBMIT] XQ=0x18dc7f60309ab7b0 enqueued kernel idx=15
+f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044594 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :744 : 6133044592 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0,[APP-T0-P10-Task3] All 5 kernels launched, calling hipStreamSynchronize...
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=1
+ stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044602 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044603 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 11 us
+[WARN @ T6372 @ 06:03:45.449979] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+[APP-T1-P1-Task1] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_platform.cpp         :233 : 6133044605 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f402000[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 < max=10 -> SUSPEND
+1380 ) [0m
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=10 -> RESUME
+:3:hip_platform.cpp         :237 : 6133044609 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :434 : 6133044606 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044616 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=14 to GPU
+:3:hip_platform.cpp         :242 : 6133044614 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044620 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=2
+:3:hip_module.cpp           :744 : 6133044620 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:1:hip_module.cpp           :294 : 6133044626 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_platform.cpp         :233 : 6133044626 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044630 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :745 : 6133044632 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 12 us
+[WARN @ T6372 @ 06:03:45.450010] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :242 : 6133044632 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044639 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :434 : 6133044637 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+[APP-T1-P1-Task1] Launching kernel 3/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=3
+:3:hip_event.cpp            :454 : 6133044642 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task1] Launching kernel 4/5...
+[XQUEUE-LAUNCH] Launching kernel idx=15 to GPU
+:3:hip_platform.cpp         :233 : 6133044643 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044646 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133044649 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044652 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=4
+:3:hip_module.cpp           :744 : 6133044646 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f603045cef0 ) [0m
+:3:hip_platform.cpp         :233 : 6133044655 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044658 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044655 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044662 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 16 us
+[WARN @ T6372 @ 06:03:45.450038] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044666 us:  [32m hipStreamSynchronize ( stream:0x7f603045cef0 ) [0m
+:3:hip_stream.cpp           :382 : 6133044668 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133044668 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044674 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T1-P1-Task1] Launching kernel 5/5...
+[APP-T0-P10-Task3] ========== Task DONE, latency=0.19 ms ==========
+
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=1 -> RESUME
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=1 -> RESUME
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=5
+[XQUEUE-RESUME] Worker resumed
+[APP-T1-P1-Task1] All 5 kernels launched, calling hipStreamSynchronize...
+[XQUEUE-LAUNCH] Launching kernel idx=1 to GPU
+:3:hip_module.cpp           :744 : 6133044697 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044706 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044708 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 11 us
+[WARN @ T6373 @ 06:03:45.450086] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044718 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044721 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=2 to GPU
+:3:hip_module.cpp           :744 : 6133044727 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044729 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044730 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6373 @ 06:03:45.450106] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044734 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044735 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=3 to GPU
+:3:hip_module.cpp           :744 : 6133044738 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044740 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044741 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6373 @ 06:03:45.450118] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044744 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044745 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=4 to GPU
+:3:hip_module.cpp           :744 : 6133044749 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044751 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044752 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6373 @ 06:03:45.450128] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044756 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133044759 us:  hipStreamSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=5 to GPU
+:3:hip_module.cpp           :744 : 6133044764 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044767 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_context.cpp          :356 : 6133044765 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133044771 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :772 : 6133044774 us:  [32m hipFree ( 0x7f401c200000 ) [0m
+:3:hip_module.cpp           :745 : 6133044775 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 11 us
+[WARN @ T6373 @ 06:03:45.450157] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044785 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133044787 us:  hipStreamSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task1] ========== Task DONE, latency=0.22 ms ==========
+
+
+[APP-T1-P1] ========== Task 2/3 START ==========
+[APP-T1-P1-Task2] Launching kernel 1/5...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_platform.cpp         :233 : 6133044798 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+:3:hip_platform.cpp         :237 : 6133044800 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+:3:hip_platform.cpp         :242 : 6133044803 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044804 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=6
+:3:hip_platform.cpp         :233 : 6133044810 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f402000[APP-T1-P1-Task2] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+1380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044813 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=1 -> RESUME
+[XQUEUE-LAUNCH] Launching kernel idx=6 to GPU
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=1 -> RESUME
+:3:hip_platform.cpp         :242 : 6133044816 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044818 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=7
+:3:hip_module.cpp           :744 : 6133044821 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :233 : 6133044822 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044825 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044822 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_platform.cpp         :242 : 6133044827 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044831 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T1-P1-Task2] Launching kernel 3/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=8
+:3:hip_module.cpp           :745 : 6133044833 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 12 us
+[WARN @ T6373 @ 06:03:45.450212] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :233 : 6133044834 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044841 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_event.cpp            :434 : 6133044839 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044846 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task2] Launching kernel 4/5...
+[XQUEUE-LAUNCH] Launching kernel idx=7 to GPU
+:3:hip_platform.cpp         :242 : 6133044844 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044852 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :744 : 6133044850 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044857 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044858 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 8 us
+[WARN @ T6373 @ 06:03:45.450235] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044862 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044863 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=9
+:3:hip_platform.cpp         :233 : 6133044868 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f402000[APP-T1-P1-Task2] Launching kernel 5/5...
+[XQUEUE-LAUNCH] Launching kernel idx=8 to GPU
+1380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044871 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :744 : 6133044872 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:3:rocdevice.cpp            :2410: 6133044875 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffdc00000
+:3:hip_platform.cpp         :242 : 6133044873 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044879 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_memory.cpp           :774 : 6133044880 us:  hipFree: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044884 us:  At least one of kernelParams or extra Params should be provided
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=10
+:3:hip_module.cpp           :745 : 6133044886 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 14 us
+[WARN @ T6373 @ 06:03:45.450263] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044890 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044891 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task2] All 5 kernels launched, calling hipStreamSynchronize...
+[XQUEUE-LAUNCH] Launching kernel idx=9 to GPU
+:3:hip_module.cpp           :744 : 6133044896 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044898 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133044899 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6373 @ 06:03:45.450275] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133044902 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133044904 us:  hipStreamSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=10 to GPU
+:3:hip_module.cpp           :744 : 6133044908 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133044912 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_context.cpp          :356 : 6133044909 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133044915 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_module.cpp           :745 : 6133044913 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 5 us
+[WARN @ T6373 @ 06:03:45.450294] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_memory.cpp           :772 : 6133044917 us:  [32m hipFree ( 0x7f4014400000 ) [0m
+:3:hip_stream.cpp           :381 : 6133044923 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133044925 us:  hipStreamSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task2] ========== Task DONE, latency=0.13 ms ==========
+
+
+[APP-T1-P1] ========== Task 3/3 START ==========
+[APP-T1-P1-Task3] Launching kernel 1/5...
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+:3:hip_platform.cpp         :233 : 6133044933 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f402000[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+1380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044936 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :242 : 6133044939 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044940 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=11
+[APP-T1-P1-Task3] Launching kernel 2/5...
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_platform.cpp         :233 : 6133044947 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044949 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=1 -> RESUME
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=1 -> RESUME
+:3:hip_platform.cpp         :242 : 6133044950 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+[XQUEUE-LAUNCH] Launching kernel idx=11 to GPU
+:3:hip_platform.cpp         :251 : 6133044952 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=12
+:3:hip_module.cpp           :744 : 6133044955 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :233 : 6133044956 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133044959 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044957 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_platform.cpp         :242 : 6133044961 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133044964 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T1-P1-Task3] Launching kernel 3/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=13
+:3:hip_module.cpp           :745 : 6133044966 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 11 us
+[WARN @ T6373 @ 06:03:45.450343] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044971 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044974 us:  hipEventSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task3] Launching kernel 4/5...
+[XQUEUE-LAUNCH] Launching kernel idx=12 to GPU
+:3:hip_platform.cpp         :233 : 6133044968 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_module.cpp           :744 : 6133044978 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:3:rocdevice.cpp            :2410: 6133044979 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe000000
+:3:hip_platform.cpp         :237 : 6133044978 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:1:hip_module.cpp           :294 : 6133044984 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_platform.cpp         :242 : 6133044986 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_memory.cpp           :774 : 6133044982 us:  hipFree: Returned hipSuccess : 
+:3:hip_module.cpp           :745 : 6133044990 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 12 us
+[WARN @ T6373 @ 06:03:45.450367] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133044995 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133044997 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=13 to GPU
+:3:hip_platform.cpp         :251 : 6133044988 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=14
+:3:hip_module.cpp           :744 : 6133045007 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133045009 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133045011 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+:3:hip_platform.cpp         :233 : 6133045009 us:  [32m __hipPushCallConfiguration ( {64,64,1}, {16,16,1}, 0, stream:0x7f4020001380 ) [0m
+:3:hip_platform.cpp         :237 : 6133045016 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+[WARN @ T6373 @ 06:03:45.450388] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_platform.cpp         :242 : 6133045019 us:  [32m __hipPopCallConfiguration ( {64,64,1}, {16,16,1}, 0x7f603c9f74e8, 0x7f603c9f74e0 ) [0m
+:3:hip_platform.cpp         :251 : 6133045020 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+[APP-T1-P1-Task3] Launching kernel 5/5...
+[XQUEUE-SUBMIT] XQ=0x18dc7f40200078b0 enqueued kernel idx=15
+:3:hip_stream.cpp           :381 : 6133045021 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133045027 us:  hipStreamSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task3] All 5 kernels launched, calling hipStreamSynchronize...
+[XQUEUE-LAUNCH] Launching kernel idx=14 to GPU
+:3:hip_context.cpp          :356 : 6133045032 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_module.cpp           :744 : 6133045033 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133045036 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133045037 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 4 us
+:3:hip_context.cpp          :360 : 6133045033 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :772 : 6133045040 us:  [32m hipFree ( 0x7f400ca00000 ) [0m
+[WARN @ T6373 @ 06:03:45.450420] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_event.cpp            :434 : 6133045048 us:  [32m hipEventSynchronize ( event:0x7f401001bde0 ) [0m
+:3:hip_event.cpp            :454 : 6133045049 us:  hipEventSynchronize: Returned hipSuccess : 
+[XQUEUE-LAUNCH] Launching kernel idx=15 to GPU
+:3:hip_module.cpp           :744 : 6133045053 us:  [32m hipLaunchKernel ( 0x2011b0, {64,64,1}, {16,16,1}, char array:<null>, 0, stream:0x7f4020001380 ) [0m
+:1:hip_module.cpp           :294 : 6133045055 us:  At least one of kernelParams or extra Params should be provided
+:3:hip_module.cpp           :745 : 6133045056 us:  hipLaunchKernel: Returned hipErrorInvalidValue : : duration: 3 us
+[WARN @ T6373 @ 06:03:45.450432] Failed to enqueue command, continuing... @ /data/dockercode/xsched-official/platforms/hip/hal/src/hip_queue.cpp:53
+:3:hip_stream.cpp           :381 : 6133045059 us:  [32m hipStreamSynchronize ( stream:0x7f4020001380 ) [0m
+:3:hip_stream.cpp           :382 : 6133045060 us:  hipStreamSynchronize: Returned hipSuccess : 
+[APP-T1-P1-Task3] ========== Task DONE, latency=0.13 ms ==========
+
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+:3:hip_context.cpp          :356 : 6133045068 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133045069 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+[HPF-SCHED] XQ=0x18dc7f60309ab7b0 prio=10 >= max=-255 -> RESUME
+:3:hip_memory.cpp           :772 : 6133045072 us:  [32m hipFree ( 0x7f400bc00000 ) [0m
+:3:rocdevice.cpp            :2410: 6133045100 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe400000
+:3:hip_memory.cpp           :774 : 6133045103 us:  hipFree: Returned hipSuccess : 
+[INFO @ T6366 @ 06:03:45.450495] XQueue (0x18dc7f60309ab7b0) from process 6364 destroyed
+[HPF-SCHED] === Scheduling cycle ===
+[HPF-SCHED] XQ=0x18dc7f40200078b0 prio=1 >= max=-255 -> RESUME
+:3:hip_stream.cpp           :394 : 6133045140 us:  [32m hipStreamDestroy ( stream:0x7f603045cef0 ) [0m
+:3:rocdevice.cpp            :3219: 6133045151 us:  releaseQueue refCount:0x7f4025000000 (0)
+:3:rocdevice.cpp            :2410: 6133045179 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffe800000
+:3:hip_memory.cpp           :774 : 6133045182 us:  hipFree: Returned hipSuccess : 
+:3:hip_context.cpp          :356 : 6133045184 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133045185 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :772 : 6133045186 us:  [32m hipFree ( 0x7f400b600000 ) [0m
+:3:hip_stream.cpp           :435 : 6133045296 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:rocdevice.cpp            :2410: 6133045342 us:  Device=0x7f60303d6660, freeMem_ = 0x2ffec00000
+:3:hip_memory.cpp           :774 : 6133045345 us:  hipFree: Returned hipSuccess : 
+:3:hip_context.cpp          :356 : 6133045349 us:  [32m hipCtxSynchronize ( 1 ) [0m
+:3:hip_context.cpp          :360 : 6133045351 us:  hipCtxSynchronize: Returned hipErrorNotSupported : 
+:3:hip_memory.cpp           :772 : 6133045352 us:  [32m hipFree ( 0x7f400b000000 ) [0m
+:3:rocdevice.cpp            :2410: 6133045409 us:  Device=0x7f60303d6660, freeMem_ = 0x2fff000000
+:3:hip_memory.cpp           :774 : 6133045411 us:  hipFree: Returned hipSuccess : 
+[INFO @ T6366 @ 06:03:45.450800] XQueue (0x18dc7f40200078b0) from process 6364 destroyed
+[APP] === Thread 0 Priority 10 DONE ===
+
+[HPF-SCHED] === Scheduling cycle ===
+:3:hip_stream.cpp           :394 : 6133045434 us:  [32m hipStreamDestroy ( stream:0x7f4020001380 ) [0m
+:3:rocdevice.cpp            :3219: 6133045443 us:  releaseQueue refCount:0x7f4024400000 (0)
+:3:hip_stream.cpp           :435 : 6133045568 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_device_runtime.cpp   :641 : 6133045851 us:  [32m hipDeviceSynchronize (  ) [0m
+:3:hip_device_runtime.cpp   :645 : 6133045858 us:  hipDeviceSynchronize: Returned hipSuccess : 
+[APP] === Thread 1 Priority 1 DONE ===
+
+
+================================================================================
+=== Test Complete ===
+================================================================================
+[HPF-SCHED] === Scheduling cycle ===
+:3:rocdevice.cpp            :283 : 6133046457 us:  Deleting hardware queue 0x7f4025000000 with refCount 0
+:3:rocdevice.cpp            :283 : 6133048982 us:  Deleting hardware queue 0x7f4024400000 with refCount 0

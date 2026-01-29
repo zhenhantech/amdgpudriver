@@ -1,0 +1,20 @@
+[T1 P1] Avg=4094.77 ms, P50=3694.17 ms, P99=11966.37 ms
+[T2 P1] Avg=3899.04 ms, P50=3494.08 ms, P99=4733.49 ms
+[T3 P1] Avg=4097.06 ms, P50=3685.81 ms, P99=12023.98 ms
+[T4 P1] Avg=4095.73 ms, P50=3705.94 ms, P99=11964.63 ms
+[T5 P1] Avg=4068.27 ms, P50=3544.43 ms, P99=10769.08 ms
+[T6 P1] Avg=4096.91 ms, P50=3688.62 ms, P99=12031.64 ms
+[T7 P1] Avg=2531.58 ms, P50=2014.41 ms, P99=10625.17 ms
+
+=== Overall Statistics ===
+High Priority (P10): Avg=563.85 ms, P50=579.21 ms, P99=606.58 ms
+Low Priority  (P1):  Avg=3840.48 ms, P50=3474.89 ms, P99=18027.12 ms
+
+🎯 Latency Ratio (Low/High):
+   Avg: 6.811x
+   P50: 5.999x
+   P99: 29.719x
+
+✅ SUCCESS: Priority effect observed! (ratio >= 1.3x)
+
+✅ 8-thread test 完成

@@ -1,0 +1,23 @@
+[INFO @ T8122 @ 07:52:22.348586] using app-managed scheduler
+
+================================================================================
+=== Test 1: Single Thread Baseline ===
+Threads: 1
+XSched: Disabled
+Workload: 2048x2048 matrix, 30 kernels/task, 10 tasks/thread
+================================================================================
+
+[XSCHED-REGULAR-1] XLaunchKernel stream=0x7f0a9046ae40
+[XSCHED-REGULAR-2] XLaunchKernel stream=0x7f0a9046ae40
+[XSCHED-REGULAR-3] XLaunchKernel stream=0x7f0a9046ae40
+[XSCHED-REGULAR-4] XLaunchKernel stream=0x7f0a9046ae40
+[XSCHED-REGULAR-5] XLaunchKernel stream=0x7f0a9046ae40
+
+=== Results ===
+Total time: 5.10 seconds
+
+[T0 P1]: Avg=476.58 ms, P50=475.41 ms, P99=479.06 ms, samples=10
+
+=== Overall Statistics ===
+All Threads: Avg=476.58 ms, P50=475.41 ms, P99=479.06 ms, samples=10
+

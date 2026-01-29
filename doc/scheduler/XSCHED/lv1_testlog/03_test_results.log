@@ -1,0 +1,7 @@
+=== Results ===
+Total time: 0.40 seconds
+=== Overall Statistics ===
+High Priority (P10): Avg=0.24 ms, P50=0.19 ms, P99=0.27 ms
+Low Priority  (P1):  Avg=0.80 ms, P50=0.85 ms, P99=1.09 ms
+🎯 Latency Ratio (Low/High):
+✅ SUCCESS: Priority effect observed! (ratio >= 1.3x)
