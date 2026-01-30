@@ -1,0 +1,38 @@
+========================================
+Stream Queue Limits Comparison Report
+========================================
+Generated: Fri Jan 30 11:04:11 AM CST 2026
+
+Test Configuration:
+  - Software Queue Limit (per process): 1024
+  - Hardware Queue Limit (MI308X): 32
+
+Test Results:
+
+Test: 16 Streams
+  Expected:
+    - Software Queues: 16
+    - Hardware HQDs: 16
+    - HQD Status: ✓ Sufficient (no sharing)
+
+Test: 32 Streams
+  Expected:
+    - Software Queues: 32
+    - Hardware HQDs: 32
+    - HQD Status: ✓ Sufficient (no sharing)
+
+Test: 64 Streams
+  Expected:
+    - Software Queues: 64
+    - Hardware HQDs: 32
+    - HQD Status: ⚠ Insufficient (sharing required)
+    - Sharing Ratio: 2.00:1
+
+Logs Location: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs
+
+Key Findings:
+  1. Each stream creates 1 independent AQL Queue
+  2. AQL Queues have independent ring buffers and doorbells
+  3. HQD sharing occurs when streams > 32
+  4. In CPSCH mode, HQD allocation is dynamic (firmware-managed)
+

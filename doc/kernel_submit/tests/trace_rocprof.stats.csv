@@ -1,0 +1,2 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+"vectorAdd(float const*, float const*, float*, int) [clone .kd]",1,13520,13520,100.0

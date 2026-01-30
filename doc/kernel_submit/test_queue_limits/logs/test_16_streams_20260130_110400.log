@@ -1,0 +1,52 @@
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 16
+Process ID: 77850
+========================================
+
+[CREATE] Creating 16 streams...
+[CREATE] Created 8/16 streams
+[CREATE] Created 16/16 streams
+[CREATE] ✓ Successfully created 16 streams in 293 ms
+
+[LAUNCH] Launching kernels on all streams...
+[LAUNCH] ✓ All kernels completed in 1 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+[CONCURRENT] ✓ Submitted 80 kernels (16 streams × 5 rounds) in 0 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        77850
+Streams Created:   16
+Expected AQL Queues: 16 (1 per stream)
+Expected HQD Usage:  16/32
+HQD Status:        ✓ Sufficient (each queue gets dedicated HQD)
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+[CLEANUP] ✓ Cleanup completed

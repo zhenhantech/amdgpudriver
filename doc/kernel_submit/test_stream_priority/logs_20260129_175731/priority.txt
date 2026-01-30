@@ -1,0 +1,28 @@
+:3:hip_stream.cpp           :293 : 20159561929 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e88, 0, -1 ) [0m
+:3:rocdevice.cpp            :2967: 20159561937 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 0, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159570897 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8edc1a8000 to map on HWq=0x7f8acd200000 with size 16384 with priority 2, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159685100 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x1952020
+:3:hip_stream.cpp           :293 : 20159685107 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e80, 0, 1 ) [0m
+:3:rocdevice.cpp            :2967: 20159685120 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 1, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159689582 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8edc1a2000 to map on HWq=0x7f8acc600000 with size 16384 with priority 0, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159690220 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x20a2490
+:3:hip_stream.cpp           :293 : 20159690227 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e78, 0, -1 ) [0m
+:3:rocdevice.cpp            :2967: 20159690232 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 1, with normal priority: 0, with high priority: 1, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159694698 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8edc19c000 to map on HWq=0x7f8acc400000 with size 16384 with priority 2, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159695165 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x2099db0
+:3:hip_stream.cpp           :293 : 20159695171 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e70, 0, 0 ) [0m
+:3:rocdevice.cpp            :2967: 20159695176 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 1, with normal priority: 0, with high priority: 2, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159699650 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8ed23fe000 to map on HWq=0x7f8acc200000 with size 16384 with priority 1, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159700277 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x208cd70
+:3:hip_stream.cpp           :715 : 20161700838 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamGetPriority ( stream:0x1952020, 0x7fffea224e90 ) [0m
+:3:hip_stream.cpp           :716 : 20161700855 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamGetPriority: Returned hipSuccess : 
+:3:hip_stream.cpp           :715 : 20161700859 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamGetPriority ( stream:0x20a2490, 0x7fffea224e94 ) [0m
+:3:hip_stream.cpp           :716 : 20161700862 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamGetPriority: Returned hipSuccess : 
+:3:hip_stream.cpp           :715 : 20161700865 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamGetPriority ( stream:0x2099db0, 0x7fffea224e98 ) [0m
+:3:hip_stream.cpp           :716 : 20161700867 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamGetPriority: Returned hipSuccess : 
+:3:hip_stream.cpp           :715 : 20161700869 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamGetPriority ( stream:0x208cd70, 0x7fffea224e9c ) [0m
+:3:hip_stream.cpp           :716 : 20161700871 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamGetPriority: Returned hipSuccess : 
+[应用 A] Stream-1: priority = -1 (HIGH)
+[应用 A] Stream-2: priority =  1 (LOW)
+[应用 B] Stream-3: priority = -1 (HIGH)
+[应用 B] Stream-4: priority =  0 (NORMAL)

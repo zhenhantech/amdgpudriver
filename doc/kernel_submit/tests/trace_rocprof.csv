@@ -1,0 +1,2 @@
+"Index","KernelName","gpu-id","queue-id","queue-index","pid","tid","grd","wgr","lds","scr","arch_vgpr","accum_vgpr","sgpr","wave_size","sig","obj","DispatchNs","BeginNs","EndNs","CompleteNs","DurationNs"
+0,"vectorAdd(float const*, float const*, float*, int) [clone .kd]",9,0,0,3108374,3108374,1048576,256,0,0,8,0,16,64,"0x0","0x7fecb8a088c0",418618585170772,418618585225977,418618585239497,418618585242231,13520

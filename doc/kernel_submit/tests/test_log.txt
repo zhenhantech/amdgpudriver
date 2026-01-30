@@ -1,0 +1,36 @@
+=== Kernel Submission Flow Test ===
+
+[1] GPU Information:
+  - Device Name: AMD Radeon Graphics
+  - PCI Bus ID: 201
+  - PCI Device ID: 0
+  - Compute Units: 80
+  - Max Threads Per Block: 1024
+
+[2] Scheduler Mode:
+  - MES enabled: 0
+
+[3] Memory Allocation:
+  - Array size: 1048576 elements
+  - Memory size: 4 MB per array
+  - Device memory allocated
+
+[4] Memory Transfer (Host -> Device):
+  - Transfer time: 136221 us
+
+[5] Kernel Launch Configuration:
+  - Block size: 256 threads
+  - Grid size: 4096 blocks
+  - Total threads: 1048576
+
+[6] Launching Kernel:
+  - Kernel: vectorAdd
+  - Flow: hipLaunchKernel -> HIP Runtime -> HSA Runtime -> KFD -> MES/CPSCH
+  - Kernel execution time: 456 us
+
+[7] Memory Transfer (Device -> Host):
+
+[8] Verification:
+  - ✅ All results correct!
+
+=== Test Complete ===

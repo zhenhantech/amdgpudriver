@@ -1,0 +1,28 @@
+======================================================
+Stream Queue Test Report with Full Logging
+======================================================
+Generated: Fri Jan 30 11:14:42 AM CST 2026
+
+Test Configuration:
+  - Streams: 16
+  - AMD_LOG_LEVEL: 3
+  - HIP_DB: 0x1
+
+Logging Status:
+  - HIP Logging: ✓ Enabled (via environment variables)
+  - KFD Logging: ⚠ Not captured
+
+Results:
+  - Test Status: SUCCESS
+  - KFD Messages: 0
+0
+  - Queue Creations: 0
+0
+  - HQD Allocations: 0
+0
+
+Log Files:
+  - Test Output: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_with_debug/test_16_streams_20260130_111439.log
+  - Kernel Dmesg: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_with_debug/dmesg_16_streams_20260130_111439.log
+  - This Report: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_with_debug/report_16_streams_20260130_111439.txt
+

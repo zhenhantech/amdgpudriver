@@ -1,0 +1,91 @@
+=== Kernel Submission Flow Test ===
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+SVM alignment default order is 9.acquiring VM for f7bc using 7
+acquiring VM for f05b using 8
+acquiring VM for eb40 using 9
+acquiring VM for c66d using 10
+acquiring VM for f220 using 11
+acquiring VM for f5c7 using 12
+acquiring VM for eedc using 13
+acquiring VM for c3f1 using 14
+Initialized unreserved SVM apertures: 0x200000 - 0x7fffffffffff
+mem_handle_aperture start 0x2800000000000, mem_handle_aperture limit 0x3000000000000
+SVM alignment default order is 9.acquiring VM for f7bc using 7
+acquiring VM for f05b using 8
+acquiring VM for eb40 using 9
+acquiring VM for c66d using 10
+acquiring VM for f220 using 11
+acquiring VM for f5c7 using 12
+acquiring VM for eedc using 13
+acquiring VM for c3f1 using 14
+Initialized unreserved SVM apertures: 0x200000 - 0x7fffffffffff
+mem_handle_aperture start 0x2800000000000, mem_handle_aperture limit 0x3000000000000
+:3:                         :0   : 418551158102 us: [pid:3107624 tid: 0x7f4ac1320400] Initalizing runtime stack, Enumerated GPU agents = 1
+
+[1] GPU Information:
+  - Device Name: AMD Radeon Graphics
+  - PCI Bus ID: 201
+  - PCI Device ID: 0
+  - Compute Units: 80
+  - Max Threads Per Block: 1024
+
+[2] Scheduler Mode:
+  - MES enabled: 0
+
+[3] Memory Allocation:
+  - Array size: 1048576 elements
+  - Memory size: 4 MB per array
+  - Device memory allocated
+
+[4] Memory Transfer (Host -> Device):
+Allocating GTT for CWSR
+Allocating GTT for CWSR
+:1:                         :0   : 418551390046 us: [pid:3107624 tid: 0x7f4ac1320400] amd_comgr_do_action:
+	  ActionKind: AMD_COMGR_ACTION_ADD_PRECOMPILED_HEADERS
+	     IsaName: amdgcn-amd-amdhsa--gfx942:sramecc+:xnack-
+	     Options: "-O3" "-cl-kernel-arg-info" "-mllvm" "-amdgpu-kernarg-preload-count=8" "-D__OPENCL_VERSION__=200" "-Xclang" "-cl-ext=+cl_khr_fp64,+cl_khr_global_int32_base_atomics,+cl_khr_global_int32_extended_atomics,+cl_khr_local_int32_base_atomics,+cl_khr_local_int32_extended_atomics,+cl_khr_int64_base_atomics,+cl_khr_int64_extended_atomics,+cl_khr_3d_image_writes,+cl_khr_byte_addressable_store,+cl_khr_fp16,+cl_khr_gl_sharing,+cl_amd_device_attribute_query,+cl_amd_media_ops,+cl_amd_media_ops2,+cl_khr_image2d_from_buffer,+cl_khr_subgroups,+cl_khr_depth_images,+cl_amd_copy_buffer_p2p,+cl_amd_assembly_program" "-mllvm" "-amdgpu-prelink" "-mcumode" "-mwavefrontsize64" "-mcode-object-version=5"
+	        Path: 
+	    Language: AMD_COMGR_LANGUAGE_OPENCL_1_2
+ Comgr Branch-Commit: HEAD-0dda3adf5676
+	 LLVM Commit: 0dda3adf56766e0aac0d03173ced3759e1ffecbc
+	ReturnStatus: AMD_COMGR_STATUS_SUCCESS
+
+amd_comgr_do_action:
+	  ActionKind: AMD_COMGR_ACTION_COMPILE_SOURCE_WITH_DEVICE_LIBS_TO_BC
+	     IsaName: amdgcn-amd-amdhsa--gfx942:sramecc+:xnack-
+	     Options: "-O3" "-cl-kernel-arg-info" "-mllvm" "-amdgpu-kernarg-preload-count=8" "-D__OPENCL_VERSION__=200" "-Xclang" "-cl-ext=+cl_khr_fp64,+cl_khr_global_int32_base_atomics,+cl_khr_global_int32_extended_atomics,+cl_khr_local_int32_base_atomics,+cl_khr_local_int32_extended_atomics,+cl_khr_int64_base_atomics,+cl_khr_int64_extended_atomics,+cl_khr_3d_image_writes,+cl_khr_byte_addressable_store,+cl_khr_fp16,+cl_khr_gl_sharing,+cl_amd_device_attribute_query,+cl_amd_media_ops,+cl_amd_media_ops2,+cl_khr_image2d_from_buffer,+cl_khr_subgroups,+cl_khr_depth_images,+cl_amd_copy_buffer_p2p,+cl_amd_assembly_program" "-mllvm" "-amdgpu-prelink" "-mcumode" "-mwavefrontsize64" "-mcode-object-version=5"
+	        Path: 
+	    Language: AMD_COMGR_LANGUAGE_OPENCL_1_2
+ Comgr Branch-Commit: HEAD-0dda3adf5676
+	 LLVM Commit: 0dda3adf56766e0aac0d03173ced3759e1ffecbc
+    File System: VFS
+    Compilation Args:  "-target" "amdgcn-amd-amdhsa" "-mcpu=gfx942:sramecc+:xnack-" "-I" "/tmp/comgr-5a8a59/include" "-include-pch" "/tmp/comgr-5a8a59/include/opencl1.2-c.pch" "-Xclang" "-fno-validate-pch" "-O3" "-x" "cl" "-std=cl1.2" "-cl-no-stdinc" "-c" "-emit-llvm" "--rocm-path=/opt/rocm-7.0.2/llvm/lib/clang/20/lib" "-Xclang" "-mlink-builtin-bitcode-postopt" "-O3" "-cl-kernel-arg-info" "-mllvm" "-amdgpu-kernarg-preload-count=8" "-D__OPENCL_VERSION__=200" "-Xclang" "-cl-ext=+cl_khr_fp64,+cl_khr_global_int32_base_atomics,+cl_khr_global_int32_extended_atomics,+cl_khr_local_int32_base_atomics,+cl_khr_local_int32_extended_atomics,+cl_khr_int64_base_atomics,+cl_khr_int64_extended_atomics,+cl_khr_3d_image_writes,+cl_khr_byte_addressable_store,+cl_khr_fp16,+cl_khr_gl_sharing,+cl_amd_device_attribute_query,+cl_amd_media_ops,+cl_amd_media_ops2,+cl_khr_image2d_from_buffer,+cl_khr_subgroups,+cl_khr_depth_images,+cl_amd_copy_buffer_p2p,+cl_amd_assembly_program" "-mllvm" "-amdgpu-prelink" "-mcumode" "-mwavefrontsize64" "-mcode-object-version=5" "/tmp/comgr-5a8a59/input/CompileSource" "-o" "/tmp/comgr-5a8a59/output/CompileSource.bc"
+     Driver Job Args: clang "-cc1" "-mcode-object-version=5" "-mllvm" "--amdhsa-code-object-version=5" "-triple" "amdgcn-amd-amdhsa" "-Werror=atomic-alignment" "-emit-llvm-bc" "-emit-llvm-uselists" "-clear-ast-before-backend" "-disable-llvm-verifier" "-discard-value-names" "-main-file-name" "CompileSource" "-mrelocation-model" "pic" "-pic-level" "2" "-fhalf-no-semantic-interposition" "-mframe-pointer=none" "-ffp-contract=on" "-fno-rounding-math" "-mconstructor-aliases" "-fvisibility=hidden" "-fapply-global-visibility-to-externs" "-mlink-builtin-bitcode" "/opt/rocm-7.0.2/llvm/lib/clang/20/lib/amdgcn/bitcode/opencl.bc" "-mlink-builtin-bitcode" "/opt/rocm-7.0.2/llvm/lib/clang/20/lib/amdgcn/bitcode/ocml.bc" "-mlink-builtin-bitcode" "/opt/rocm-7.0.2/llvm/lib/clang/20/lib/amdgcn/bitcode/ockl.bc" "-mlink-builtin-bitcode" "/opt/rocm-7.0.2/llvm/lib/clang/20/lib/amdgcn/bitcode/oclc_daz_opt_off
+Allocating GTT for CWSR
+  - Transfer time: 235358 us
+
+[5] Kernel Launch Configuration:
+  - Block size: 256 threads
+  - Grid size: 4096 blocks
+  - Total threads: 1048576
+
+[6] Launching Kernel:
+  - Kernel: vectorAdd
+  - Flow: hipLaunchKernel -> HIP Runtime -> HSA Runtime -> KFD -> MES/CPSCH
+:3:                         :0   : 418551399995 us: [pid:3107624 tid: 0x7f4ac1320400] Searching for code objects, HIP_FORCE_SPIRV_CODEOBJECT: 0
+:3:                         :0   : 418551400004 us: [pid:3107624 tid: 0x7f4ac1320400] Using Native code object: gfx942:sramecc+:xnack-
+  - Kernel execution time: 836 us
+
+[7] Memory Transfer (Device -> Host):
+
+[8] Verification:
+  - ✅ All results correct!
+
+=== Test Complete ===

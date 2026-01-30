@@ -1,0 +1,64 @@
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 64
+Process ID: 93034
+========================================
+
+[CREATE] Creating 64 streams...
+[CREATE] Created 8/64 streams
+[CREATE] Created 16/64 streams
+[CREATE] Created 24/64 streams
+[CREATE] Created 32/64 streams
+[CREATE] Created 40/64 streams
+[CREATE] Created 48/64 streams
+[CREATE] Created 56/64 streams
+[CREATE] Created 64/64 streams
+[CREATE] ✓ Successfully created 64 streams in 177 ms
+
+[WAIT] Waiting 15 seconds for inspection...
+[WAIT] You can now check dmesg in another terminal:
+[WAIT]   sudo dmesg | grep 'CREATE_QUEUE' | tail -64
+[WAIT]   sudo dmesg | grep 'hqd slot' | tail -64
+
+[LAUNCH] Launching kernels on all streams...
+[LAUNCH] ✓ All kernels completed in 1 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+[CONCURRENT] ✓ Submitted 320 kernels (64 streams × 5 rounds) in 1 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        93034
+Streams Created:   64
+Expected AQL Queues: 64 (1 per stream)
+Expected HQD Usage:  32/32
+HQD Status:        ⚠ Insufficient (HQD sharing required)
+Sharing Ratio:     2:1
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+[CLEANUP] ✓ Cleanup completed

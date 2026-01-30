@@ -1,0 +1,472 @@
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34mStream Priority 测试套件[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+
+本测试套件用于验证 AMD GPU 上 Stream 和 Queue 的独立性。
+
+测试内容:
+  1. 单进程创建 4 个不同优先级的 Stream
+  2. 验证每个 Stream 有独立的地址
+  3. 验证每个 Stream 可以独立提交 kernel
+  4. 使用 rocprofv3 追踪 Queue 信息
+  5. 使用 dmesg 查看内核日志
+
+运行方式:
+  基本测试:   ./run_test.sh
+  完整测试:   sudo ./run_test.sh
+  
+手动测试:
+  编译:       make all
+  单进程:     ./test_concurrent
+  应用 A:     ./test_app_A
+  应用 B:     ./test_app_B
+  追踪:       rocprofv3 --hip-trace ./test_concurrent
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m检查依赖[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;32m✅ hipcc 已安装[0m
+[0;32m✅ rocprofv3 已安装[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m编译测试程序[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+hipcc -O2 -g test_app_A.cpp -o test_app_A
+test_app_A.cpp:33:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   33 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_app_A.cpp:36:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   36 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:78:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   78 |     hipMalloc(&d_data1, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_A.cpp:79:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   79 |     hipMalloc(&d_data2, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_A.cpp:95:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   95 |     hipStreamSynchronize(stream_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_A.cpp:103:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  103 |     hipStreamSynchronize(stream_low);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~
+test_app_A.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_high, &priority_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:109:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  109 |     hipStreamGetPriority(stream_low, &priority_low);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipFree(d_data1);
+      |     ^~~~~~~ ~~~~~~~
+test_app_A.cpp:132:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  132 |     hipFree(d_data2);
+      |     ^~~~~~~ ~~~~~~~
+test_app_A.cpp:133:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  133 |     hipStreamDestroy(stream_high);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_A.cpp:134:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  134 |     hipStreamDestroy(stream_low);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~
+12 warnings generated when compiling for gfx942.
+test_app_A.cpp:33:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   33 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_app_A.cpp:36:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   36 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:78:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   78 |     hipMalloc(&d_data1, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_A.cpp:79:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   79 |     hipMalloc(&d_data2, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_A.cpp:95:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   95 |     hipStreamSynchronize(stream_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_A.cpp:103:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  103 |     hipStreamSynchronize(stream_low);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~
+test_app_A.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_high, &priority_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:109:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  109 |     hipStreamGetPriority(stream_low, &priority_low);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_A.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipFree(d_data1);
+      |     ^~~~~~~ ~~~~~~~
+test_app_A.cpp:132:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  132 |     hipFree(d_data2);
+      |     ^~~~~~~ ~~~~~~~
+test_app_A.cpp:133:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  133 |     hipStreamDestroy(stream_high);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_A.cpp:134:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  134 |     hipStreamDestroy(stream_low);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~
+12 warnings generated when compiling for host.
+hipcc -O2 -g test_app_B.cpp -o test_app_B
+test_app_B.cpp:33:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   33 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_app_B.cpp:36:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   36 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:78:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   78 |     hipMalloc(&d_data1, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_B.cpp:79:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   79 |     hipMalloc(&d_data2, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_B.cpp:94:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   94 |     hipStreamSynchronize(stream_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_B.cpp:102:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  102 |     hipStreamSynchronize(stream_normal);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+test_app_B.cpp:107:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  107 |     hipStreamGetPriority(stream_high, &priority_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_normal, &priority_normal);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:130:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  130 |     hipFree(d_data1);
+      |     ^~~~~~~ ~~~~~~~
+test_app_B.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipFree(d_data2);
+      |     ^~~~~~~ ~~~~~~~
+test_app_B.cpp:132:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  132 |     hipStreamDestroy(stream_high);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_B.cpp:133:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  133 |     hipStreamDestroy(stream_normal);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+12 warnings generated when compiling for gfx942.
+test_app_B.cpp:33:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   33 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_app_B.cpp:36:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   36 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:78:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   78 |     hipMalloc(&d_data1, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_B.cpp:79:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   79 |     hipMalloc(&d_data2, size);
+      |     ^~~~~~~~~ ~~~~~~~~~~~~~~
+test_app_B.cpp:94:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   94 |     hipStreamSynchronize(stream_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_B.cpp:102:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  102 |     hipStreamSynchronize(stream_normal);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+test_app_B.cpp:107:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  107 |     hipStreamGetPriority(stream_high, &priority_high);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_normal, &priority_normal);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_app_B.cpp:130:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  130 |     hipFree(d_data1);
+      |     ^~~~~~~ ~~~~~~~
+test_app_B.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipFree(d_data2);
+      |     ^~~~~~~ ~~~~~~~
+test_app_B.cpp:132:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  132 |     hipStreamDestroy(stream_high);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_app_B.cpp:133:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  133 |     hipStreamDestroy(stream_normal);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+12 warnings generated when compiling for host.
+hipcc -O2 -g test_concurrent.cpp -o test_concurrent
+test_concurrent.cpp:34:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   34 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_concurrent.cpp:37:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   37 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:49:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   49 |     hipStreamCreateWithPriority(&stream_A1, hipStreamDefault, -1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:53:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   53 |     hipStreamCreateWithPriority(&stream_A2, hipStreamDefault, 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:62:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   62 |     hipStreamCreateWithPriority(&stream_B1, hipStreamDefault, -1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:66:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   66 |     hipStreamCreateWithPriority(&stream_B2, hipStreamDefault, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:94:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   94 |         hipMalloc(&d_data[i], size);
+      |         ^~~~~~~~~ ~~~~~~~~~~~~~~~~
+test_concurrent.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_A1, &priorities[0]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:109:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  109 |     hipStreamGetPriority(stream_A2, &priorities[1]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:110:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  110 |     hipStreamGetPriority(stream_B1, &priorities[2]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:111:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  111 |     hipStreamGetPriority(stream_B2, &priorities[3]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:125:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  125 |     hipStreamSynchronize(stream_A1);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipStreamSynchronize(stream_A2);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:137:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  137 |     hipStreamSynchronize(stream_B1);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:143:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  143 |     hipStreamSynchronize(stream_B2);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:160:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  160 |         hipStreamSynchronize(stream_A1);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:161:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  161 |         hipStreamSynchronize(stream_A2);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:162:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  162 |         hipStreamSynchronize(stream_B1);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:163:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  163 |         hipStreamSynchronize(stream_B2);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:190:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  190 |         hipFree(d_data[i]);
+      |         ^~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:193:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  193 |     hipStreamDestroy(stream_A1);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:194:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  194 |     hipStreamDestroy(stream_A2);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:195:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  195 |     hipStreamDestroy(stream_B1);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:196:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  196 |     hipStreamDestroy(stream_B2);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+24 warnings generated when compiling for gfx942.
+test_concurrent.cpp:34:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   34 |     hipGetDevice(&device);
+      |     ^~~~~~~~~~~~ ~~~~~~~
+test_concurrent.cpp:37:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   37 |     hipGetDeviceProperties(&prop, device);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:49:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   49 |     hipStreamCreateWithPriority(&stream_A1, hipStreamDefault, -1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:53:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   53 |     hipStreamCreateWithPriority(&stream_A2, hipStreamDefault, 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:62:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   62 |     hipStreamCreateWithPriority(&stream_B1, hipStreamDefault, -1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:66:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   66 |     hipStreamCreateWithPriority(&stream_B2, hipStreamDefault, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:94:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   94 |         hipMalloc(&d_data[i], size);
+      |         ^~~~~~~~~ ~~~~~~~~~~~~~~~~
+test_concurrent.cpp:108:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  108 |     hipStreamGetPriority(stream_A1, &priorities[0]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:109:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  109 |     hipStreamGetPriority(stream_A2, &priorities[1]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:110:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  110 |     hipStreamGetPriority(stream_B1, &priorities[2]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:111:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  111 |     hipStreamGetPriority(stream_B2, &priorities[3]);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~
+test_concurrent.cpp:125:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  125 |     hipStreamSynchronize(stream_A1);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:131:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  131 |     hipStreamSynchronize(stream_A2);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:137:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  137 |     hipStreamSynchronize(stream_B1);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:143:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  143 |     hipStreamSynchronize(stream_B2);
+      |     ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:160:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  160 |         hipStreamSynchronize(stream_A1);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:161:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  161 |         hipStreamSynchronize(stream_A2);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:162:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  162 |         hipStreamSynchronize(stream_B1);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:163:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  163 |         hipStreamSynchronize(stream_B2);
+      |         ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:190:9: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  190 |         hipFree(d_data[i]);
+      |         ^~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:193:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  193 |     hipStreamDestroy(stream_A1);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:194:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  194 |     hipStreamDestroy(stream_A2);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:195:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  195 |     hipStreamDestroy(stream_B1);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+test_concurrent.cpp:196:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  196 |     hipStreamDestroy(stream_B2);
+      |     ^~~~~~~~~~~~~~~~ ~~~~~~~~~
+24 warnings generated when compiling for host.
+[0;32m✅ 所有程序编译成功[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m测试 1: 单进程 4 个 Stream[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  运行 test_concurrent...[0m
+
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+═══════════════════════════════════════════════════════════
+并发测试 - 4 个 Stream 的独立性验证
+═══════════════════════════════════════════════════════════
+PID: 444735
+
+GPU Device: AMD Radeon Graphics
+
+═══════════════════════════════════════════════════════════
+阶段 1: 创建 Stream（模拟应用 A）
+═══════════════════════════════════════════════════════════
+✅ [应用 A] Stream-1 (HIGH):   0x154f950
+✅ [应用 A] Stream-2 (LOW):    0x1c9fed0
+
+═══════════════════════════════════════════════════════════
+阶段 2: 创建 Stream（模拟应用 B）
+═══════════════════════════════════════════════════════════
+✅ [应用 B] Stream-3 (HIGH):   0x158f690
+✅ [应用 B] Stream-4 (NORMAL): 0x1597900
+
+═══════════════════════════════════════════════════════════
+验证: 所有 Stream 地址唯一性
+═══════════════════════════════════════════════════════════
+✅ 所有 4 个 Stream 地址唯一 → 4 个独立的 Stream 对象
+
+═══════════════════════════════════════════════════════════
+阶段 3: 提交 Kernel 到所有 Stream
+═══════════════════════════════════════════════════════════
+提示: 观察 Queue 创建消息
+提示: 使用 'sudo dmesg -w' 监控内核消息
+
+─── Stream 优先级 ───
+[应用 A] Stream-1: priority = -1 (HIGH)
+[应用 A] Stream-2: priority =  1 (LOW)
+[应用 B] Stream-3: priority = -1 (HIGH)
+[应用 B] Stream-4: priority =  0 (NORMAL)
+
+开始提交 Kernel...
+
+[1/4] [应用 A] Stream-1 (HIGH)   提交 kernel...
+      完成
+
+[2/4] [应用 A] Stream-2 (LOW)    提交 kernel...
+      完成
+
+[3/4] [应用 B] Stream-3 (HIGH)   提交 kernel...
+      完成
+
+[4/4] [应用 B] Stream-4 (NORMAL) 提交 kernel...
+      完成
+
+═══════════════════════════════════════════════════════════
+阶段 4: 并发提交测试
+═══════════════════════════════════════════════════════════
+所有 Stream 并发提交多个 kernel
+
+轮次 1:
+  所有 Stream 完成
+轮次 2:
+  所有 Stream 完成
+轮次 3:
+  所有 Stream 完成
+轮次 4:
+  所有 Stream 完成
+轮次 5:
+  所有 Stream 完成
+
+═══════════════════════════════════════════════════════════
+阶段 5: 保持运行（用于外部工具检查）
+═══════════════════════════════════════════════════════════
+提示: 此时可以使用以下工具检查:
+  1. lsof -p 444735 | grep kfd
+  2. cat /proc/444735/maps | grep doorbell
+  3. sudo cat /sys/kernel/debug/kfd/queues
+
+剩余 10 秒...剩余  9 秒...剩余  8 秒...剩余  7 秒...剩余  6 秒...剩余  5 秒...剩余  4 秒...剩余  3 秒...剩余  2 秒...剩余  1 秒...
+
+═══════════════════════════════════════════════════════════
+清理资源
+═══════════════════════════════════════════════════════════
+✅ 清理完成
+
+═══════════════════════════════════════════════════════════
+测试总结
+═══════════════════════════════════════════════════════════
+✅ 创建了 4 个独立的 Stream
+✅ 每个 Stream 有唯一的地址
+✅ 每个 Stream 有独立的优先级
+✅ 所有 Stream 可以并发提交 kernel
+
+结论: 每个 Stream 都有独立的 HSA Queue 和 ring-buffer
+═══════════════════════════════════════════════════════════
+
+[0;32m✅ 测试 1 完成[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m测试 2: 两个独立进程[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  这个测试需要手动运行两个终端[0m
+[1;33mℹ️  终端 1: ./test_app_A[0m
+[1;33mℹ️  终端 2: ./test_app_B[0m
+
+按回车键继续下一个测试...
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m测试 3: 使用 rocprofv3 追踪[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  运行 rocprofv3 --hip-trace ./test_concurrent[0m
+
+usage: rocprofv3 [options] -- <application> [application options]
+rocprofv3: error: unrecognized arguments: ./test_concurrent

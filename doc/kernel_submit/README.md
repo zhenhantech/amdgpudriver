@@ -6,6 +6,62 @@
 
 ---
 
+## ⚠️ 文档适用范围
+
+### 硬件支持说明
+
+本系列文档主要描述使用 **MES (Micro-Engine Scheduler)** 硬件调度器的 kernel 提交流程。MES 是新一代 AMD GPU 的硬件调度器，支持更低延迟的 kernel 提交。
+
+#### ✅ 完全适用的 GPU（支持 MES）
+
+| GPU 系列 | 代表型号 | GC IP 版本 |
+|---------|---------|-----------|
+| **CDNA3** | MI300A/X | IP_VERSION(12, 0, x) |
+| **CDNA2** | MI250X, MI210 | IP_VERSION(9, 4, 1) |
+| **RDNA3** | RX 7900 XT/XTX | IP_VERSION(11, 0, x) |
+
+#### ⚠️ 部分适用的 GPU（使用 CPSCH）
+
+以下 GPU **不支持 MES**，使用 **CPSCH (Compute Process Scheduler)** 软件调度器，流程会有所不同：
+
+| GPU 系列 | 代表型号 | GC IP 版本 | 调度器 |
+|---------|---------|-----------|--------|
+| **CDNA2** | **MI308X (Aqua Vanjaram)** | IP_VERSION(9, 4, 2/3) | CPSCH |
+| **CDNA1** | MI100 | IP_VERSION(9, 4, 0) | CPSCH |
+| **Vega 20** | MI50, MI60 | IP_VERSION(9, 0, x) | CPSCH |
+| **RDNA2** | RX 6000 系列 | IP_VERSION(10, 3, x) | CPSCH |
+
+> **重要发现**：MI308X 虽然命名类似 MI300 系列，但实际使用 **ALDEBARAN 架构**，**不支持 MES**。这是基于实际硬件验证的结果。
+
+### 检查您的 GPU 使用哪种调度器
+
+```bash
+# 方法1: 检查 enable_mes 参数
+cat /sys/module/amdgpu/parameters/mes
+# 输出: 1 = MES 模式（本文档完全适用）
+#      0 = CPSCH 模式（流程有差异）
+
+# 方法2: 查看 dmesg 日志
+dmesg | grep -i "mes\|cpsch"
+# 如果看到 "MES enabled" 说明使用 MES
+# 如果看到 "CPSCH mode" 说明使用 CPSCH
+
+# 方法3: 查看 GPU 信息
+rocminfo | grep -i "Name"
+# 根据 GPU 型号对照上表
+```
+
+### MES vs CPSCH 的主要区别
+
+| 特性 | MES 模式 | CPSCH 模式 |
+|-----|---------|-----------|
+| **Kernel 提交路径** | 用户空间直接写 doorbell | 可能经过驱动层 Ring |
+| **延迟** | 更低（无驱动干预） | 相对较高（驱动参与） |
+| **调度方式** | 硬件调度 | 软件调度 |
+| **Queue 管理** | MES 硬件管理 | CPSCH 软件管理 |
+
+---
+
 ## 文档概述
 
 本目录包含AI kernel submission流程的详细技术文档，基于`/mnt/md0/zhehan/code/rampup_doc/2PORC_profiling`中的DRIVER_xx系列分析文档整理而成。
@@ -69,6 +125,41 @@
 - 关键系统调用
 
 **用途**: 提供关键代码的详细位置和实现细节，便于深入理解kernel submission机制
+
+---
+
+## 🧪 验证文档正确性
+
+在阅读文档之前或之后，您可以通过实际测试来验证文档描述的流程：
+
+### 快速测试（3 步）
+
+```bash
+# 1. 编译测试程序
+cd /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/
+hipcc -o test_kernel_trace test_kernel_trace.cpp
+
+# 2. 运行测试
+./test_kernel_trace
+
+# 3. 完整验证（需要 root）
+sudo ./verify_kernel_flow.sh
+```
+
+### 验证资源
+
+- 📝 **快速开始**: [TEST_README.md](./TEST_README.md)
+- 📖 **详细指南**: [VERIFICATION_GUIDE.md](./VERIFICATION_GUIDE.md)
+- 🔧 **测试程序**: `test_kernel_trace.cpp`
+- 🤖 **自动验证**: `verify_kernel_flow.sh`
+
+### 验证内容
+
+- ✅ HIP API 调用链（KERNEL_TRACE_01）
+- ✅ HSA Runtime 交互（KERNEL_TRACE_02）
+- ✅ KFD ioctl 处理（KERNEL_TRACE_03）
+- ✅ MES/CPSCH 调度（KERNEL_TRACE_04）
+- ✅ 与您的 GPU 硬件对应
 
 ---
 

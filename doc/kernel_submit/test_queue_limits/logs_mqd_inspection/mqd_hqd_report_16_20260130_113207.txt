@@ -1,0 +1,30 @@
+==========================================
+MQD/HQD Inspection Report
+==========================================
+Generated: Fri Jan 30 11:32:13 AM CST 2026
+Test Process PID: 94314
+
+Test Configuration:
+  - Streams Created: 16
+
+Results:
+  - Baseline Queues: 0
+0
+  - Active Queues: 0
+0
+  - New Queues: 
+  - Match: NO
+
+Key Findings:
+  1. MQDs显示所有软件队列的配置
+  2. 每个MQD包含独立的ring buffer地址和doorbell配置
+  3. HQDs显示实际硬件队列的使用情况
+  4. 在CPSCH模式下，HQD分配是动态的
+
+Data Files:
+  - Baseline MQDs: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_mqd_inspection/baseline_mqds_20260130_113207.txt
+  - Active MQDs: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_mqd_inspection/active_mqds_16_20260130_113207.txt
+  - Baseline HQDs: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_mqd_inspection/baseline_hqds_20260130_113207.txt
+  - Active HQDs: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_mqd_inspection/active_hqds_16_20260130_113207.txt
+  - Test Log: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs_mqd_inspection/test_16_streams_20260130_113207.log
+

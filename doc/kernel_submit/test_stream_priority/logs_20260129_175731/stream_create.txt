@@ -1,0 +1,8 @@
+:3:hip_stream.cpp           :293 : 20159561929 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e88, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159685100 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x1952020
+:3:hip_stream.cpp           :293 : 20159685107 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e80, 0, 1 ) [0m
+:3:hip_stream.cpp           :308 : 20159690220 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x20a2490
+:3:hip_stream.cpp           :293 : 20159690227 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e78, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159695165 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x2099db0
+:3:hip_stream.cpp           :293 : 20159695171 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e70, 0, 0 ) [0m
+:3:hip_stream.cpp           :308 : 20159700277 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x208cd70

@@ -1,0 +1,323 @@
+[0;34m[INFO][0m Compiling test program...
+test_multiple_streams.cpp:92:13: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   92 |             hipStreamSynchronize(streams_[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:120:13: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  120 |             hipStreamSynchronize(streams_[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:155:17: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  155 |                 hipFree(d_buffers_[i]);
+      |                 ^~~~~~~ ~~~~~~~~~~~~~
+test_multiple_streams.cpp:158:17: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  158 |                 hipStreamDestroy(streams_[i]);
+      |                 ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:206:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  206 |     hipSetDevice(0);
+      |     ^~~~~~~~~~~~ ~
+test_multiple_streams.cpp:210:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  210 |     hipGetDeviceProperties(&props, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+6 warnings generated when compiling for gfx942.
+test_multiple_streams.cpp:92:13: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+   92 |             hipStreamSynchronize(streams_[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:120:13: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  120 |             hipStreamSynchronize(streams_[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:155:17: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  155 |                 hipFree(d_buffers_[i]);
+      |                 ^~~~~~~ ~~~~~~~~~~~~~
+test_multiple_streams.cpp:158:17: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  158 |                 hipStreamDestroy(streams_[i]);
+      |                 ^~~~~~~~~~~~~~~~ ~~~~~~~~~~~
+test_multiple_streams.cpp:206:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  206 |     hipSetDevice(0);
+      |     ^~~~~~~~~~~~ ~
+test_multiple_streams.cpp:210:5: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  210 |     hipGetDeviceProperties(&props, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~
+/opt/rocm-7.0.2/lib/llvm/bin/../../../include/hip/hip_runtime_api.h:102:32: note: expanded from macro 'hipGetDeviceProperties'
+  102 | #define hipGetDeviceProperties hipGetDevicePropertiesR0600
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+6 warnings generated when compiling for host.
+[0;32m[SUCCESS][0m Compilation successful
+[0;34m[INFO][0m Running comparison tests...
+
+========================================
+Running Test: 16 Streams
+========================================
+[0;32m[SUCCESS][0m Cleared dmesg
+[0;34m[INFO][0m Executing: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/test_multiple_streams 16
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 16
+Process ID: 77850
+========================================
+
+[CREATE] Creating 16 streams...
+[CREATE] Created 8/16 streams
+[CREATE] Created 16/16 streams
+[CREATE] ✓ Successfully created 16 streams in 293 ms
+
+[LAUNCH] Launching kernels on all streams...
+[LAUNCH] ✓ All kernels completed in 1 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+[CONCURRENT] ✓ Submitted 80 kernels (16 streams × 5 rounds) in 0 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        77850
+Streams Created:   16
+Expected AQL Queues: 16 (1 per stream)
+Expected HQD Usage:  16/32
+HQD Status:        ✓ Sufficient (each queue gets dedicated HQD)
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+[CLEANUP] ✓ Cleanup completed
+[0;32m[SUCCESS][0m Test program completed
+[0;34m[INFO][0m Collecting dmesg logs...
+[0;32m[SUCCESS][0m Saved dmesg to /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_16_streams_dmesg_20260130_110401.log
+
+[0;34m[INFO][0m Analyzing results for 16 streams:
+  - CREATE_QUEUE events: 0
+0
+  - HQD allocations: 0
+0 (if NOCPSCH mode)
+  - map_queues_cpsch calls: 0
+0 (if CPSCH mode)
+
+[0;34m[INFO][0m Recent queue creation logs (last 10):
+
+[0;32m[SUCCESS][0m Test completed: test_16_streams
+[0;34m[INFO][0m Full log saved to: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_16_streams_20260130_110400.log
+[0;34m[INFO][0m Waiting 3 seconds before next test...
+
+========================================
+Running Test: 32 Streams
+========================================
+[0;32m[SUCCESS][0m Cleared dmesg
+[0;34m[INFO][0m Executing: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/test_multiple_streams 32
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 32
+Process ID: 77944
+========================================
+
+[CREATE] Creating 32 streams...
+[CREATE] Created 8/32 streams
+[CREATE] Created 16/32 streams
+[CREATE] Created 24/32 streams
+[CREATE] Created 32/32 streams
+[CREATE] ✓ Successfully created 32 streams in 157 ms
+
+[LAUNCH] Launching kernels on all streams...
+[LAUNCH] ✓ All kernels completed in 0 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+[CONCURRENT] ✓ Submitted 160 kernels (32 streams × 5 rounds) in 0 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        77944
+Streams Created:   32
+Expected AQL Queues: 32 (1 per stream)
+Expected HQD Usage:  32/32
+HQD Status:        ✓ Sufficient (each queue gets dedicated HQD)
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+[CLEANUP] ✓ Cleanup completed
+[0;32m[SUCCESS][0m Test program completed
+[0;34m[INFO][0m Collecting dmesg logs...
+[0;32m[SUCCESS][0m Saved dmesg to /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_32_streams_dmesg_20260130_110406.log
+
+[0;34m[INFO][0m Analyzing results for 32 streams:
+  - CREATE_QUEUE events: 0
+0
+  - HQD allocations: 0
+0 (if NOCPSCH mode)
+  - map_queues_cpsch calls: 0
+0 (if CPSCH mode)
+
+[0;34m[INFO][0m Recent queue creation logs (last 10):
+
+[0;32m[SUCCESS][0m Test completed: test_32_streams
+[0;34m[INFO][0m Full log saved to: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_32_streams_20260130_110405.log
+[0;34m[INFO][0m Waiting 3 seconds before next test...
+
+========================================
+Running Test: 64 Streams
+========================================
+[0;32m[SUCCESS][0m Cleared dmesg
+[0;34m[INFO][0m Executing: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/test_multiple_streams 64
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 64
+Process ID: 78034
+========================================
+
+[CREATE] Creating 64 streams...
+[CREATE] Created 8/64 streams
+[CREATE] Created 16/64 streams
+[CREATE] Created 24/64 streams
+[CREATE] Created 32/64 streams
+[CREATE] Created 40/64 streams
+[CREATE] Created 48/64 streams
+[CREATE] Created 56/64 streams
+[CREATE] Created 64/64 streams
+[CREATE] ✓ Successfully created 64 streams in 177 ms
+
+[LAUNCH] Launching kernels on all streams...
+[LAUNCH] ✓ All kernels completed in 1 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+[CONCURRENT] ✓ Submitted 320 kernels (64 streams × 5 rounds) in 1 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        78034
+Streams Created:   64
+Expected AQL Queues: 64 (1 per stream)
+Expected HQD Usage:  32/32
+HQD Status:        ⚠ Insufficient (HQD sharing required)
+Sharing Ratio:     2:1
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+[CLEANUP] ✓ Cleanup completed
+[0;32m[SUCCESS][0m Test program completed
+[0;34m[INFO][0m Collecting dmesg logs...
+[0;32m[SUCCESS][0m Saved dmesg to /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_64_streams_dmesg_20260130_110411.log
+
+[0;34m[INFO][0m Analyzing results for 64 streams:
+  - CREATE_QUEUE events: 0
+0
+  - HQD allocations: 0
+0 (if NOCPSCH mode)
+  - map_queues_cpsch calls: 0
+0 (if CPSCH mode)
+
+[0;34m[INFO][0m Recent queue creation logs (last 10):
+
+[0;32m[SUCCESS][0m Test completed: test_64_streams
+[0;34m[INFO][0m Full log saved to: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/test_64_streams_20260130_110409.log
+[0;34m[INFO][0m Generating comparison report...
+========================================
+Stream Queue Limits Comparison Report
+========================================
+Generated: Fri Jan 30 11:04:11 AM CST 2026
+
+Test Configuration:
+  - Software Queue Limit (per process): 1024
+  - Hardware Queue Limit (MI308X): 32
+
+Test Results:
+
+Test: 16 Streams
+  Expected:
+    - Software Queues: 16
+    - Hardware HQDs: 16
+    - HQD Status: ✓ Sufficient (no sharing)
+
+Test: 32 Streams
+  Expected:
+    - Software Queues: 32
+    - Hardware HQDs: 32
+    - HQD Status: ✓ Sufficient (no sharing)
+
+Test: 64 Streams
+  Expected:
+    - Software Queues: 64
+    - Hardware HQDs: 32
+    - HQD Status: ⚠ Insufficient (sharing required)
+    - Sharing Ratio: 2.00:1
+
+Logs Location: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs
+
+Key Findings:
+  1. Each stream creates 1 independent AQL Queue
+  2. AQL Queues have independent ring buffers and doorbells
+  3. HQD sharing occurs when streams > 32
+  4. In CPSCH mode, HQD allocation is dynamic (firmware-managed)
+
+[0;32m[SUCCESS][0m Report saved to: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs/comparison_report_20260130_110411.txt
+
+[0;32m[SUCCESS][0m All tests completed!
+[0;34m[INFO][0m Check logs in: /mnt/md0/zhehan/code/coderampup/private_github/amdgpudriver/doc/kernel_submit/test_queue_limits/logs

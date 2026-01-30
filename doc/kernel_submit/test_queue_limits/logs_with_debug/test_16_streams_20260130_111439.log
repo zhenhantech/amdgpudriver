@@ -1,0 +1,1342 @@
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+:3:rocdevice.cpp            :480 : 6306213494 us:  Initalizing runtime stack, Enumerated GPU agents = 1
+:3:rocdevice.cpp            :233 : 6306213525 us:  Numa selects cpu agent[0]=0xa9e9b0(fine=0xb23ef0,coarse=0xb24970) for gpu agent=0xb8cff0 CPU<->GPU XGMI=0
+:3:rocsettings.cpp          :282 : 6306213532 us:  Using dev kernel arg wa = 2
+:3:comgrctx.cpp             :127 : 6306213561 us:  Loaded COMGR library version 3.0.
+:3:rocdevice.cpp            :1677: 6306213800 us:  Gfx Major/Minor/Stepping: 9/4/2
+:3:rocdevice.cpp            :1679: 6306213802 us:  HMM support: 1, XNACK: 0, Direct host access: 0
+:3:rocdevice.cpp            :1681: 6306213804 us:  Max SDMA Read Mask: 0xff, Max SDMA Write Mask: 0xff
+:3:runtime.cpp              :82  : 6306214452 us:  ROCclr version: 7c9236b16
+:3:hip_context.cpp          :56  : 6306214459 us:  HIP Version: 7.0.51831.7c9236b16, Direct Dispatch: 1
+:3:os_posix.cpp             :966 : 6306214467 us:  HIP Library Path: /opt/rocm-7.0.2/lib/libamdhip64.so.7
+:3:hip_device_runtime.cpp   :717 : 6306214496 us:  [32m hipSetDevice ( 0 ) [0m
+:3:hip_device_runtime.cpp   :721 : 6306214499 us:  hipSetDevice: Returned hipSuccess : 
+:3:hip_device.cpp           :659 : 6306214506 us:  [32m hipGetDevicePropertiesR0600 ( 0x7fff80615bc8, 0 ) [0m
+:3:hip_device.cpp           :661 : 6306214510 us:  hipGetDevicePropertiesR0600: Returned hipSuccess : 
+
+========================================
+GPU Device Information
+========================================
+Device Name: AMD Radeon Graphics
+Compute Units: 80
+========================================
+
+
+========================================
+Stream Tester Initialization
+========================================
+Number of Streams: 16
+Process ID: 85406
+========================================
+
+[CREATE] Creating 16 streams...
+:3:hip_stream.cpp           :282 : 6306214530 us:  [32m hipStreamCreate ( 0xb1c710 ) [0m
+:3:rocdevice.cpp            :2967: 6306214537 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :3048: 6306223714 us:  Created SWq=0x7f36633ca000 to map on HWq=0x7f3660c00000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3141: 6306223730 us:  acquireQueue refCount: 0x7f3660c00000 (1)
+:3:devprogram.cpp           :2621: 6306337342 us:  Using Code Object V5.
+:3:hip_stream.cpp           :288 : 6306338404 us:  hipStreamCreate: Returned hipSuccess : stream:0xef26c0
+:3:hip_memory.cpp           :770 : 6306338999 us:  [32m hipMalloc ( 0xeef2c0, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306339027 us:  Device=0xeedae0, freeMem_ = 0x2ffefff000
+:3:hip_memory.cpp           :772 : 6306339033 us:  hipMalloc: Returned hipSuccess : 0x7f3660900000: duration: 34 us
+:3:hip_stream.cpp           :282 : 6306339036 us:  [32m hipStreamCreate ( 0xb1c718 ) [0m
+:3:rocdevice.cpp            :2967: 6306339040 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 1, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :3048: 6306343674 us:  Created SWq=0x7f36633c4000 to map on HWq=0x7f1654e00000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3141: 6306343679 us:  acquireQueue refCount: 0x7f1654e00000 (1)
+:3:hip_stream.cpp           :288 : 6306344281 us:  hipStreamCreate: Returned hipSuccess : stream:0x1642d80
+:3:hip_memory.cpp           :770 : 6306344286 us:  [32m hipMalloc ( 0xeef2c8, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306344292 us:  Device=0xeedae0, freeMem_ = 0x2ffeffe000
+:3:hip_memory.cpp           :772 : 6306344296 us:  hipMalloc: Returned hipSuccess : 0x7f3660901000: duration: 10 us
+:3:hip_stream.cpp           :282 : 6306344298 us:  [32m hipStreamCreate ( 0xb1c720 ) [0m
+:3:rocdevice.cpp            :2967: 6306344302 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 2, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :3048: 6306348848 us:  Created SWq=0x7f36633b4000 to map on HWq=0x7f1654200000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3141: 6306348852 us:  acquireQueue refCount: 0x7f1654200000 (1)
+:3:hip_stream.cpp           :288 : 6306349322 us:  hipStreamCreate: Returned hipSuccess : stream:0x152b9e0
+:3:hip_memory.cpp           :770 : 6306349327 us:  [32m hipMalloc ( 0xeef2d0, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306349332 us:  Device=0xeedae0, freeMem_ = 0x2ffeffd000
+:3:hip_memory.cpp           :772 : 6306349335 us:  hipMalloc: Returned hipSuccess : 0x7f3660902000: duration: 8 us
+:3:hip_stream.cpp           :282 : 6306349338 us:  [32m hipStreamCreate ( 0xb1c728 ) [0m
+:3:rocdevice.cpp            :2967: 6306349342 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 3, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :3048: 6306353843 us:  Created SWq=0x7f36633a4000 to map on HWq=0x7f1649800000 with size 16384 with priority 1, cooperative: 0
+:3:rocdevice.cpp            :3141: 6306353846 us:  acquireQueue refCount: 0x7f1649800000 (1)
+:3:hip_stream.cpp           :288 : 6306354418 us:  hipStreamCreate: Returned hipSuccess : stream:0x16592a0
+:3:hip_memory.cpp           :770 : 6306354423 us:  [32m hipMalloc ( 0xeef2d8, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306354428 us:  Device=0xeedae0, freeMem_ = 0x2ffeffc000
+:3:hip_memory.cpp           :772 : 6306354431 us:  hipMalloc: Returned hipSuccess : 0x7f3660903000: duration: 8 us
+:3:hip_stream.cpp           :282 : 6306354434 us:  [32m hipStreamCreate ( 0xb1c730 ) [0m
+:3:rocdevice.cpp            :2967: 6306354438 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306354440 us:  Selected queue refCount: 0x7f1649800000 (2)
+:3:hip_stream.cpp           :288 : 6306355039 us:  hipStreamCreate: Returned hipSuccess : stream:0x163ff00
+:3:hip_memory.cpp           :770 : 6306355043 us:  [32m hipMalloc ( 0xeef2e0, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306355047 us:  Device=0xeedae0, freeMem_ = 0x2ffeffb000
+:3:hip_memory.cpp           :772 : 6306355050 us:  hipMalloc: Returned hipSuccess : 0x7f3660904000: duration: 7 us
+:3:hip_stream.cpp           :282 : 6306355052 us:  [32m hipStreamCreate ( 0xb1c738 ) [0m
+:3:rocdevice.cpp            :2967: 6306355055 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306355057 us:  Selected queue refCount: 0x7f1654200000 (2)
+:3:hip_stream.cpp           :288 : 6306355678 us:  hipStreamCreate: Returned hipSuccess : stream:0x1713750
+:3:hip_memory.cpp           :770 : 6306355682 us:  [32m hipMalloc ( 0xeef2e8, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306355685 us:  Device=0xeedae0, freeMem_ = 0x2ffeffa000
+:3:hip_memory.cpp           :772 : 6306355688 us:  hipMalloc: Returned hipSuccess : 0x7f3660905000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306355690 us:  [32m hipStreamCreate ( 0xb1c740 ) [0m
+:3:rocdevice.cpp            :2967: 6306355692 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306355694 us:  Selected queue refCount: 0x7f1654e00000 (2)
+:3:hip_stream.cpp           :288 : 6306356299 us:  hipStreamCreate: Returned hipSuccess : stream:0x17169b0
+:3:hip_memory.cpp           :770 : 6306356304 us:  [32m hipMalloc ( 0xeef2f0, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306356307 us:  Device=0xeedae0, freeMem_ = 0x2ffeff9000
+:3:hip_memory.cpp           :772 : 6306356310 us:  hipMalloc: Returned hipSuccess : 0x7f3660906000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306356312 us:  [32m hipStreamCreate ( 0xb1c748 ) [0m
+:3:rocdevice.cpp            :2967: 6306356315 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306356316 us:  Selected queue refCount: 0x7f3660c00000 (2)
+:3:hip_stream.cpp           :288 : 6306356929 us:  hipStreamCreate: Returned hipSuccess : stream:0xf02700
+:3:hip_memory.cpp           :770 : 6306356933 us:  [32m hipMalloc ( 0xeef2f8, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306356937 us:  Device=0xeedae0, freeMem_ = 0x2ffeff8000
+:3:hip_memory.cpp           :772 : 6306356940 us:  hipMalloc: Returned hipSuccess : 0x7f3660907000: duration: 7 us
+[CREATE] Created 8/16 streams
+:3:hip_stream.cpp           :282 : 6306356945 us:  [32m hipStreamCreate ( 0xb1c750 ) [0m
+:3:rocdevice.cpp            :2967: 6306356948 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306356950 us:  Selected queue refCount: 0x7f1649800000 (3)
+:3:hip_stream.cpp           :288 : 6306357549 us:  hipStreamCreate: Returned hipSuccess : stream:0x1734ca0
+:3:hip_memory.cpp           :770 : 6306357553 us:  [32m hipMalloc ( 0xeef300, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306357556 us:  Device=0xeedae0, freeMem_ = 0x2ffeff7000
+:3:hip_memory.cpp           :772 : 6306357559 us:  hipMalloc: Returned hipSuccess : 0x7f3660908000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306357561 us:  [32m hipStreamCreate ( 0xb1c758 ) [0m
+:3:rocdevice.cpp            :2967: 6306357563 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306357564 us:  Selected queue refCount: 0x7f1654200000 (3)
+:3:hip_stream.cpp           :288 : 6306358179 us:  hipStreamCreate: Returned hipSuccess : stream:0xf3c6d0
+:3:hip_memory.cpp           :770 : 6306358183 us:  [32m hipMalloc ( 0xeef308, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306358187 us:  Device=0xeedae0, freeMem_ = 0x2ffeff6000
+:3:hip_memory.cpp           :772 : 6306358189 us:  hipMalloc: Returned hipSuccess : 0x7f3660909000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306358191 us:  [32m hipStreamCreate ( 0xb1c760 ) [0m
+:3:rocdevice.cpp            :2967: 6306358194 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306358195 us:  Selected queue refCount: 0x7f1654e00000 (3)
+:3:hip_stream.cpp           :288 : 6306358793 us:  hipStreamCreate: Returned hipSuccess : stream:0x14a2100
+:3:hip_memory.cpp           :770 : 6306358797 us:  [32m hipMalloc ( 0xeef310, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306358800 us:  Device=0xeedae0, freeMem_ = 0x2ffeff5000
+:3:hip_memory.cpp           :772 : 6306358803 us:  hipMalloc: Returned hipSuccess : 0x7f366090a000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306358805 us:  [32m hipStreamCreate ( 0xb1c768 ) [0m
+:3:rocdevice.cpp            :2967: 6306358807 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306358809 us:  Selected queue refCount: 0x7f3660c00000 (3)
+:3:hip_stream.cpp           :288 : 6306359421 us:  hipStreamCreate: Returned hipSuccess : stream:0x1660320
+:3:hip_memory.cpp           :770 : 6306359426 us:  [32m hipMalloc ( 0xeef318, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306359429 us:  Device=0xeedae0, freeMem_ = 0x2ffeff4000
+:3:hip_memory.cpp           :772 : 6306359432 us:  hipMalloc: Returned hipSuccess : 0x7f366090b000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306359434 us:  [32m hipStreamCreate ( 0xb1c770 ) [0m
+:3:rocdevice.cpp            :2967: 6306359436 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306359438 us:  Selected queue refCount: 0x7f1649800000 (4)
+:3:hip_stream.cpp           :288 : 6306360048 us:  hipStreamCreate: Returned hipSuccess : stream:0xef8100
+:3:hip_memory.cpp           :770 : 6306360052 us:  [32m hipMalloc ( 0xeef320, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306360055 us:  Device=0xeedae0, freeMem_ = 0x2ffeff3000
+:3:hip_memory.cpp           :772 : 6306360058 us:  hipMalloc: Returned hipSuccess : 0x7f366090c000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306360060 us:  [32m hipStreamCreate ( 0xb1c778 ) [0m
+:3:rocdevice.cpp            :2967: 6306360063 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306360065 us:  Selected queue refCount: 0x7f1654200000 (4)
+:3:hip_stream.cpp           :288 : 6306360675 us:  hipStreamCreate: Returned hipSuccess : stream:0xf2bb80
+:3:hip_memory.cpp           :770 : 6306360679 us:  [32m hipMalloc ( 0xeef328, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306360683 us:  Device=0xeedae0, freeMem_ = 0x2ffeff2000
+:3:hip_memory.cpp           :772 : 6306360685 us:  hipMalloc: Returned hipSuccess : 0x7f366090d000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306360687 us:  [32m hipStreamCreate ( 0xb1c780 ) [0m
+:3:rocdevice.cpp            :2967: 6306360690 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306360692 us:  Selected queue refCount: 0x7f1654e00000 (4)
+:3:hip_stream.cpp           :288 : 6306361298 us:  hipStreamCreate: Returned hipSuccess : stream:0x164a660
+:3:hip_memory.cpp           :770 : 6306361302 us:  [32m hipMalloc ( 0xeef330, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306361305 us:  Device=0xeedae0, freeMem_ = 0x2ffeff1000
+:3:hip_memory.cpp           :772 : 6306361308 us:  hipMalloc: Returned hipSuccess : 0x7f366090e000: duration: 6 us
+:3:hip_stream.cpp           :282 : 6306361310 us:  [32m hipStreamCreate ( 0xb1c788 ) [0m
+:3:rocdevice.cpp            :2967: 6306361313 us:  Number of allocated hardware queues with low priority: 0, with normal priority: 4, with high priority: 0, maximum per priority is: 4
+:3:rocdevice.cpp            :2940: 6306361314 us:  Selected queue refCount: 0x7f3660c00000 (4)
+:3:hip_stream.cpp           :288 : 6306361928 us:  hipStreamCreate: Returned hipSuccess : stream:0x1631930
+:3:hip_memory.cpp           :770 : 6306361932 us:  [32m hipMalloc ( 0xeef338, 4096 ) [0m
+:3:rocdevice.cpp            :2327: 6306361935 us:  Device=0xeedae0, freeMem_ = 0x2ffeff0000
+:3:hip_memory.cpp           :772 : 6306361938 us:  hipMalloc: Returned hipSuccess : 0x7f366090f000: duration: 6 us
+[CREATE] Created 16/16 streams
+[CREATE] ✓ Successfully created 16 streams in 147 ms
+
+[LAUNCH] Launching kernels on all streams...
+:3:hip_platform.cpp         :240 : 6306362164 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306362167 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362173 us:  [32m __hipPopCallConfiguration ( {2141441,0,1837098880}, {1833695990,32566,1837098880}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362176 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362445 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:hip_fatbin.cpp           :397 : 6306362514 us:  Searching for code objects, HIP_FORCE_SPIRV_CODEOBJECT: 0
+:3:hip_fatbin.cpp           :405 : 6306362517 us:  Using Native code object: gfx942:sramecc+:xnack-
+:3:devprogram.cpp           :2621: 6306362591 us:  Using Code Object V5.
+:3:rocvirtual.cpp           :790 : 6306362813 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306362816 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362824 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362827 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362838 us:  hipLaunchKernel: Returned hipSuccess : : duration: 393 us
+:3:hip_platform.cpp         :240 : 6306362843 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306362845 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362850 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362852 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362858 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362861 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306362863 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362864 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362866 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362870 us:  hipLaunchKernel: Returned hipSuccess : : duration: 12 us
+:3:hip_platform.cpp         :240 : 6306362873 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306362875 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362877 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362879 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362883 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362885 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306362886 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362888 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362889 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362894 us:  hipLaunchKernel: Returned hipSuccess : : duration: 11 us
+:3:hip_platform.cpp         :240 : 6306362897 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306362898 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362901 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362903 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362906 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362908 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306362910 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362911 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362912 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362915 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306362918 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306362919 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362922 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362923 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362926 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362928 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306362930 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362931 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362933 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362936 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306362939 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306362940 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362943 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362945 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362948 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362950 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306362951 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362953 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362954 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362957 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306362961 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306362962 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362965 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362967 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362970 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362972 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306362973 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362974 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362975 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306362980 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306362983 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306362984 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306362987 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306362988 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306362991 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306362994 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306362995 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306362996 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306362997 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363009 us:  hipLaunchKernel: Returned hipSuccess : : duration: 18 us
+:3:hip_platform.cpp         :240 : 6306363012 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363014 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363016 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363017 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363020 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363023 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306363024 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363025 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363027 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363030 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363032 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363034 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363037 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363038 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363042 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363044 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306363045 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363046 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363047 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363050 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363054 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363055 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363058 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363059 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363062 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363064 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306363066 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363067 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363068 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363071 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363074 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306363075 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363078 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363079 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363082 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363084 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306363085 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363087 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363088 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363091 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363094 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363095 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363098 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363099 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363102 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363105 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306363106 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363107 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363109 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363112 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363115 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306363116 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363119 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363120 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363123 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363126 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306363127 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363129 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363130 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363134 us:  hipLaunchKernel: Returned hipSuccess : : duration: 11 us
+:3:hip_platform.cpp         :240 : 6306363137 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306363139 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363141 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363142 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363146 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363148 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306363149 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363150 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363151 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363155 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363158 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306363160 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363162 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363164 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363167 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363169 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306363170 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363171 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363172 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363176 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_stream.cpp           :377 : 6306363180 us:  [32m hipStreamSynchronize ( stream:0xef26c0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363199 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363203 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363205 us:  [32m hipStreamSynchronize ( stream:0x1642d80 ) [0m
+:3:rocdevice.cpp            :2889: 6306363215 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363217 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363219 us:  [32m hipStreamSynchronize ( stream:0x152b9e0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363229 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363231 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363232 us:  [32m hipStreamSynchronize ( stream:0x16592a0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363242 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363244 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363246 us:  [32m hipStreamSynchronize ( stream:0x163ff00 ) [0m
+:3:rocdevice.cpp            :2889: 6306363256 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363258 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363260 us:  [32m hipStreamSynchronize ( stream:0x1713750 ) [0m
+:3:rocdevice.cpp            :2889: 6306363270 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363272 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363273 us:  [32m hipStreamSynchronize ( stream:0x17169b0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363283 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363285 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363287 us:  [32m hipStreamSynchronize ( stream:0xf02700 ) [0m
+:3:rocdevice.cpp            :2889: 6306363297 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363299 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363301 us:  [32m hipStreamSynchronize ( stream:0x1734ca0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363311 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363313 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363315 us:  [32m hipStreamSynchronize ( stream:0xf3c6d0 ) [0m
+:3:rocdevice.cpp            :2889: 6306363324 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363326 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363329 us:  [32m hipStreamSynchronize ( stream:0x14a2100 ) [0m
+:3:rocdevice.cpp            :2889: 6306363338 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363340 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363342 us:  [32m hipStreamSynchronize ( stream:0x1660320 ) [0m
+:3:rocdevice.cpp            :2889: 6306363352 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363354 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363357 us:  [32m hipStreamSynchronize ( stream:0xef8100 ) [0m
+:3:rocdevice.cpp            :2889: 6306363366 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363368 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363371 us:  [32m hipStreamSynchronize ( stream:0xf2bb80 ) [0m
+:3:rocdevice.cpp            :2889: 6306363380 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363383 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363385 us:  [32m hipStreamSynchronize ( stream:0x164a660 ) [0m
+:3:rocdevice.cpp            :2889: 6306363396 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363398 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306363400 us:  [32m hipStreamSynchronize ( stream:0x1631930 ) [0m
+:3:rocdevice.cpp            :2889: 6306363410 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306363412 us:  hipStreamSynchronize: Returned hipSuccess : 
+[LAUNCH] ✓ All kernels completed in 1 ms
+
+[CONCURRENT] Testing concurrent kernel submission...
+:3:hip_platform.cpp         :240 : 6306363416 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363418 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363421 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363422 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363425 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363427 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306363429 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363430 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363431 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363434 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363437 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306363438 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363441 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363442 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363446 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363448 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306363449 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363450 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363451 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363455 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363458 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363459 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363462 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363464 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363467 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363469 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306363471 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363472 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363473 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363476 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363479 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363480 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363483 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363485 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363488 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363490 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306363491 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363492 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363493 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363496 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363500 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306363501 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363503 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363505 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363508 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363510 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306363511 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363512 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363513 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363516 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363518 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306363520 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363522 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363524 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363527 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363529 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306363530 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363531 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363532 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363535 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363539 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363540 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363542 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363544 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363547 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363549 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306363551 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363551 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363553 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363557 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363560 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306363561 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363563 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363565 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363568 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363570 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306363572 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363573 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363574 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363578 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363581 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363583 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363585 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363587 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363590 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363592 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306363593 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363595 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363596 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363599 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363602 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363603 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363606 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363607 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363611 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363613 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306363614 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363615 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363616 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363619 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363622 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363624 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363627 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363628 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363631 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363633 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306363635 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363636 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363637 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363640 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363642 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306363644 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363647 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363648 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363652 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363654 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306363655 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363656 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363657 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363660 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363663 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363664 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363667 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363668 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363672 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363674 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306363675 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363676 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363677 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363681 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363683 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306363685 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363687 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363689 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363692 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363694 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306363695 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363696 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363698 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363701 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363703 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306363705 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363707 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363709 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363712 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363714 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306363715 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363716 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363717 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363720 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363724 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306363725 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363728 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363729 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363733 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363735 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306363736 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363737 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363738 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363742 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363745 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363747 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363750 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363751 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363754 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363757 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306363758 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363759 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363760 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363764 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363766 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306363768 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363771 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363772 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363775 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363778 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306363779 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363780 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363781 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363784 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363787 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363788 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363791 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363792 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363795 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363797 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306363799 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363800 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363801 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363804 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363807 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363808 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363811 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363812 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363815 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363818 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306363820 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363821 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363822 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363825 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363828 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306363829 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363831 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363833 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363836 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363838 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306363839 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363840 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363841 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363844 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363847 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306363848 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363851 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363852 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363855 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363857 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306363858 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363859 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363860 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363864 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363867 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363868 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363871 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363872 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363876 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363878 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306363879 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363880 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363881 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363885 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363887 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306363889 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363891 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363892 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363896 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363898 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306363899 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363900 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363901 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363905 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363907 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363909 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363911 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363913 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363916 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363918 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306363920 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363921 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363923 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363926 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363929 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306363930 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363933 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363934 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363937 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363939 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306363941 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363942 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363943 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363947 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306363949 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363951 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363954 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363955 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363959 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363961 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306363962 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363963 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363964 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363967 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306363970 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306363971 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363974 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363975 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363979 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306363981 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306363982 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306363983 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306363985 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306363988 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306363991 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306363992 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306363994 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306363996 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306363999 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364005 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306364006 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364007 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364008 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364011 us:  hipLaunchKernel: Returned hipSuccess : : duration: 12 us
+:3:hip_platform.cpp         :240 : 6306364014 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364015 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364018 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364019 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364022 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364024 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306364025 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364026 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364027 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364030 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364033 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306364034 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364037 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364038 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364041 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364043 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306364045 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364046 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364047 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364050 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364053 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306364054 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364057 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364058 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364061 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364063 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306364065 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364066 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364067 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364070 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364073 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364074 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364077 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364078 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364081 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364083 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306364084 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364086 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364087 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364090 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364094 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364096 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364098 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364100 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364103 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364105 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306364106 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364107 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364108 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364112 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364114 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364116 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364118 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364120 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364123 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364125 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306364127 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364128 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364129 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364132 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364135 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364136 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364139 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364140 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364143 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364145 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306364146 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364147 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364148 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364151 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364154 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306364156 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364158 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364160 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364163 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364165 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306364166 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364167 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364168 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364171 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364174 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306364175 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364178 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364179 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364183 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364185 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306364186 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364188 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364189 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364192 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364195 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364196 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364199 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364200 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364203 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364206 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306364207 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364208 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364210 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364213 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306364216 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306364217 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364220 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364221 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364224 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364226 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306364228 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364228 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364230 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364233 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364236 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364238 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364240 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364241 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364245 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364246 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306364248 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364249 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364250 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364253 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364256 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364257 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364260 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364262 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364265 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364266 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306364267 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364268 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364269 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364272 us:  hipLaunchKernel: Returned hipSuccess : : duration: 7 us
+:3:hip_platform.cpp         :240 : 6306364275 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364276 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364278 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364280 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364283 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364285 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306364286 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364287 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364288 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364291 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364293 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306364295 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364297 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364298 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364301 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364304 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306364305 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364306 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364307 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364310 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364313 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364314 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364317 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364318 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364321 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364323 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306364324 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364326 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364327 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364331 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306364333 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364335 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364337 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364338 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364341 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364343 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306364344 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364345 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364346 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364349 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364351 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306364353 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364355 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364356 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364359 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364361 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306364362 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364363 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364364 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364367 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364370 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306364371 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364373 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364374 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364377 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364379 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306364380 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364381 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364382 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364386 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364388 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364389 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364393 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364394 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364397 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364399 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306364400 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364401 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364402 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364406 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364408 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364409 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364412 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364413 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364416 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364418 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306364419 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364420 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364421 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364424 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364427 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364428 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364431 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364432 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364435 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364437 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306364438 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364439 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364440 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364443 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364445 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364447 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364449 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364450 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364453 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364455 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306364456 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364457 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364458 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364461 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364464 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306364465 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364467 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364468 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364471 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364473 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306364474 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364475 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364476 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364479 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364482 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306364483 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364485 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364486 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364489 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364492 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306364493 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364494 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364495 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364498 us:  hipLaunchKernel: Returned hipSuccess : : duration: 9 us
+:3:hip_platform.cpp         :240 : 6306364501 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364502 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364505 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364506 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364509 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364511 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306364512 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364513 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364514 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364517 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364520 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306364521 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364523 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364524 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364527 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364529 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306364530 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364531 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364532 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364535 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364538 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364539 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364542 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364543 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364546 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364547 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306364548 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364549 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364550 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364554 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364556 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364558 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364560 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364561 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364564 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364566 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306364567 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364568 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364569 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364572 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364574 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364575 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364578 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364579 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364582 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364583 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306364585 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364585 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364586 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364589 us:  hipLaunchKernel: Returned hipSuccess : : duration: 7 us
+:3:hip_platform.cpp         :240 : 6306364592 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306364593 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364595 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364596 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364599 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364601 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306364602 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364603 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364606 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364609 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306364611 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364613 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364615 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364616 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364619 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364621 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306364622 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364623 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364624 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364627 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364630 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364631 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364633 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364634 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364637 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364639 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306364640 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364641 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364642 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364645 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364648 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306364649 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364651 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364652 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364655 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364657 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306364658 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364659 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364660 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364663 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364666 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306364667 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364670 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364671 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364674 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364676 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306364677 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364678 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364679 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364682 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364685 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef26c0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364686 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364688 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364690 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364693 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef26c0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364694 us:  Arg0:   = ptr:0x7f3660900000 obj:[0x7f3660900000-0x7f3660901000]
+:3:rocvirtual.cpp           :883 : 6306364696 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364696 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364697 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364701 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364703 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1642d80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364704 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364707 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364708 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364711 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1642d80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364713 us:  Arg0:   = ptr:0x7f3660901000 obj:[0x7f3660901000-0x7f3660902000]
+:3:rocvirtual.cpp           :883 : 6306364714 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364715 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364716 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364719 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364721 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x152b9e0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364723 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364725 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364726 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364729 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x152b9e0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364731 us:  Arg0:   = ptr:0x7f3660902000 obj:[0x7f3660902000-0x7f3660903000]
+:3:rocvirtual.cpp           :883 : 6306364732 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364733 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364734 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364737 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364740 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x16592a0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364742 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364744 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364745 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364748 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x16592a0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364750 us:  Arg0:   = ptr:0x7f3660903000 obj:[0x7f3660903000-0x7f3660904000]
+:3:rocvirtual.cpp           :883 : 6306364751 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364752 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364753 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364756 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364758 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x163ff00 ) [0m
+:3:hip_platform.cpp         :244 : 6306364759 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364762 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364763 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364766 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x163ff00 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364767 us:  Arg0:   = ptr:0x7f3660904000 obj:[0x7f3660904000-0x7f3660905000]
+:3:rocvirtual.cpp           :883 : 6306364769 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364770 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364771 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364774 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364776 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1713750 ) [0m
+:3:hip_platform.cpp         :244 : 6306364777 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364780 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364781 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364784 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1713750 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364786 us:  Arg0:   = ptr:0x7f3660905000 obj:[0x7f3660905000-0x7f3660906000]
+:3:rocvirtual.cpp           :883 : 6306364787 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364788 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364789 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364792 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364794 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x17169b0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364795 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364798 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364799 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364802 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x17169b0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364805 us:  Arg0:   = ptr:0x7f3660906000 obj:[0x7f3660906000-0x7f3660907000]
+:3:rocvirtual.cpp           :883 : 6306364806 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364807 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364808 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364812 us:  hipLaunchKernel: Returned hipSuccess : : duration: 10 us
+:3:hip_platform.cpp         :240 : 6306364814 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf02700 ) [0m
+:3:hip_platform.cpp         :244 : 6306364815 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364818 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364819 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364822 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf02700 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364824 us:  Arg0:   = ptr:0x7f3660907000 obj:[0x7f3660907000-0x7f3660908000]
+:3:rocvirtual.cpp           :883 : 6306364825 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364826 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364827 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364830 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364833 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1734ca0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364834 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364837 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364838 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364841 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1734ca0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364842 us:  Arg0:   = ptr:0x7f3660908000 obj:[0x7f3660908000-0x7f3660909000]
+:3:rocvirtual.cpp           :883 : 6306364844 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364845 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364846 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364849 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364852 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf3c6d0 ) [0m
+:3:hip_platform.cpp         :244 : 6306364853 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364855 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364856 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364859 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf3c6d0 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364861 us:  Arg0:   = ptr:0x7f3660909000 obj:[0x7f3660909000-0x7f366090a000]
+:3:rocvirtual.cpp           :883 : 6306364862 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364863 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364864 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364867 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364870 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x14a2100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364872 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364874 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364875 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364878 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x14a2100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364880 us:  Arg0:   = ptr:0x7f366090a000 obj:[0x7f366090a000-0x7f366090b000]
+:3:rocvirtual.cpp           :883 : 6306364881 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364882 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364883 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364886 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364888 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1660320 ) [0m
+:3:hip_platform.cpp         :244 : 6306364890 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364892 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364893 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364896 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1660320 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364898 us:  Arg0:   = ptr:0x7f366090b000 obj:[0x7f366090b000-0x7f366090c000]
+:3:rocvirtual.cpp           :883 : 6306364899 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364900 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364901 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364904 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364906 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xef8100 ) [0m
+:3:hip_platform.cpp         :244 : 6306364907 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364910 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364911 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364914 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xef8100 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364915 us:  Arg0:   = ptr:0x7f366090c000 obj:[0x7f366090c000-0x7f366090d000]
+:3:rocvirtual.cpp           :883 : 6306364917 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364918 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364918 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364922 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364924 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0xf2bb80 ) [0m
+:3:hip_platform.cpp         :244 : 6306364925 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364927 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364929 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364932 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0xf2bb80 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364933 us:  Arg0:   = ptr:0x7f366090d000 obj:[0x7f366090d000-0x7f366090e000]
+:3:rocvirtual.cpp           :883 : 6306364935 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364936 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364937 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364940 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_platform.cpp         :240 : 6306364942 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x164a660 ) [0m
+:3:hip_platform.cpp         :244 : 6306364943 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364946 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364947 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364950 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x164a660 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364951 us:  Arg0:   = ptr:0x7f366090e000 obj:[0x7f366090e000-0x7f366090f000]
+:3:rocvirtual.cpp           :883 : 6306364953 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364953 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364954 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364957 us:  hipLaunchKernel: Returned hipSuccess : : duration: 7 us
+:3:hip_platform.cpp         :240 : 6306364960 us:  [32m __hipPushCallConfiguration ( {4,1,1}, {256,1,1}, 0, stream:0x1631930 ) [0m
+:3:hip_platform.cpp         :244 : 6306364961 us:  __hipPushCallConfiguration: Returned hipSuccess : 
+:3:hip_platform.cpp         :249 : 6306364963 us:  [32m __hipPopCallConfiguration ( {4,1,1}, {256,1,1}, 0x7fff80615ad0, 0x7fff80615ac8 ) [0m
+:3:hip_platform.cpp         :258 : 6306364965 us:  __hipPopCallConfiguration: Returned hipSuccess : 
+:3:hip_module.cpp           :812 : 6306364968 us:  [32m hipLaunchKernel ( 0x2015c8, {4,1,1}, {256,1,1}, 0x7fff80615b00, 0, stream:0x1631930 ) [0m
+:3:rocvirtual.cpp           :790 : 6306364969 us:  Arg0:   = ptr:0x7f366090f000 obj:[0x7f366090f000-0x7f3660910000]
+:3:rocvirtual.cpp           :883 : 6306364970 us:  Arg1:   = val:0x400 (size:0x4)
+:3:rocvirtual.cpp           :3351: 6306364971 us:  ShaderName : dummy_kernel(int*, int)
+:3:rocvirtual.cpp           :3549: 6306364972 us:  KernargSegmentByteSize = 272 KernargSegmentAlignment = 128
+:3:hip_module.cpp           :813 : 6306364976 us:  hipLaunchKernel: Returned hipSuccess : : duration: 8 us
+:3:hip_stream.cpp           :377 : 6306364977 us:  [32m hipStreamSynchronize ( stream:0xef26c0 ) [0m
+:3:rocdevice.cpp            :2889: 6306364987 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306364989 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306364991 us:  [32m hipStreamSynchronize ( stream:0x1642d80 ) [0m
+:3:rocdevice.cpp            :2889: 6306365003 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365005 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365006 us:  [32m hipStreamSynchronize ( stream:0x152b9e0 ) [0m
+:3:rocdevice.cpp            :2889: 6306365016 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365018 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365019 us:  [32m hipStreamSynchronize ( stream:0x16592a0 ) [0m
+:3:rocdevice.cpp            :2889: 6306365030 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365031 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365032 us:  [32m hipStreamSynchronize ( stream:0x163ff00 ) [0m
+:3:rocdevice.cpp            :2889: 6306365043 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365044 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365046 us:  [32m hipStreamSynchronize ( stream:0x1713750 ) [0m
+:3:rocdevice.cpp            :2889: 6306365056 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365058 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365059 us:  [32m hipStreamSynchronize ( stream:0x17169b0 ) [0m
+:3:rocdevice.cpp            :2889: 6306365070 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365071 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365072 us:  [32m hipStreamSynchronize ( stream:0xf02700 ) [0m
+:3:rocdevice.cpp            :2889: 6306365082 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365084 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365085 us:  [32m hipStreamSynchronize ( stream:0x1734ca0 ) [0m
+:3:rocdevice.cpp            :2889: 6306365095 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365097 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365098 us:  [32m hipStreamSynchronize ( stream:0xf3c6d0 ) [0m
+:3:rocdevice.cpp            :2889: 6306365108 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365109 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365111 us:  [32m hipStreamSynchronize ( stream:0x14a2100 ) [0m
+:3:rocdevice.cpp            :2889: 6306365121 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365123 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365124 us:  [32m hipStreamSynchronize ( stream:0x1660320 ) [0m
+:3:rocdevice.cpp            :2889: 6306365134 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365136 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365137 us:  [32m hipStreamSynchronize ( stream:0xef8100 ) [0m
+:3:rocdevice.cpp            :2889: 6306365147 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365149 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365150 us:  [32m hipStreamSynchronize ( stream:0xf2bb80 ) [0m
+:3:rocdevice.cpp            :2889: 6306365160 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365162 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365163 us:  [32m hipStreamSynchronize ( stream:0x164a660 ) [0m
+:3:rocdevice.cpp            :2889: 6306365173 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365175 us:  hipStreamSynchronize: Returned hipSuccess : 
+:3:hip_stream.cpp           :377 : 6306365176 us:  [32m hipStreamSynchronize ( stream:0x1631930 ) [0m
+:3:rocdevice.cpp            :2889: 6306365186 us:  No HW event
+:3:hip_stream.cpp           :378 : 6306365187 us:  hipStreamSynchronize: Returned hipSuccess : 
+[CONCURRENT] ✓ Submitted 80 kernels (16 streams × 5 rounds) in 1 ms
+
+========================================
+Test Summary
+========================================
+Process ID:        85406
+Streams Created:   16
+Expected AQL Queues: 16 (1 per stream)
+Expected HQD Usage:  16/32
+HQD Status:        ✓ Sufficient (each queue gets dedicated HQD)
+========================================
+
+
+[INFO] Test completed successfully!
+[INFO] Check dmesg for detailed queue creation logs:
+[INFO]   sudo dmesg | grep -E 'CREATE_QUEUE|hqd slot' | tail -50
+
+[CLEANUP] Destroying streams and freeing memory...
+:3:hip_memory.cpp           :786 : 6306365200 us:  [32m hipFree ( 0x7f3660900000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365210 us:  Device=0xeedae0, freeMem_ = 0x2ffeff1000
+:3:hip_memory.cpp           :788 : 6306365213 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365216 us:  [32m hipStreamDestroy ( stream:0xef26c0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365221 us:  releaseQueue refCount:0x7f3660c00000 (3)
+:3:hip_stream.cpp           :428 : 6306365323 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365325 us:  [32m hipFree ( 0x7f3660901000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365329 us:  Device=0xeedae0, freeMem_ = 0x2ffeff2000
+:3:hip_memory.cpp           :788 : 6306365330 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365332 us:  [32m hipStreamDestroy ( stream:0x1642d80 ) [0m
+:3:rocdevice.cpp            :3173: 6306365335 us:  releaseQueue refCount:0x7f1654e00000 (3)
+:3:hip_stream.cpp           :428 : 6306365411 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365412 us:  [32m hipFree ( 0x7f3660902000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365415 us:  Device=0xeedae0, freeMem_ = 0x2ffeff3000
+:3:hip_memory.cpp           :788 : 6306365416 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365418 us:  [32m hipStreamDestroy ( stream:0x152b9e0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365421 us:  releaseQueue refCount:0x7f1654200000 (3)
+:3:hip_stream.cpp           :428 : 6306365498 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365500 us:  [32m hipFree ( 0x7f3660903000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365502 us:  Device=0xeedae0, freeMem_ = 0x2ffeff4000
+:3:hip_memory.cpp           :788 : 6306365504 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365505 us:  [32m hipStreamDestroy ( stream:0x16592a0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365508 us:  releaseQueue refCount:0x7f1649800000 (3)
+:3:hip_stream.cpp           :428 : 6306365575 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365577 us:  [32m hipFree ( 0x7f3660904000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365581 us:  Device=0xeedae0, freeMem_ = 0x2ffeff5000
+:3:hip_memory.cpp           :788 : 6306365583 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365584 us:  [32m hipStreamDestroy ( stream:0x163ff00 ) [0m
+:3:rocdevice.cpp            :3173: 6306365587 us:  releaseQueue refCount:0x7f1649800000 (2)
+:3:hip_stream.cpp           :428 : 6306365652 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365655 us:  [32m hipFree ( 0x7f3660905000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365658 us:  Device=0xeedae0, freeMem_ = 0x2ffeff6000
+:3:hip_memory.cpp           :788 : 6306365661 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365662 us:  [32m hipStreamDestroy ( stream:0x1713750 ) [0m
+:3:rocdevice.cpp            :3173: 6306365665 us:  releaseQueue refCount:0x7f1654200000 (2)
+:3:hip_stream.cpp           :428 : 6306365734 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365736 us:  [32m hipFree ( 0x7f3660906000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365739 us:  Device=0xeedae0, freeMem_ = 0x2ffeff7000
+:3:hip_memory.cpp           :788 : 6306365741 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365743 us:  [32m hipStreamDestroy ( stream:0x17169b0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365746 us:  releaseQueue refCount:0x7f1654e00000 (2)
+:3:hip_stream.cpp           :428 : 6306365815 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365817 us:  [32m hipFree ( 0x7f3660907000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365820 us:  Device=0xeedae0, freeMem_ = 0x2ffeff8000
+:3:hip_memory.cpp           :788 : 6306365822 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365824 us:  [32m hipStreamDestroy ( stream:0xf02700 ) [0m
+:3:rocdevice.cpp            :3173: 6306365827 us:  releaseQueue refCount:0x7f3660c00000 (2)
+:3:hip_stream.cpp           :428 : 6306365893 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365896 us:  [32m hipFree ( 0x7f3660908000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365899 us:  Device=0xeedae0, freeMem_ = 0x2ffeff9000
+:3:hip_memory.cpp           :788 : 6306365901 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365902 us:  [32m hipStreamDestroy ( stream:0x1734ca0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365905 us:  releaseQueue refCount:0x7f1649800000 (1)
+:3:hip_stream.cpp           :428 : 6306365972 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306365975 us:  [32m hipFree ( 0x7f3660909000 ) [0m
+:3:rocdevice.cpp            :2327: 6306365978 us:  Device=0xeedae0, freeMem_ = 0x2ffeffa000
+:3:hip_memory.cpp           :788 : 6306365980 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306365982 us:  [32m hipStreamDestroy ( stream:0xf3c6d0 ) [0m
+:3:rocdevice.cpp            :3173: 6306365984 us:  releaseQueue refCount:0x7f1654200000 (1)
+:3:hip_stream.cpp           :428 : 6306366054 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366056 us:  [32m hipFree ( 0x7f366090a000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366060 us:  Device=0xeedae0, freeMem_ = 0x2ffeffb000
+:3:hip_memory.cpp           :788 : 6306366061 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366063 us:  [32m hipStreamDestroy ( stream:0x14a2100 ) [0m
+:3:rocdevice.cpp            :3173: 6306366065 us:  releaseQueue refCount:0x7f1654e00000 (1)
+:3:hip_stream.cpp           :428 : 6306366133 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366135 us:  [32m hipFree ( 0x7f366090b000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366138 us:  Device=0xeedae0, freeMem_ = 0x2ffeffc000
+:3:hip_memory.cpp           :788 : 6306366140 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366141 us:  [32m hipStreamDestroy ( stream:0x1660320 ) [0m
+:3:rocdevice.cpp            :3173: 6306366144 us:  releaseQueue refCount:0x7f3660c00000 (1)
+:3:hip_stream.cpp           :428 : 6306366215 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366217 us:  [32m hipFree ( 0x7f366090c000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366221 us:  Device=0xeedae0, freeMem_ = 0x2ffeffd000
+:3:hip_memory.cpp           :788 : 6306366222 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366224 us:  [32m hipStreamDestroy ( stream:0xef8100 ) [0m
+:3:rocdevice.cpp            :3173: 6306366226 us:  releaseQueue refCount:0x7f1649800000 (0)
+:3:hip_stream.cpp           :428 : 6306366297 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366299 us:  [32m hipFree ( 0x7f366090d000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366302 us:  Device=0xeedae0, freeMem_ = 0x2ffeffe000
+:3:hip_memory.cpp           :788 : 6306366303 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366305 us:  [32m hipStreamDestroy ( stream:0xf2bb80 ) [0m
+:3:rocdevice.cpp            :3173: 6306366308 us:  releaseQueue refCount:0x7f1654200000 (0)
+:3:hip_stream.cpp           :428 : 6306366376 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366378 us:  [32m hipFree ( 0x7f366090e000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366381 us:  Device=0xeedae0, freeMem_ = 0x2ffefff000
+:3:hip_memory.cpp           :788 : 6306366382 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366384 us:  [32m hipStreamDestroy ( stream:0x164a660 ) [0m
+:3:rocdevice.cpp            :3173: 6306366387 us:  releaseQueue refCount:0x7f1654e00000 (0)
+:3:hip_stream.cpp           :428 : 6306366621 us:  hipStreamDestroy: Returned hipSuccess : 
+:3:hip_memory.cpp           :786 : 6306366624 us:  [32m hipFree ( 0x7f366090f000 ) [0m
+:3:rocdevice.cpp            :2327: 6306366778 us:  Device=0xeedae0, freeMem_ = 0x2fff000000
+:3:hip_memory.cpp           :788 : 6306366781 us:  hipFree: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 6306366783 us:  [32m hipStreamDestroy ( stream:0x1631930 ) [0m
+:3:rocdevice.cpp            :3173: 6306366786 us:  releaseQueue refCount:0x7f3660c00000 (0)
+:3:hip_stream.cpp           :428 : 6306366987 us:  hipStreamDestroy: Returned hipSuccess : 
+[CLEANUP] ✓ Cleanup completed
+:3:rocdevice.cpp            :286 : 6306367504 us:  Deleting hardware queue 0x7f1649800000 with refCount 0
+:3:rocdevice.cpp            :286 : 6306369901 us:  Deleting hardware queue 0x7f1654200000 with refCount 0
+:3:rocdevice.cpp            :286 : 6306372302 us:  Deleting hardware queue 0x7f1654e00000 with refCount 0
+:3:rocdevice.cpp            :286 : 6306374751 us:  Deleting hardware queue 0x7f3660c00000 with refCount 0

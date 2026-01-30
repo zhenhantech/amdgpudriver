@@ -1,0 +1,244 @@
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34mStream Priority 测试 - 启用详细日志[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  日志目录: logs_20260129_175731[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 1: 编译测试程序[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;32m✅ 编译成功[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 2: 配置日志环境[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  HIP/HSA 日志级别:[0m
+  AMD_LOG_LEVEL        = 5 (5=最详细)
+  HIP_TRACE_API        = 1 (1=启用)
+  HIP_DB               = 0x1 (0x1=debug)
+  AMD_SERIALIZE_KERNEL = 0 (0=不串行化)
+  GPU_MAX_HW_QUEUES    = 8
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 3: 运行单进程测试 (test_concurrent)[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[1;33mℹ️  运行 ./test_concurrent[0m
+[1;33mℹ️  输出保存到: logs_20260129_175731/test_concurrent.log[0m
+
+[0;32m✅ test_concurrent 运行成功[0m
+[1;33mℹ️  最后 30 行输出:[0m
+:3:hip_stream.cpp           :428 : 20174704528 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamDestroy: Returned hipSuccess : 
+:3:hip_stream.cpp           :390 : 20174704530 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamDestroy ( stream:0x208cd70 ) [0m
+:4:rocdevice.cpp            :2304: 20174704536 us: [pid:459769 tid: 0x7f8edc1c4400] Free hsa memory (nil)
+:3:rocdevice.cpp            :3173: 20174704539 us: [pid:459769 tid: 0x7f8edc1c4400] releaseQueue refCount:0x7f8acc200000 (0)
+:4:rocdevice.cpp            :2304: 20174704680 us: [pid:459769 tid: 0x7f8edc1c4400] Free hsa memory 0x7f8abe700000
+:4:rocdevice.cpp            :2304: 20174704754 us: [pid:459769 tid: 0x7f8edc1c4400] Free hsa memory 0x7f8abaa00000
+:3:hip_stream.cpp           :428 : 20174704769 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamDestroy: Returned hipSuccess : 
+:4:rocdevice.cpp            :2304: 20174705062 us: [pid:459769 tid: 0x7f8edc1c4400] Free hsa memory 0x7f8ad0c00000
+:4:rocdevice.cpp            :2304: 20174705128 us: [pid:459769 tid: 0x7f8edc1c4400] Free hsa memory 0x7f8edc1b6000
+:3:rocdevice.cpp            :286 : 20174705132 us: [pid:459769 tid: 0x7f8edc1c4400] Deleting hardware queue 0x7f8acc600000 with refCount 0
+:3:rocdevice.cpp            :286 : 20174707354 us: [pid:459769 tid: 0x7f8edc1c4400] Deleting hardware queue 0x7f8acc200000 with refCount 0
+:3:rocdevice.cpp            :286 : 20174709566 us: [pid:459769 tid: 0x7f8edc1c4400] Deleting hardware queue 0x7f8acc400000 with refCount 0
+:3:rocdevice.cpp            :286 : 20174711781 us: [pid:459769 tid: 0x7f8edc1c4400] Deleting hardware queue 0x7f8acd200000 with refCount 0
+
+
+═══════════════════════════════════════════════════════════
+清理资源
+═══════════════════════════════════════════════════════════
+✅ 清理完成
+
+═══════════════════════════════════════════════════════════
+测试总结
+═══════════════════════════════════════════════════════════
+✅ 创建了 4 个独立的 Stream
+✅ 每个 Stream 有唯一的地址
+✅ 每个 Stream 有独立的优先级
+✅ 所有 Stream 可以并发提交 kernel
+
+结论: 每个 Stream 都有独立的 HSA Queue 和 ring-buffer
+═══════════════════════════════════════════════════════════
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 4: 分析日志[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+─── 搜索 Stream 创建 ───
+[1;33mℹ️  找到 8 条 Stream 创建记录[0m
+详细信息保存在: logs_20260129_175731/stream_create.txt
+前 10 条:
+:3:hip_stream.cpp           :293 : 20159561929 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e88, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159685100 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x1952020
+:3:hip_stream.cpp           :293 : 20159685107 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e80, 0, 1 ) [0m
+:3:hip_stream.cpp           :308 : 20159690220 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x20a2490
+:3:hip_stream.cpp           :293 : 20159690227 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e78, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159695165 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x2099db0
+:3:hip_stream.cpp           :293 : 20159695171 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e70, 0, 0 ) [0m
+:3:hip_stream.cpp           :308 : 20159700277 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x208cd70
+
+─── 搜索 Queue 创建 ───
+[1;33mℹ️  未找到 Queue 创建日志[0m
+
+─── 搜索 Doorbell 信息 ───
+[1;33mℹ️  找到 1 条 Doorbell 记录[0m
+详细信息保存在: logs_20260129_175731/doorbell.txt
+前 10 条:
+  2. cat /proc/459769/maps | grep doorbell
+
+─── 搜索 Priority 信息 ───
+[1;33mℹ️  找到 28 条 Priority 记录[0m
+详细信息保存在: logs_20260129_175731/priority.txt
+前 10 条:
+:3:hip_stream.cpp           :293 : 20159561929 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e88, 0, -1 ) [0m
+:3:rocdevice.cpp            :2967: 20159561937 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 0, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159570897 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8edc1a8000 to map on HWq=0x7f8acd200000 with size 16384 with priority 2, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159685100 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x1952020
+:3:hip_stream.cpp           :293 : 20159685107 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e80, 0, 1 ) [0m
+:3:rocdevice.cpp            :2967: 20159685120 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 0, with normal priority: 0, with high priority: 1, maximum per priority is: 8
+:3:rocdevice.cpp            :3048: 20159689582 us: [pid:459769 tid: 0x7f8edc1c4400] Created SWq=0x7f8edc1a2000 to map on HWq=0x7f8acc600000 with size 16384 with priority 0, cooperative: 0
+:3:hip_stream.cpp           :308 : 20159690220 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x20a2490
+:3:hip_stream.cpp           :293 : 20159690227 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e78, 0, -1 ) [0m
+:3:rocdevice.cpp            :2967: 20159690232 us: [pid:459769 tid: 0x7f8edc1c4400] Number of allocated hardware queues with low priority: 1, with normal priority: 0, with high priority: 1, maximum per priority is: 8
+
+─── 搜索 Warning/Error ───
+[0;32m✅ 没有 Warning/Error[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 5: 运行应用 A (可选)[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+是否运行 test_app_A？(y/N) 
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m步骤 6: 生成测试报告[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+# Stream Priority 测试报告（详细日志）
+
+**生成时间**: Thu Jan 29 05:58:01 PM CST 2026  
+**日志目录**: logs_20260129_175731
+
+---
+
+## 测试环境
+
+```
+操作系统: Linux hjbog-srdc-26.amd.com 5.10.134-19.1.al8.x86_64 #1 SMP Wed Jun 25 10:21:27 CST 2025 x86_64 x86_64 x86_64 GNU/Linux
+ROCm 版本: HIP version: 7.0.51831-7c9236b16
+GPU 设备:   Name:                    Intel(R) Xeon(R) Platinum 8480C    
+```
+
+---
+
+## 日志配置
+
+```bash
+AMD_LOG_LEVEL        = 5 (最详细)
+HIP_TRACE_API        = 1 (启用)
+HIP_DB               = 0x1 (debug)
+AMD_SERIALIZE_KERNEL = 0 (不串行化)
+GPU_MAX_HW_QUEUES    = 8
+```
+
+---
+
+## 测试结果
+
+### test_concurrent
+- 日志文件: `test_concurrent.log`
+- Stream 创建: `stream_create.txt` (8 条)
+- Queue 创建: `queue_create.txt` (0 条)
+- Doorbell 信息: `doorbell.txt` (1 条)
+- Priority 信息: `priority.txt` (28 条)
+- Warnings: `warnings.txt` (0 条)
+
+---
+
+## 关键发现
+
+### Stream 创建记录
+
+```
+:3:hip_stream.cpp           :293 : 20159561929 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e88, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159685100 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x1952020
+:3:hip_stream.cpp           :293 : 20159685107 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e80, 0, 1 ) [0m
+:3:hip_stream.cpp           :308 : 20159690220 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x20a2490
+:3:hip_stream.cpp           :293 : 20159690227 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e78, 0, -1 ) [0m
+:3:hip_stream.cpp           :308 : 20159695165 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x2099db0
+:3:hip_stream.cpp           :293 : 20159695171 us: [pid:459769 tid: 0x7f8edc1c4400] [32m hipStreamCreateWithPriority ( 0x7fffea224e70, 0, 0 ) [0m
+:3:hip_stream.cpp           :308 : 20159700277 us: [pid:459769 tid: 0x7f8edc1c4400] hipStreamCreateWithPriority: Returned hipSuccess : stream:0x208cd70
+```
+
+### Queue 创建记录
+
+```
+
+```
+
+### Doorbell 信息
+
+```
+  2. cat /proc/459769/maps | grep doorbell
+```
+
+### Warnings (前 20 条)
+
+```
+
+```
+
+---
+
+## 分析建议
+
+1. 检查 `stream_create.txt` 确认 4 个 Stream 创建
+2. 检查 `queue_create.txt` 确认 4 个 Queue 创建
+3. 检查 `doorbell.txt` 确认 4 个不同的 doorbell 地址
+4. 检查 `warnings.txt` 分析是否有实质性问题
+
+---
+
+## 文件列表
+
+```bash
+ls -lh logs_20260129_175731/
+```
+
+```
+total 128K
+-rw-rw-r-- 1 zhehan zhehan   36 Jan 29 17:57 compile.log
+-rw-rw-r-- 1 zhehan zhehan   43 Jan 29 17:57 doorbell.txt
+-rw-rw-r-- 1 zhehan zhehan 4.1K Jan 29 17:57 priority.txt
+-rw-rw-r-- 1 zhehan zhehan    0 Jan 29 17:57 queue_create.txt
+-rw-rw-r-- 1 zhehan zhehan 1.2K Jan 29 17:57 stream_create.txt
+-rw-rw-r-- 1 zhehan zhehan 107K Jan 29 17:57 test_concurrent.log
+-rw-rw-r-- 1 zhehan zhehan    0 Jan 29 17:58 TEST_REPORT.md
+-rw-rw-r-- 1 zhehan zhehan    0 Jan 29 17:57 warnings.txt
+```
+
+[0;32m✅ 测试报告已生成: logs_20260129_175731/TEST_REPORT.md[0m
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m后续分析[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+1️⃣ 查看完整日志:
+   cat logs_20260129_175731/test_concurrent.log
+
+2️⃣ 搜索特定关键词:
+   grep -i 'queue' logs_20260129_175731/test_concurrent.log
+   grep -i 'stream' logs_20260129_175731/test_concurrent.log
+   grep -i 'doorbell' logs_20260129_175731/test_concurrent.log
+
+3️⃣ 查看 Warning 详情:
+   cat logs_20260129_175731/warnings.txt
+
+4️⃣ 查看测试报告:
+   cat logs_20260129_175731/TEST_REPORT.md
+
+5️⃣ 使用 less 分页查看:
+   less logs_20260129_175731/test_concurrent.log
+
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;34m测试完成[0m
+[0;34m═══════════════════════════════════════════════════════════[0m
+[0;32m✅ 所有日志已保存到: logs_20260129_175731/[0m
+
+如果发现 Warnings，请检查:
+  • logs_20260129_175731/warnings.txt - 所有警告信息
+  • logs_20260129_175731/test_concurrent.log - 完整日志
+
