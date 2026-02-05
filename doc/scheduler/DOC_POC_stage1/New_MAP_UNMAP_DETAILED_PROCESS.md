@@ -1,4 +1,8 @@
-# Map/Unmap详细过程分析
+# Map/Unmap详细过程分析（基于CPSCH模式）
+
+**⚠️ 适用于**: MI308X CPSCH模式（enable_mes=0）
+
+---
 
 **日期**: 2026-02-03  
 **代码版本**: amdgpu-6.12.12-2194681.el8_preempt  

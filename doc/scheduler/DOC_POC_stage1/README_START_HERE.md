@@ -6,6 +6,23 @@
 
 ---
 
+## 📌 重要说明 - MI308X使用CPSCH模式 ⭐⭐⭐
+
+```
+✅ MI308X使用CPSCH模式（enable_mes=0，已验证）
+✅ 队列管理通过HWS + Runlist IB
+❌ MI308X不使用MES（MES用于更新GPU如RDNA3+）
+✅ POC基于CPSCH机制设计
+
+验证方法：
+$ cat /sys/module/amdgpu/parameters/mes
+0  # ← 确认CPSCH模式
+```
+
+**详细技术分析**: 参见 `New_DEEP_DIVE_MI308X_QUEUE_MECHANISMS.md`
+
+---
+
 ## 🎯 核心目标
 
 验证在 AMD GPU (ROCm + HIP + KFD) 上，**使用 Queue-level 抢占实现 Online-AI 优先于 Offline-AI** 的可行性。
@@ -14,22 +31,41 @@
 - **Online-AI**: 推理任务，高优先级 (15)，实时性要求 < 50ms
 - **Offline-AI**: 训练任务，低优先级 (2)，无实时性要求
 
+**硬件信息**（来自sysfs）:
+- GPU: MI308X (gfx_target_version 90402)
+- XCC数量: 4
+- 每GPU队列数: 120 (30/XCC * 4)
+- SDMA引擎: 2 + 6 (XGMI)
+
 ---
 
 ## 📚 文档导航
 
 ### 核心文档（必读）
 
-1. **test_scenaria.md** - 测试场景定义 (5 行)
-2. **EXP_Design_01_MQD_HQD_模型关联性实验.md** ⭐ - **前置实验**（必须先做！）
-3. **ARCH_Design_01_POC_Stage1_实施方案.md** - 完整实施方案 (695 行)
-4. **ARCH_Design_02_三种API技术对比.md** - 技术选型分析
-5. **POC_Stage1_TODOLIST.md** - 详细任务清单
+1. **MI308X_HARDWARE_INFO.md** ⭐ - MI308X硬件配置（sysfs验证）
+2. **New_DEEP_DIVE_MI308X_QUEUE_MECHANISMS.md** ⭐⭐⭐ - **队列机制深度分析**（三个核心问题）
+3. **AQL_QUEUE_VS_MQD_RELATIONSHIP.md** ⭐⭐⭐ - **AQL Queue与MQD关系详解**（为什么需要MQD？）
+4. **QUEUE_CREATION_TIMELINE.md** ⭐⭐ - **队列创建完整时序**（从HIP到KFD的调用链）
+5. **POC_SUSPEND_QUEUES_API_GUIDE.md** ⭐⭐⭐⭐⭐ - **suspend_queues API完整指南**（POC必读！）
+6. **GET_QUEUE_SNAPSHOT_API_GUIDE.md** ⭐⭐⭐⭐ - **获取Queue ID的ioctl方法**（避免cat sysfs）
+7. **test_scenaria.md** - 测试场景定义
+8. **EXP_Design_01_MQD_HQD_模型关联性实验.md** ⭐ - **前置实验**（必须先做！）
+9. **ARCH_Design_01_POC_Stage1_实施方案.md** - 完整实施方案
+10. **ARCH_Design_02_三种API技术对比.md** - 技术选型分析
+11. **POC_Stage1_TODOLIST.md** - 详细任务清单
 
 ### 技术细节文档
 
-6. **ARCH_Design_03_QueueID获取与环境配置.md** - Queue ID 获取方法
-7. **ARCH_Design_04_HQD信息获取完整指南.md** - HQD 状态查看
+12. **ARCH_Design_03_QueueID获取与环境配置.md** - Queue ID 获取方法（旧方法）
+13. **ARCH_Design_04_HQD信息获取完整指南.md** - HQD 状态查看
+
+### Map/Unmap机制文档（深度技术分析）
+
+14. **New_SW_QUEUE_HW_QUEUE_MAPPING_MECHANISM.md** - 完整映射机制
+15. **New_MAP_UNMAP_DETAILED_PROCESS.md** - 详细流程
+16. **New_MAP_UNMAP_SUMMARY_CN.md** - 中文总结
+17. **New_IMPLEMENTATION_COMPARISON.md** - 方案对比
 
 ---
 

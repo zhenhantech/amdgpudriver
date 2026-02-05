@@ -1,0 +1,26 @@
+✅ 文档修正完成！（2026-02-04）
+
+核心修改：
+1. 确认MI308X使用CPSCH模式（enable_mes=0）
+2. 所有MES相关说明标注为"不适用"或"仅供参考"
+3. 新增MI308X硬件配置文档
+4. 更新入口文档README_START_HERE.md
+
+修改的文档：
+- README_START_HERE.md（入口）
+- MI308X_HARDWARE_INFO.md（新建）
+- New_DEEP_DIVE_MI308X_QUEUE_MECHANISMS.md（核心）
+- New_IMPLEMENTATION_COMPARISON.md
+- New_MAP_UNMAP_DETAILED_PROCESS.md
+- CHANGELOG_CPSCH_CORRECTION.md（本次修正日志）
+
+验证方法：
+$ cat /sys/module/amdgpu/parameters/mes
+0  # ← 确认CPSCH
+
+关键结论：
+✅ MI308X只用CPSCH，不用MES
+✅ POC基于CPSCH机制设计
+✅ 专注HWS + Runlist优化
+
+详见：CHANGELOG_CPSCH_CORRECTION.md
