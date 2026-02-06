@@ -41,6 +41,108 @@ Offline队列重新加载到HQD
   ⚠️ 延迟: ~5-10ms
 ```
 
+---
+
+## 🧭 POC逻辑澄清（Queue/Runlist/Doorbell）
+
+### 1) POC 的核心逻辑是什么？
+
+**结论**：POC 只需要在合适的时机调用 **KFD_IOC_DBG_TRAP_SUSPEND_QUEUES**，  
+KFD/固件会完成更底层的 **unmap / CWSR / HQD→MQD 保存** 等流程。  
+POC 不需要手工处理 MQD/HQD 的底层细节。
+
+> 重点是 **“何时 suspend / 何时 resume”**，而不是手工操作 MQD/HQD。
+
+### 2) 是否还有 Resume？
+
+**有。**  
+对应的恢复接口是：
+
+```
+KFD_IOC_DBG_TRAP_RESUME_QUEUES
+```
+
+典型流程：
+```
+Online任务到达
+  ↓
+ioctl(SUSPEND_QUEUES, offline_queue_ids)
+  ↓
+Offline队列被 unmap / HQD 释放 / 状态保存
+  ↓
+Online任务执行
+  ↓
+ioctl(RESUME_QUEUES, offline_queue_ids)
+  ↓
+Offline队列 map 恢复 / HQD 重新加载
+```
+
+### 3) “unmapping MQD” 这个说法是否准确？
+
+不准确。更准确的表述是：
+
+✅ **unmap 队列（移出 runlist / 卸载 HQD）**  
+❌ **不是删除 MQD**
+
+MQD 通常保留在内存中，用于后续快速恢复。
+
+### 4) Doorbell 提交与 runlist 的关系
+
+**关键前提**：  
+用户态 doorbell 提交**只有在队列被 map 且 HQD_ACTIVE=1 时有效**。  
+如果队列已被 unmap（从 runlist 移除），doorbell 写入不会触发执行。
+
+---
+
+## 🧩 简化设计：高优先级模型“透明化”策略
+
+### 思路
+
+当高优先级 AI-model 到来时，**不介入其队列创建/执行细节**，  
+仅对当前 **低优先级队列** 进行 `suspend`，待高优先级任务完成后 `resume`。  
+即：**对高优先级模型完全透明**。
+
+### 可行条件（必须满足）
+
+1. **低优先级队列识别准确**  
+   - 必须能稳定区分 Online/Offline 队列（例如按优先级或标记）
+
+2. **高优先级窗口内的新队列处理**  
+   - 低优先级任务可能在此期间创建新队列  
+   - 需要策略：  
+     - 周期性重扫并补 suspend  
+     - 或在创建时标记为 inactive
+
+3. **接受 suspend/resume 的延迟**  
+   - suspend 会等待 HQD_ACTIVE=0  
+   - 延迟取决于当前 kernel 是否可被抢占
+
+### 简化流程
+
+```
+高优先级任务到达
+  ↓
+暂停当前所有低优先级队列 (SUSPEND_QUEUES)
+  ↓
+高优先级任务运行（完全透明）
+  ↓
+恢复低优先级队列 (RESUME_QUEUES)
+```
+
+### 优点
+- ✅ 实现简单，逻辑清晰
+- ✅ 高优先级模型无需修改
+- ✅ 与现有 suspend/resume API 兼容
+
+### 风险与边界
+- ⚠️ 新创建的低优先级队列可能漏 suspend
+- ⚠️ suspend 延迟导致高优先级响应不够快
+- ⚠️ 需要可靠的“队列归类”机制
+
+**结论**：  
+该简化方案可作为 POC Stage 1 的可行路径，  
+但必须补上“动态队列重扫/标记”机制，才能保证真正透明。
+
 #### 新方案（基于Map/Unmap优化）⭐⭐⭐⭐⭐
 
 ```

@@ -198,6 +198,64 @@ POC Stage 1 (suspend_queues)  →  POC Stage 2 (CWSR)  →  Production
 
 ---
 
+## 🔎 关键内核调用路径（文件 + 行号）
+
+**ioctl 入口 → suspend/resume**
+```
+3310:3321:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_chardev.c
+case KFD_IOC_DBG_TRAP_SUSPEND_QUEUES:
+    r = suspend_queues(target, ...);
+    break;
+case KFD_IOC_DBG_TRAP_RESUME_QUEUES:
+    r = resume_queues(target, ...);
+    break;
+```
+
+**CPSCH 路径：evict/restore → execute_queues**
+```
+1253:1305:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int evict_process_queues_cpsch(...) { ... execute_queues_cpsch(...); }
+
+1393:1447:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int restore_process_queues_cpsch(...) { ... execute_queues_cpsch(...); }
+```
+
+**execute_queues_cpsch = unmap + map**
+```
+2442:2455:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int execute_queues_cpsch(...)
+{
+  retval = unmap_queues_cpsch(...);
+  if (!retval)
+      retval = map_queues_cpsch(...);
+}
+```
+
+---
+
+## 🧭 MES 路径 vs CPSCH 路径（分支图）
+
+```
+SUSPEND_QUEUES / RESUME_QUEUES
+            │
+            ▼
+     suspend_queues() / resume_queues()
+            │
+            ├── if (enable_mes = true)
+            │       │
+            │       ├─ suspend: remove_queue_mes()
+            │       └─ resume : add_queue_mes()
+            │
+            └── if (enable_mes = false)  ← CPSCH
+                    │
+                    ├─ evict/restore_process_queues_cpsch()
+                    │     └─ execute_queues_cpsch()
+                    │           ├─ unmap_queues_cpsch()
+                    │           │     └─ pm_send_unmap_queue()
+                    │           └─ map_queues_cpsch()
+                    │                 └─ pm_send_runlist()
+```
+
 ## 📝 详细实施步骤
 
 ### Step 1: 队列识别机制 (1-2天)

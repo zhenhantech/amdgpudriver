@@ -205,6 +205,137 @@ HQD (硬件寄存器)
 
 ---
 
+## ❓常见问题澄清：调度策略与切换类型
+
+### Q1: 同一个 Pipe 上存在多个 **active** 的 HQD，运行时是否一定 round-robin？
+
+**结论**：不一定是严格 round-robin。  
+官方文档只说明 **Pipe 一次只执行一个 Queue**，并且切换可由不同机制触发（命令流、逐包、MES 等），**并没有规定必须是 round-robin**。实际调度会受以下因素影响：
+
+- **优先级与策略**（runlist/firmware 调度策略）
+- **队列是否 mapped**
+- **固件（MES/KIQ）行为**
+- **硬件实现细节**
+
+> 文档只定义“Pipe 一次只执行一个 Queue”，并未承诺 round-robin 调度策略。  
+> 参考: https://docs.kernel.org/gpu/amdgpu/driver-core.html
+
+### Q2: Preemption 导致的 queue switching 和 Unmapping 导致的 queue switching 是否不同？
+
+**结论**：是的，语义不同。  
+两者都会涉及 **等待 HQD_ACTIVE=0** 并进行 **HQD → MQD 状态保存**，但目的和后续状态不同：
+
+#### ✅ Preemption（抢占）
+- 目标：**短暂停止当前队列，切换到更高优先级队列**
+- 通常触发 **CWSR（Wave Save/Restore）**
+- 保存当前 wave/context 到 **上下文保存区 + MQD**
+- 队列仍处于 **可恢复的 mapped 状态**
+- 之后可能 **快速恢复执行**
+
+#### ✅ Unmapping（卸载）
+- 目标：**把队列从硬件 runlist 中移除**
+- 执行 **unmap_queues_cpsch / remove_queue_mes**
+- 队列进入 **inactive/unmapped** 状态
+- 恢复执行需要 **重新 map / load MQD → HQD**
+
+#### 关键区别
+| 维度 | Preemption | Unmapping |
+|------|------------|-----------|
+| 目的 | 临时抢占 | 从硬件移除 |
+| 状态保存 | HQD → MQD + CWSR | HQD → MQD |
+| 是否还在 runlist | 通常仍在 | 否 |
+| 恢复成本 | 低 | 较高（需要重新 map） |
+
+> 文档描述中，“firmware requests preemption or unmapping” 使用同一段机制：等待 HQD_ACTIVE=0 并保存 HQD → MQD，但 **unmapping 的语义更强**（从硬件移除），**preemption 更像短期上下文切换**。  
+> 参考: https://docs.kernel.org/gpu/amdgpu/driver-core.html
+
+### 补充：KFD 中的 runlist（澄清“runlist”概念）
+
+**说明**：KFD 中确实有 **runlist** 概念。  
+它不是纯软件或纯硬件概念，而是 **“软件构建 + 硬件消费”** 的接口机制：
+
+- **软件侧**：KFD/固件构建 runlist（例如 PM4 runlist IB）
+- **硬件侧**：MES/CP 消费 runlist，将 MQD 加载到 HQD
+
+因此更严谨的表述是：  
+**“queue 必须先被 KFD/固件 map 到调度可见的 runlist，并完成 HQD 加载，才可能出现 HQD_ACTIVE=1 的 active 状态。”**
+
+参考: https://docs.kernel.org/gpu/amdgpu/driver-core.html
+
+---
+
+### runlist 与 MQD 的关系（更细化）
+
+**一句话**：  
+**MQD 是“每个 Queue 的状态快照”**，而 **runlist 是“当前调度周期内要执行的队列清单”**。  
+runlist 的元素本质上是 **“队列的调度条目/描述”**，这些条目会引用或携带 MQD 中的配置，从而把 MQD 内容加载到 HQD。
+
+#### 1) MQD 是 per-queue 的内存结构
+- 存在于系统内存
+- 包含队列状态（地址、doorbell、寄存器镜像等）
+- 由固件在 **map/activate** 时加载到 HQD
+
+#### 2) runlist 是 per-schedule 的队列列表
+- 由 KFD/固件构建（例如 PM4 runlist IB）
+- 表示“当前应该被调度的队列集合”
+- **每个元素对应一个 Queue**（即一个 MQD 所代表的队列）
+- 硬件调度器（MES/CP）读取 runlist，完成 HQD 装载与切换
+
+#### 3) 元素是什么？（概念级理解）
+- 可以理解为 **“队列描述条目”**
+- 至少包含：Queue ID/类型/优先级/门铃/指向 MQD 的关联信息
+- 具体字段取决于硬件/固件实现，但核心是 **“把 MQD 所代表的队列加入调度集合”**
+
+#### 4) 简化关系图
+
+```
+Queue (逻辑)
+  └─ MQD (内存中的状态快照)
+         ↑
+         |  runlist 元素指向 / 关联
+         ↓
+runlist (本轮调度的队列清单)
+  └─ MES/CP 读取 runlist → 加载 MQD → HQD_ACTIVE=1
+```
+
+> 官方文档只明确了 MQD ↔ HQD 的加载关系以及“mapped queues 才会执行”，  
+> runlist 的具体条目格式属于硬件/固件实现细节，但从架构上可以认为 **runlist 的元素是队列调度条目，最终关联到 MQD**。  
+> 参考: https://docs.kernel.org/gpu/amdgpu/driver-core.html
+
+---
+
+### Doorbell vs Runlist（提交路径澄清）
+
+**结论**：  
+**doorbell 是用户态提交命令的机制**，而 **runlist 是内核/固件调度队列集合的机制**。  
+二者是不同层级的“入口”。
+
+#### ✅ 前提关系
+```
+Queue 被 map → HQD 加载 → HQD_ACTIVE=1
+    ↓
+用户态 doorbell 写入才会生效
+```
+
+#### 简单流程图（调度 vs 提交）
+
+```
+用户态提交路径:
+  User Space
+    └─ Doorbell (MMIO写) → Queue Ring Buffer
+          ↑ 需要 HQD_ACTIVE=1
+
+内核调度路径:
+  KFD / Firmware
+    └─ runlist (调度集合)
+          └─ map/unmap → MQD ↔ HQD
+```
+
+**一句话**：  
+**runlist 决定“哪些队列能跑”，doorbell 决定“队列里有新命令”。**
+
+---
+
 ## 🔑 关键机制：HQD_ACTIVE 位
 
 ### HQD_ACTIVE 的作用

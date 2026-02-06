@@ -133,6 +133,21 @@ API: KFD_IOC_DBG_TRAP_SUSPEND_QUEUES
   ⚠️ 批量操作慢
 ```
 
+**补充：内核调用路径与分支**
+```
+ioctl入口:
+  /usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_chardev.c:3310-3321
+  KFD_IOC_DBG_TRAP_SUSPEND_QUEUES → suspend_queues()
+  KFD_IOC_DBG_TRAP_RESUME_QUEUES  → resume_queues()
+
+分支逻辑:
+  enable_mes = true  → remove_queue_mes / add_queue_mes
+  enable_mes = false → evict/restore_process_queues_cpsch
+                        → execute_queues_cpsch
+                        → unmap_queues_cpsch + map_queues_cpsch
+                        → pm_send_unmap_queue + pm_send_runlist
+```
+
 ### 方案2: 新方案（基于Map/Unmap）⭐⭐⭐⭐⭐
 
 ```

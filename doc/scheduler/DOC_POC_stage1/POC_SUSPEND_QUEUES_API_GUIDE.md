@@ -47,6 +47,59 @@ struct kfd_ioctl_dbg_trap_suspend_queues_args {
 
 ## 🔍 API详细说明
 
+### 0. AMDKFD_IOC_DBG_TRAP 的实际功能（总览）
+
+**定义位置**: `/usr/src/amdgpu-6.12.12-2194681.el8_preempt/include/uapi/linux/kfd_ioctl.h`
+
+**核心作用**:  
+`AMDKFD_IOC_DBG_TRAP` 是 **KFD调试接口的统一入口 ioctl**，用于对**目标进程**执行一系列调试/控制操作。  
+它不是单一功能，而是通过 `kfd_ioctl_dbg_trap_args.op` 分派不同子操作：
+
+```
+AMDKFD_IOC_DBG_TRAP (ioctl)
+  └─ kfd_ioctl_dbg_trap_args
+       ├─ pid  (目标进程)
+       ├─ op   (操作类型)
+       └─ union { ... }  (各操作参数)
+```
+
+**本POC用到的子操作**:
+- `KFD_IOC_DBG_TRAP_ENABLE`  
+  - 为目标进程建立调试会话（Debug Session）
+  - 这是 `SUSPEND_QUEUES/RESUME_QUEUES` 的前置条件  
+- `KFD_IOC_DBG_TRAP_SUSPEND_QUEUES`  
+  - 暂停指定 queue_id 队列（触发CWSR保存、队列unmap）
+- `KFD_IOC_DBG_TRAP_RESUME_QUEUES`  
+  - 恢复指定 queue_id 队列（触发CWSR恢复、队列map）
+- （可选）`KFD_IOC_DBG_TRAP_GET_QUEUE_SNAPSHOT`  
+  - 获取目标进程当前队列快照（可用于自动获取queue_id）
+
+**关键点**:
+- **AMDKFD_IOC_DBG_TRAP 是统一入口，不是具体功能本身**
+- 真正的行为由 `op` 决定
+- **必须设置 `pid`**，否则是无效操作
+
+**支持的 op 清单（来自 kfd_ioctl.h）**:
+```
+KFD_IOC_DBG_TRAP_ENABLE = 0
+KFD_IOC_DBG_TRAP_DISABLE = 1
+KFD_IOC_DBG_TRAP_SEND_RUNTIME_EVENT = 2
+KFD_IOC_DBG_TRAP_SET_EXCEPTIONS_ENABLED = 3
+KFD_IOC_DBG_TRAP_SET_WAVE_LAUNCH_OVERRIDE = 4
+KFD_IOC_DBG_TRAP_SET_WAVE_LAUNCH_MODE = 5
+KFD_IOC_DBG_TRAP_SUSPEND_QUEUES = 6
+KFD_IOC_DBG_TRAP_RESUME_QUEUES = 7
+KFD_IOC_DBG_TRAP_SET_NODE_ADDRESS_WATCH = 8
+KFD_IOC_DBG_TRAP_CLEAR_NODE_ADDRESS_WATCH = 9
+KFD_IOC_DBG_TRAP_SET_FLAGS = 10
+KFD_IOC_DBG_TRAP_QUERY_DEBUG_EVENT = 11
+KFD_IOC_DBG_TRAP_QUERY_EXCEPTION_INFO = 12
+KFD_IOC_DBG_TRAP_GET_QUEUE_SNAPSHOT = 13
+KFD_IOC_DBG_TRAP_GET_DEVICE_SNAPSHOT = 14
+```
+
+---
+
 ### 1. 内核函数签名
 
 **定义位置**: `/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.h:316`
@@ -537,6 +590,128 @@ if (target->runtime_info.runtime_state != DEBUG_RUNTIME_STATE_ENABLED) {
 ```
 
 这个状态在`KFD_IOC_DBG_TRAP_ENABLE`时自动设置。
+
+---
+
+## 🔎 内核调用路径（文件 + 行号）
+
+### 1) ioctl 入口 → suspend/resume
+
+**文件**: `/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_chardev.c`
+```
+3310:3321:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_chardev.c
+case KFD_IOC_DBG_TRAP_SUSPEND_QUEUES:
+    r = suspend_queues(target, ...);
+    break;
+case KFD_IOC_DBG_TRAP_RESUME_QUEUES:
+    r = resume_queues(target, ...);
+    break;
+```
+
+### 2) suspend_queues 实现（MES / CPSCH 分支）
+
+**文件**: `/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c`
+```
+3472:3519:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+int suspend_queues(struct kfd_process *p, ...)
+{
+  ...
+  int err = suspend_single_queue(dqm, pdd, q);
+  bool is_mes = dqm->dev->kfd->shared_resources.enable_mes;
+  ...
+  if (is_mes)
+      total_suspended++;
+  else
+      per_device_suspended++;
+  ...
+}
+```
+
+### 3) CPSCH 路径关键函数
+
+**evict → unmap → runlist**
+```
+1253:1305:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int evict_process_queues_cpsch(...)
+{
+  ...
+  if (!enable_mes)
+      retval = execute_queues_cpsch(...);
+}
+```
+
+**restore → map → runlist**
+```
+1393:1447:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int restore_process_queues_cpsch(...)
+{
+  ...
+  if (!enable_mes)
+      retval = execute_queues_cpsch(...);
+}
+```
+
+**execute_queues_cpsch = unmap + map**
+```
+2442:2455:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int execute_queues_cpsch(...)
+{
+  retval = unmap_queues_cpsch(...);
+  if (!retval)
+      retval = map_queues_cpsch(...);
+}
+```
+
+**map_queues_cpsch → 发送 runlist**
+```
+2200:2219:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int map_queues_cpsch(...)
+{
+  retval = pm_send_runlist(&dqm->packet_mgr, &dqm->queues);
+  dqm->active_runlist = true;
+}
+```
+
+**unmap_queues_cpsch → 发送 unmap**
+```
+2353:2376:/usr/src/amdgpu-6.12.12-2194681.el8_preempt/amd/amdkfd/kfd_device_queue_manager.c
+static int unmap_queues_cpsch(...)
+{
+  retval = pm_send_unmap_queue(&dqm->packet_mgr, filter, filter_param, reset);
+}
+```
+
+---
+
+## 🧭 MES 路径 vs CPSCH 路径（分支图）
+
+```
+SUSPEND_QUEUES / RESUME_QUEUES
+            │
+            ▼
+     suspend_queues() / resume_queues()
+            │
+            ├── if (enable_mes = true)
+            │       │
+            │       ├─ suspend: remove_queue_mes()
+            │       └─ resume : add_queue_mes()
+            │
+            └── if (enable_mes = false)  ← CPSCH
+                    │
+                    ├─ evict_process_queues_cpsch()
+                    │     └─ execute_queues_cpsch()
+                    │           ├─ unmap_queues_cpsch()
+                    │           │     └─ pm_send_unmap_queue()
+                    │           └─ map_queues_cpsch()
+                    │                 └─ pm_send_runlist()
+                    │
+                    └─ restore_process_queues_cpsch()
+                          └─ execute_queues_cpsch()
+```
+
+**理解要点**:
+- **MES 路径**：固件调度，队列通过 `remove_queue_mes / add_queue_mes` 处理
+- **CPSCH 路径**：通过 `execute_queues_cpsch()` 批量 unmap/map
 
 ---
 
